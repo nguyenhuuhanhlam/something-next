@@ -10,11 +10,13 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode
 }) {
+	const menuItems = [{id:1,text:'HELLO'},{id:2,text:'WORLD'}]
+	
 	return (
 		<html lang="en">
 			<body className={barlow.className}>
 				<section>
-					<Nav height={40}/>
+					<Nav height={40} items={menuItems}/>
 				</section>
 				{children}
 			</body>
