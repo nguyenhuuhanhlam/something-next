@@ -16,7 +16,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={barlow.className}>
 				<section>
-					<Nav height={40} items={menuItems}/>
+					<Nav height={48} items={menuItems}/>
 				</section>
 				{children}
 			</body>

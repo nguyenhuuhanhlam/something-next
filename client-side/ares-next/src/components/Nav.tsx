@@ -20,24 +20,19 @@ export const Nav = (props:NavProps) => {
 	}
 
 	return (
-		<div style={styles}>
-
-			<div style={{
-				width:'80px',
-				paddingRight: props.height / 2 + 'px'
-			}}>
-				<Image src="/vercel.svg"/>
-			</div>
-
-			<>
+		<ul style={styles}>
+			<li>
+				<div style={{width:'80px'}}><Image src="/vercel.svg"/></div>				
+			</li>
+			
 			{
-				props.items.map((v,k)=><span key={v.id}>{v.text}</span>)
-			}
-			</>
-
-			<Link href="/">HOME</Link>
-			<BlankSpace width={16}/>
-			<Link href="/btx-helpers">BTX HELPERS</Link>
-		</div>
+				props.items.map((v,k,{len})=>{
+					if (k+1===len) 
+						return <li key={v.id}><Link>{v.text}</Link></li>
+					else
+						return <li key={v.id}><Link>{v.text}</Link><BlankSpace width={16}/></li>
+				})
+			}			
+		</ul>
 	)
 }
