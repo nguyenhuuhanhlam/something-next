@@ -11,12 +11,13 @@ interface NavProps {
 export const Nav = (props:NavProps) => {
 	
 	const styles = {
-		height:props.height + 'px',
-		paddingLeft:props.height / 2 + 'px',
-		background:'#CFD8DC',
-		display:'flex',
-		flexWrap:'nowrap',
-		alignItems:'center'
+		height: props.height + 'px',
+		paddingLeft: props.height / 2 + 'px',
+		paddingRight: props.height / 2 + 'px',
+		background: '#CFD8DC',
+		display: 'flex',
+		flexWrap: 'nowrap',
+		alignItems: 'center'
 	}
 
 	return (
