@@ -10,7 +10,12 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode
 }) {
-	const menuItems = [{id:1,text:'HELLO'},{id:2,text:'WORLD'}]
+	const menuItems = [
+		{id:1,text:'BTX-HELPERS',href:'/btx-helpers'},
+		{id:2,text:'WORLD'},
+		{id:3,text:'IM'},
+		{id:4,text:'HERE'}
+	]
 	
 	return (
 		<html lang="en">

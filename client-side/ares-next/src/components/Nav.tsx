@@ -22,16 +22,16 @@ export const Nav = (props:NavProps) => {
 
 	return (
 		<ul style={styles}>
-			<li>
-				<div style={{width:'80px'}}><Image src="/vercel.svg"/></div>				
+			<li style={{paddingRight: '32px'}}>
+				<div style={{width: '80px'}}><Image src="/vercel.svg"/></div>				
 			</li>
 			
 			{
 				props.items.map((v,k,{len})=>{
 					if (k+1===len) 
-						return <li key={v.id}><Link>{v.text}</Link></li>
+						return <li key={v.id}><Link href={v.href}>{v.text}</Link></li>
 					else
-						return <li key={v.id}><Link>{v.text}</Link><BlankSpace width={16}/></li>
+						return <li key={v.id} style={{ paddingRight:'8px' }}><Link href={v.href}>{v.text}</Link></li>
 				})
 			}			
 		</ul>
