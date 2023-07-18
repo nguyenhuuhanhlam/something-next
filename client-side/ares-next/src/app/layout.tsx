@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Barlow } from 'next/font/google'
-import { CounterContextProvider } from '@/contexts/counter.context.tsx'
+import { AppContextProvider } from '@/contexts/app.context.tsx'
 import { Nav } from '../components/Nav'
 
 const barlow = Barlow({ subsets: ['vietnamese'], weight: '400' })
@@ -21,10 +21,12 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={barlow.className}>
-				<section>
-					<Nav height={48} items={menuItems}/>
-				</section>
-				<CounterContextProvider>{ children }</CounterContextProvider>
+				<AppContextProvider>
+					<section>
+						<Nav height={48} items={menuItems}/>
+					</section>
+					{ children }
+				</AppContextProvider>
 			</body>
 		</html>
 	)
