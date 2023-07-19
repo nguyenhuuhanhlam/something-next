@@ -2,19 +2,41 @@
 
 import React, { Dispatch, createContext, useReducer } from 'react'
 
-type AppState = {
-	count: number
+type LoggedInUserType = {
+	id: number,
+	token: string,
+	username: string
+} 
+
+type StateType = {
+	count: number,
+	loggedInUser: LoggedInUserType
 }
 
-type AppAction = { type: string }
+type ActionType = { type: string }
 
-const initialState: AppState = {
+const initialState: StateType = {
 	count: 0
 }
 
-export const AppContext = createContext<{state:AppState,dispatch:Dispatch<AppAction>
-}>({ state: initialState, dispatch: ()=>null })
+const reducer = (state: StateType, action: ActionType) => {
+	switch (action.type) {
+		case 'C1':
+			return { ...state, count: state.count + 1 }
+		default:
+			return state
+	}
+}
+
+export const AppContext = createContext<{ state:StateType, dispatch:Dispatch<ActionType>
+}>({ state: initialState, dispatch: () => null })
 
 export const AppContextProvider = ({children}:{children:React.ReactNode}) => {
-	return <AppContext.Provider>AppContextProvider::children--> {children}</AppContext.Provider>
+	const [state, dispatch] = useReducer(reducer, initialState)
+
+	return (
+		<AppContext.Provider value={{ state, dispatch }}>
+			{children}
+		</AppContext.Provider>
+	)
 }

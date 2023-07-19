@@ -1,7 +1,10 @@
 'use client'
 
-import { createContext, useContext, useState } from 'react'
-import { Link, Image } from '@fluentui/react-components'
+import { useContext } from 'react'
+import Link from 'next/link'
+ 
+import { Image } from '@fluentui/react-components'
+import { AppContext } from '@/contexts/app.context.tsx'
 import { BlankSpace } from './BlankSpace.tsx'
 
 interface NavProps {
@@ -10,6 +13,8 @@ interface NavProps {
 }
 
 export const Nav = (props:NavProps) => {
+
+	const { state } = useContext(AppContext)
 	
 	const styles = {
 		height: props.height + 'px',
@@ -34,7 +39,9 @@ export const Nav = (props:NavProps) => {
 					else
 						return <li key={v.id} style={{ paddingRight:'8px' }}><Link href={v.href}>{v.text}</Link></li>
 				})
-			}			
+			}
+
+			<li style={{paddingLeft: '32px'}}>-->{state.count}</li>
 		</ul>
 	)
 }
