@@ -1,7 +1,11 @@
 interface BlankSpaceProps {
-	width: number
+	space: number,
+	vh: number
 }
 
 export const BlankSpace = (props:BlankSpaceProps) => {
-	return <span style={{ width:props.width + 'px' }}></span>
+	if (props.vh!=1)
+		return <span style={{ display: 'block', width:props.space + 'px' }}></span>
+	else
+		return <span style={{ display: 'block', height:props.space + 'px' }}></span>
 }

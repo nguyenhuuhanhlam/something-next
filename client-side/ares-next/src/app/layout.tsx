@@ -1,6 +1,12 @@
+'use client'
+
 import './globals.css'
+
 import type { Metadata } from 'next'
 import { Barlow } from 'next/font/google'
+
+import { FluentProvider, teamsLightTheme } from '@fluentui/react-components'
+
 import { AppContextProvider } from '@/contexts/app.context.tsx'
 import { Nav } from '../components/Nav'
 
@@ -13,9 +19,6 @@ export default function RootLayout({
 }) {
 	const menuItems = [
 		{ id:1, text:'BTX-HELPERS', href:'/btx-helpers' },
-		// {id:2,text:'WORLD'},
-		// {id:3,text:'IM'},
-		// {id:4,text:'HERE'},
 		{ id:5, text:'LOGIN', href:'/login' }
 	]
 	
@@ -23,10 +26,12 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={barlow.className}>
 				<AppContextProvider>
-					<section>
-						<Nav height={48} items={menuItems}/>
-					</section>
-					{ children }
+					<FluentProvider theme={teamsLightTheme}>
+						<section>
+							<Nav height={48} items={menuItems}/>
+						</section>
+						<section style={{paddingLeft:'136px'}}>{ children }</section>
+					</FluentProvider>
 				</AppContextProvider>
 			</body>
 		</html>

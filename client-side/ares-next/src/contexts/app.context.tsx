@@ -2,6 +2,8 @@
 
 import React, { Dispatch, createContext, useReducer } from 'react'
 
+/* - - - - - */
+
 type LoggedInUserType = {
 	id: number,
 	token: string,
@@ -15,9 +17,13 @@ type StateType = {
 
 type ActionType = { type: string }
 
+/* - - - - - */
+
 const initialState: StateType = {
 	count: 0
 }
+
+/* - - - - - */
 
 const reducer = (state: StateType, action: ActionType) => {
 	switch (action.type) {
@@ -27,6 +33,8 @@ const reducer = (state: StateType, action: ActionType) => {
 			return state
 	}
 }
+
+/* - - - - - */
 
 export const AppContext = createContext<{ state:StateType, dispatch:Dispatch<ActionType>
 }>({ state: initialState, dispatch: () => null })
