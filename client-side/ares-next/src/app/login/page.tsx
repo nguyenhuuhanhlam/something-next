@@ -6,8 +6,9 @@ import {
 	Button,
 	Field,
 	Input,
+	InputProps,
 	Label,
-	Subtitle2,SpacingVerticalXXXL
+	Subtitle2
 } from '@fluentui/react-components'
 
 import { AppContext } from '@/contexts/app.context.tsx'
@@ -19,9 +20,12 @@ const useStyles = makeStyles({
 		display: 'flex',
 		flexDirection: 'column',
 		maxWidth: '320px',
-		...shorthands.gap('4px')
+		...shorthands.gap('4px'),
+		
 	}
 })
+
+const TextBox = (props:InputProps) => <Input {...props} style={{ borderRadius: 'unset' }} />
 
 export default function Page() {
 	const { state, dispatch } = useContext(AppContext)
@@ -35,12 +39,13 @@ export default function Page() {
 
 			<div className={styles.root}>
 				<Field label="Username">
-					<Input />
+					<TextBox />
 				</Field>
 				<Field label="Password">
-					<Input />
+					<TextBox type="password"/>
 				</Field>
-				<Button style={{maxWidth:'80px',marginTop:'16px'}} shape="square" appearance="primary" onClick={() => dispatch({type:'C1'})}>LOGIN</Button>
+				<BlankSpace space={24} vh={1}/>
+				<Button style={{ maxWidth:'80px' }} shape="square" appearance="primary" onClick={() => dispatch({type:'C1'})}>LOGIN</Button>
 			</div>
 		</>
 	)

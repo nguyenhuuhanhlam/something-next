@@ -29,6 +29,8 @@ const reducer = (state: StateType, action: ActionType) => {
 	switch (action.type) {
 		case 'C1':
 			return { ...state, count: state.count + 1 }
+		case 'LOGIN':
+			return { ...state, loggedInUser: { id:100,token:'this is token',username:'xyz' } }
 		default:
 			return state
 	}
