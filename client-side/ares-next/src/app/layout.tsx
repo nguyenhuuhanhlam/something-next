@@ -18,7 +18,8 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	const menuItems = [
-		{ id:1, text:'BTX-HELPERS', href:'/btx-helpers' },
+		{ id:1, text:'BITRIX', href:'/btx-helpers' },
+		{ id:2, text:'KIOT',  }, // href:'/kiot-helpers'
 		{ id:5, text:'LOGIN', href:'/login' }
 	]
 	

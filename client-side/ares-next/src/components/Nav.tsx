@@ -35,13 +35,11 @@ export const Nav = (props:NavProps) => {
 			{
 				props.items.map((v,k,{len})=>{
 					if (k+1===len) 
-						return <li key={v.id}><Link href={v.href}>{v.text}</Link></li>
+						return <li key={v.id}><Link href={ v.href || '#' }>{v.text}</Link></li>
 					else
-						return <li key={v.id} style={{ paddingRight:'8px' }}><Link href={v.href}>{v.text}</Link></li>
+						return <li key={v.id} style={{ paddingRight:'8px' }}><Link href={ v.href || '#' }>{v.text}</Link></li>
 				})
 			}
-
-			<li style={{paddingLeft: '32px'}}>-->{state.count}</li>
 		</ul>
 	)
 }
