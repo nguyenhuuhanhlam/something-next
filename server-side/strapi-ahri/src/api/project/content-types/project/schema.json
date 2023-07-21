@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ProjectName": {
+      "type": "string"
+    },
+    "ProjectCode": {
+      "type": "string",
+      "unique": true,
+      "maxLength": 32
+    }
+  }
+}
