@@ -15,7 +15,7 @@ type StateType = {
 	loggedInUser: LoggedInUserType
 }
 
-type ActionType = { type: string }
+type ActionType = { type: string, payload: object }
 
 /* - - - - - */
 
@@ -30,6 +30,7 @@ const reducer = (state: StateType, action: ActionType) => {
 		case 'C1':
 			return { ...state, count: state.count + 1 }
 		case 'LOGIN':
+			console.log(action)
 			return { ...state, loggedInUser: { id:100,token:'this is token',username:'xyz' } }
 		default:
 			return state

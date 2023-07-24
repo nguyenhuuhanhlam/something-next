@@ -13,7 +13,7 @@ import {
 
 import { AppContext } from '@/contexts/app.context.tsx'
 import { BlankSpace } from '@/components/BlankSpace.tsx'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 const useStyles = makeStyles({
 	root: {
@@ -31,6 +31,13 @@ export default function Page() {
 	const { state, dispatch } = useContext(AppContext)
 	const styles = useStyles()
 
+	const [username,setUsername] = useState()
+	const [password,setPassword] = useState()
+
+	const loginHandle = () => {
+		dispatch({ type:'LOGIN', payload:"HELLO LOGII" })
+	}
+
 	return (
 		<>
 			<BlankSpace space={32} vh={1}/>
@@ -45,7 +52,10 @@ export default function Page() {
 					<TextBox type="password"/>
 				</Field>
 				<BlankSpace space={24} vh={1}/>
-				<Button style={{ maxWidth:'80px' }} shape="square" appearance="primary" onClick={() => dispatch({type:'C1'})}>LOGIN</Button>
+				<Button
+					style={{ maxWidth:'80px' }} shape="square" appearance="primary"
+					onClick={ loginHandle }
+				>LOGIN</Button>
 			</div>
 		</>
 	)
