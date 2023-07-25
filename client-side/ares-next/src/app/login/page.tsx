@@ -31,12 +31,23 @@ export default function Page() {
 	const { state, dispatch } = useContext(AppContext)
 	const styles = useStyles()
 
-	const [username,setUsername] = useState()
-	const [password,setPassword] = useState()
+	const [loginData, setLoginData] = useState({
+		identifier: '',
+		password: '',
+	})
 
-	const loginHandle = () => {
-		dispatch({ type:'LOGIN', payload:"HELLO LOGII" })
+	// 1.
+
+	const handleChange = (e) => {
+		const { name, value } = e.target
+		setLoginData({...loginData, [name]: value })
 	}
+
+	const submitHandle = () => {
+		dispatch({ type: 'LOGIN', payload: loginData })
+	}
+
+	//
 
 	return (
 		<>
@@ -46,15 +57,15 @@ export default function Page() {
 
 			<div className={styles.root}>
 				<Field label="Username">
-					<TextBox />
+					<TextBox name="identifier" onChange={ handleChange } />
 				</Field>
 				<Field label="Password">
-					<TextBox type="password"/>
+					<TextBox name="password" type="password" onChange={ handleChange } />
 				</Field>
 				<BlankSpace space={24} vh={1}/>
 				<Button
 					style={{ maxWidth:'80px' }} shape="square" appearance="primary"
-					onClick={ loginHandle }
+					onClick={ submitHandle }
 				>LOGIN</Button>
 			</div>
 		</>

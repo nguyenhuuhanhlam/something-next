@@ -28,8 +28,8 @@ export const Nav = (props:NavProps) => {
 
 	return (
 		<ul style={styles}>
-			<li style={{paddingRight: '32px'}}>
-				<div style={{width: '80px'}}><Image src="/vercel.svg"/></div>				
+			<li style={{ paddingRight:'32px' }}>
+				<div style={{ width:'32px' }}><Image src="/lab.x.svg"/></div>				
 			</li>
 			
 			{

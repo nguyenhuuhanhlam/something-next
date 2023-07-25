@@ -1,13 +1,17 @@
 'use client'
 
 import React, { Dispatch, createContext, useReducer } from 'react'
+//import axios from 'axios'
+
+import { STRAPI_ENDPOINT } from './store.tsx'
 
 /* - - - - - */
 
 type LoggedInUserType = {
 	id: number,
-	token: string,
-	username: string
+	jwt: string,
+	username: string,
+	email: string
 } 
 
 type StateType = {
@@ -15,7 +19,7 @@ type StateType = {
 	loggedInUser: LoggedInUserType
 }
 
-type ActionType = { type: string, payload: object }
+type ActionType = { type: string }
 
 /* - - - - - */
 
@@ -29,9 +33,18 @@ const reducer = (state: StateType, action: ActionType) => {
 	switch (action.type) {
 		case 'C1':
 			return { ...state, count: state.count + 1 }
+
 		case 'LOGIN':
-			console.log(action)
-			return { ...state, loggedInUser: { id:100,token:'this is token',username:'xyz' } }
+				const { identifier, password } = action.payload
+				//const auth = axios.post(`${STRAPI_ENDPOINT}/api/auth/local`, { identifier, password })
+
+				//console.log(identifier, password)
+
+				//fetch(`${STRAPI_ENDPOINT}/api/auth/local`,{ method: 'POST' })
+
+				return { ...state, loggedInUser: { id:100,token:'this is token',username:'xyz' } }
+			break
+
 		default:
 			return state
 	}
