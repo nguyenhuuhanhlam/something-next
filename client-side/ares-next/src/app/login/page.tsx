@@ -1,5 +1,8 @@
 'use client'
 
+import { useContext, useState } from 'react'
+import axios from 'axios'
+
 import {
 	makeStyles,
 	shorthands,
@@ -8,12 +11,16 @@ import {
 	Input,
 	InputProps,
 	Label,
-	Subtitle2
+	Subtitle2,
+	Caption2
 } from '@fluentui/react-components'
+
+import { ErrorCircle20Regular } from '@fluentui/react-icons'
 
 import { AppContext } from '@/contexts/app.context.tsx'
 import { BlankSpace } from '@/components/BlankSpace.tsx'
-import { useContext, useState } from 'react'
+
+/* - - - - - */
 
 const useStyles = makeStyles({
 	root: {
@@ -21,30 +28,51 @@ const useStyles = makeStyles({
 		flexDirection: 'column',
 		maxWidth: '320px',
 		...shorthands.gap('4px'),
-		
 	}
 })
 
-const TextBox = (props:InputProps) => <Input {...props} style={{ borderRadius: 'unset' }} />
+const TextBox = (props:InputProps) => <Input {...props} style={{ borderRadius:'unset' }} />
+
+/* - - - - - */
 
 export default function Page() {
-	const { state, dispatch } = useContext(AppContext)
+	const { state,dispatch } = useContext(AppContext)
 	const styles = useStyles()
 
-	const [loginData, setLoginData] = useState({
+	const [ loginData,setLoginData ] = useState({
 		identifier: '',
 		password: '',
 	})
 
+	const [ ux,setUx ] = useState({ showErrMsg:false })
+
 	// 1.
 
 	const handleChange = (e) => {
-		const { name, value } = e.target
-		setLoginData({...loginData, [name]: value })
+		const { name,value } = e.target
+		setLoginData({ ...loginData,[name]:value })
+		setUx({...ux,showErrMsg:false})
 	}
 
-	const submitHandle = () => {
-		dispatch({ type: 'LOGIN', payload: loginData })
+	const submitHandle = async (e) => {
+		
+		const { identifier,password } = loginData
+		// e.preventDefault()
+		try {
+			const auth = await axios.post(`http://127.0.0.1:1337/api/auth/local`, { identifier, password })
+			dispatch({ type: 'LOGIN', payload: auth.data })
+		} catch (e) {
+			// const { error } = e.response.data
+			// if (error.details?.errors) {
+			// 	console.log(error.details.errors)
+			// } else {
+			// 	console.log(error.message)
+			// }
+			setUx({...ux,showErrMsg:true})
+		}
+		
+
+		//
 	}
 
 	//
@@ -52,7 +80,10 @@ export default function Page() {
 	return (
 		<>
 			<BlankSpace space={32} vh={1}/>
-			<Subtitle2>Signin</Subtitle2>
+			<div style={{ display:'flex',alignItems:'center' }}>
+				<Subtitle2>Signin</Subtitle2>
+				{ ux.showErrMsg?<Caption2 style={{ paddingLeft:'32px', color:'DarkRed' }}><ErrorCircle20Regular color="DarkRed"/> Invalid identifier or password.</Caption2>:null }
+			</div>
 			<BlankSpace space={24} vh={1}/>
 
 			<div className={styles.root}>

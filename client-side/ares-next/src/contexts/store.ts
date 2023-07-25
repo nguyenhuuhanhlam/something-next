@@ -1,1 +1,1 @@
-export const STRAPI_ENDPOINT = 'http://localhost:1337'
+export const STRAPI_ENDPOINT = 'http://127.0.0.1:1337'
