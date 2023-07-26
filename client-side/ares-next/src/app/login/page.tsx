@@ -17,6 +17,7 @@ import {
 
 import { ErrorCircle20Regular } from '@fluentui/react-icons'
 
+import { STRAPI_ENDPOINT } from '@/contexts/store.tsx'
 import { AppContext } from '@/contexts/app.context.tsx'
 import { BlankSpace } from '@/components/BlankSpace.tsx'
 
@@ -43,46 +44,42 @@ export default function Page() {
 		identifier: '',
 		password: '',
 	})
-
-	const [ ux,setUx ] = useState({ showErrMsg:false })
+	const [ ux,setUx ] = useState({
+		pending: false,
+		showErrMsg:false
+	})
 
 	// 1.
 
 	const handleChange = (e) => {
 		const { name,value } = e.target
 		setLoginData({ ...loginData,[name]:value })
-		setUx({...ux,showErrMsg:false})
+		setUx({ ...ux,showErrMsg:false })
 	}
 
 	const submitHandle = async (e) => {
-		
 		const { identifier,password } = loginData
-		// e.preventDefault()
 		try {
-			const auth = await axios.post(`http://127.0.0.1:1337/api/auth/local`, { identifier, password })
-			dispatch({ type: 'LOGIN', payload: auth.data })
+			setUx({ ...ux,pending:true })
+			const auth = await axios.post(`${ STRAPI_ENDPOINT }/api/auth/local`, { identifier, password })
+			dispatch({ type:'LOGIN',payload:auth.data })
 		} catch (e) {
-			// const { error } = e.response.data
-			// if (error.details?.errors) {
-			// 	console.log(error.details.errors)
-			// } else {
-			// 	console.log(error.message)
-			// }
-			setUx({...ux,showErrMsg:true})
+			setUx({ ...ux, showErrMsg:true, pending:false })
 		}
-		
-
-		//
 	}
 
-	//
+	// E.
 
 	return (
 		<>
 			<BlankSpace space={32} vh={1}/>
 			<div style={{ display:'flex',alignItems:'center' }}>
 				<Subtitle2>Signin</Subtitle2>
-				{ ux.showErrMsg?<Caption2 style={{ paddingLeft:'32px', color:'DarkRed' }}><ErrorCircle20Regular color="DarkRed"/> Invalid identifier or password.</Caption2>:null }
+				{ ux.showErrMsg
+					? <Caption2 style={{ paddingLeft:'32px', color:'DarkRed' }}>
+						<ErrorCircle20Regular color="DarkRed"/> Invalid identifier or password.</Caption2>
+					: null
+				}
 			</div>
 			<BlankSpace space={24} vh={1}/>
 
@@ -97,6 +94,7 @@ export default function Page() {
 				<Button
 					style={{ maxWidth:'80px' }} shape="square" appearance="primary"
 					onClick={ submitHandle }
+					disabled={ ux.pending }
 				>LOGIN</Button>
 			</div>
 		</>

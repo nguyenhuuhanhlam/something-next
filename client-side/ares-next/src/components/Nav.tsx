@@ -3,13 +3,15 @@
 import { useContext } from 'react'
 import Link from 'next/link'
  
+import { LoggedInUserType } from '@/constants'
 import { Image } from '@fluentui/react-components'
 import { AppContext } from '@/contexts/app.context.tsx'
 import { BlankSpace } from './BlankSpace.tsx'
 
 interface NavProps {
 	height: number,
-	items: { id:number, text:string, href:string }[]
+	items: { id:number, text:string, href:string }[],
+
 }
 
 export const Nav = (props:NavProps) => {

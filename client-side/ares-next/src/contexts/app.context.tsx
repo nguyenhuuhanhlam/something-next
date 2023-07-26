@@ -8,49 +8,30 @@ import { STRAPI_ENDPOINT } from './store.ts'
 /* - - - - - */
 
 type LoggedInUserType = {
-	id: number,
-	jwt: string,
-	username: string,
-	email: string
+	id:number,
+	jwt:string,
+	username:string,
+	email:string
 } 
 
 type StateType = {
-	count: number,
-	loggedInUser: LoggedInUserType
+	loggedInUser:LoggedInUserType
 }
 
-type ActionType = { type: string }
+type ActionType = { type:string }
 
 /* - - - - - */
 
 const initialState: StateType = {
-	count: 0
+	loggedInUser: {}
 }
 
 /* - - - - - */
 
 const reducer = async (state: StateType, action: ActionType) => {
 	switch (action.type) {
-		case 'C1':
-			return { ...state, count: state.count + 1 }
-
-		case 'LOGIN':
-				// const { identifier, password } = action.payload
-
-				// try {
-					
-				// 	const auth = await axios.post(`${STRAPI_ENDPOINT}/api/auth/local`, { identifier, password })
-				// } catch (err) {
-				// 	console.log(err)
-				// }
-					
-
-				console.log('LOGIN-REDUCER:',action.payload)
-
-				return { ...state, loggedInUser: { id:100,token:'this is token',username:'xyz' } }
-				//}
-			break
-
+		case 'LOGIN':				
+				return { ...state, loggedInUser: { username:"OK USER", jwt: 'OK JTW' } }
 		default:
 			return state
 	}
