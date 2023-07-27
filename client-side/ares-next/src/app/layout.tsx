@@ -1,5 +1,7 @@
 'use client'
 
+import { StrictMode } from 'react'
+
 import './globals.css'
 
 import type { Metadata } from 'next'
@@ -20,20 +22,22 @@ export default function RootLayout({
 	const menuItems = [
 		{ id:1, text:'BITRIX', href:'/btx-helpers' },
 		{ id:2, text:'KIOT',  }, // href:'/kiot-helpers'
-		{ id:5, text:'LOGIN', href:'/login' }
+		
 	]
 	
 	return (
 		<html lang="en">
 			<body className={barlow.className}>
-				<AppContextProvider>
-					<FluentProvider theme={teamsLightTheme}>
-						<section>
-							<Nav height={48} items={menuItems}/>
-						</section>
-						<section style={{paddingLeft:'136px'}}>{ children }</section>
-					</FluentProvider>
-				</AppContextProvider>
+				<StrictMode>
+					<AppContextProvider>
+						<FluentProvider theme={teamsLightTheme}>
+							<section>
+								<Nav height={48} items={menuItems}/>
+							</section>
+							<section style={{paddingLeft:'136px'}}>{ children }</section>
+						</FluentProvider>
+					</AppContextProvider>
+				</StrictMode>
 			</body>
 		</html>
 	)

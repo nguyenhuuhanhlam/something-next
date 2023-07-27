@@ -62,7 +62,7 @@ export default function Page() {
 		try {
 			setUx({ ...ux,pending:true })
 			const auth = await axios.post(`${ STRAPI_ENDPOINT }/api/auth/local`, { identifier, password })
-			dispatch({ type:'LOGIN',payload:auth.data })
+			dispatch({ type:'LOGIN', payload:auth.data })
 		} catch (e) {
 			setUx({ ...ux, showErrMsg:true, pending:false })
 		}

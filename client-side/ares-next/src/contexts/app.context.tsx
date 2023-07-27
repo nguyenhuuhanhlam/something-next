@@ -3,22 +3,16 @@
 import React, { Dispatch, createContext, useReducer } from 'react'
 import axios from 'axios'
 
+import { LoggedInUserType, ActionType } from '@/constants'
 import { STRAPI_ENDPOINT } from './store.ts'
 
 /* - - - - - */
-
-type LoggedInUserType = {
-	id:number,
-	jwt:string,
-	username:string,
-	email:string
-} 
 
 type StateType = {
 	loggedInUser:LoggedInUserType
 }
 
-type ActionType = { type:string }
+// type ActionType = { type:string }
 
 /* - - - - - */
 
@@ -28,10 +22,12 @@ const initialState: StateType = {
 
 /* - - - - - */
 
-const reducer = async (state: StateType, action: ActionType) => {
+const reducer = (state: StateType, action: ActionType) => {
 	switch (action.type) {
-		case 'LOGIN':				
-				return { ...state, loggedInUser: { username:"OK USER", jwt: 'OK JTW' } }
+		case 'LOGIN':
+				const { user:{username}, jwt } = action.payload
+				return { ...state, loggedInUser: { jwt, username }}
+			break
 		default:
 			return state
 	}

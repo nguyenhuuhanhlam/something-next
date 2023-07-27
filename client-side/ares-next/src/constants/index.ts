@@ -4,3 +4,5 @@ export type LoggedInUserType = {
 	username:string,
 	email:string
 }
+
+export type ActionType = { type:string }
