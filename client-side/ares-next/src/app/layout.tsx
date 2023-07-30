@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
 	const menuItems = [
 		{ id:1, text:'BITRIX', href:'/btx-helpers' },
-		{ id:2, text:'KIOT',  }, // href:'/kiot-helpers'
+		{ id:2, text:'KIOT', href:'/kiot-helpers' }, // href:'/kiot-helpers'
 		
 	]
 	
@@ -34,7 +34,7 @@ export default function RootLayout({
 							<section>
 								<Nav height={48} items={menuItems}/>
 							</section>
-							<section style={{paddingLeft:'136px'}}>{ children }</section>
+							<section style={{ marginLeft:'88px', marginTop:'32px' }}>{ children }</section>
 						</FluentProvider>
 					</AppContextProvider>
 				</StrictMode>

@@ -31,23 +31,30 @@ export const Nav = (props:NavProps) => {
 
 	return (
 		<ul style={styles}>
+			
+			{/* LOGO */}
+			
 			<li style={{ paddingRight:'32px' }}>
 				<div style={{ width:'32px' }}><Image src="/lab.x.svg"/></div>				
 			</li>
 			
+			{/* MENU ITEMS */}
+
 			{
 				props.items.map((v,k,{len})=>{
 					if (k+1===len) 
 						return <li key={v.id}><Link href={ v.href || '#' }>{v.text}</Link></li>
 					else
-						return <li key={v.id} style={{ paddingRight:'8px' }}><Link href={ v.href || '#' }>{v.text}</Link></li>
+						return <li key={v.id} style={{ marginRight:'8px' }}><Link href={ v.href || '#' }>{v.text}</Link></li>
 				})
 			}
 
-			<li>
+			{/* LOG ITEM */}
+
+			<li style={{ marginLeft:'auto' }}>
 			{
 				state?.loggedInUser?.jwt
-				? <><Avatar/> {state.loggedInUser.username}</>
+				? <><Avatar color="brand"/> <Link href="/personal-info">{state.loggedInUser.username}</Link></>
 				: <Link href="/login">LOGIN</Link>
 			}
 			</li>

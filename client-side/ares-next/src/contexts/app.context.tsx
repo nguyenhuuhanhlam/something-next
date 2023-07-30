@@ -12,11 +12,9 @@ type StateType = {
 	loggedInUser:LoggedInUserType
 }
 
-// type ActionType = { type:string }
-
 /* - - - - - */
 
-const initialState: StateType = {
+const initialState:StateType = {
 	loggedInUser: {}
 }
 

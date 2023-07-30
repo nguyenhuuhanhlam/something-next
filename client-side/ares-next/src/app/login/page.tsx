@@ -72,7 +72,6 @@ export default function Page() {
 
 	return (
 		<>
-			<BlankSpace space={32} vh={1}/>
 			<div style={{ display:'flex',alignItems:'center' }}>
 				<Subtitle2>Signin</Subtitle2>
 				{ ux.showErrMsg
