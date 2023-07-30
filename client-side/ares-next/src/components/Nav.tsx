@@ -17,7 +17,7 @@ interface NavProps {
 
 export const Nav = (props:NavProps) => {
 
-	const { state } = useContext(AppContext)
+	const { state:{loggedInUser} } = useContext(AppContext)
 	
 	const styles = {
 		height: props.height + 'px',
@@ -29,33 +29,45 @@ export const Nav = (props:NavProps) => {
 		alignItems: 'center'
 	}
 
+	const item_styles = {
+		height:'inherit',
+		display:'inherit',
+		alignItems: 'center'
+	}
+
 	return (
 		<ul style={styles}>
 			
 			{/* LOGO */}
 			
 			<li style={{ paddingRight:'32px' }}>
-				<div style={{ width:'32px' }}><Image src="/lab.x.svg"/></div>				
+				<Link href="/">
+					<div style={{ width:'32px' }}><Image src="/lab.x.svg"/></div>
+				</Link>
 			</li>
 			
-			{/* MENU ITEMS */}
+			{/* LINK ITEM */}
 
 			{
-				props.items.map((v,k,{len})=>{
-					if (k+1===len) 
-						return <li key={v.id}><Link href={ v.href || '#' }>{v.text}</Link></li>
+				props.items.map((v,k,{length})=>{
+					if (k+1===length) {
+						return <li key={v.id} style={item_styles}><Link href={ v.href || '#' }>{v.text}</Link></li>
+					}
 					else
-						return <li key={v.id} style={{ marginRight:'8px' }}><Link href={ v.href || '#' }>{v.text}</Link></li>
+						return <li key={v.id} style={{ ...item_styles, marginRight:'8px' }}><Link href={ v.href || '#' }>{v.text}</Link></li>
 				})
 			}
 
-			{/* LOG ITEM */}
+			{/* LAST ITEM */}
 
 			<li style={{ marginLeft:'auto' }}>
 			{
-				state?.loggedInUser?.jwt
-				? <><Avatar color="brand"/> <Link href="/personal-info">{state.loggedInUser.username}</Link></>
-				: <Link href="/login">LOGIN</Link>
+				loggedInUser?.jwt
+				? 	<>
+						<Avatar color="brand" initials={loggedInUser.username.substring(0,2).toUpperCase()}/>
+						<Link href="/personal-info">{loggedInUser.username}</Link>
+					</>
+				: 	<Link href="/login">LOGIN</Link>
 			}
 			</li>
 		</ul>

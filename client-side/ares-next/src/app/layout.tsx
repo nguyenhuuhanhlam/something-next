@@ -21,8 +21,8 @@ export default function RootLayout({
 }) {
 	const menuItems = [
 		{ id:1, text:'BITRIX', href:'/btx-helpers' },
-		{ id:2, text:'KIOT', href:'/kiot-helpers' }, // href:'/kiot-helpers'
-		
+		{ id:2, text:'KIOT', href:'/kiot-helpers' },
+		{ id:3, text:'ABOUT', href:'/' }
 	]
 	
 	return (

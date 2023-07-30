@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { useContext, useState } from 'react'
 import axios from 'axios'
 
@@ -38,6 +39,7 @@ const TextBox = (props:InputProps) => <Input {...props} style={{ borderRadius:'u
 
 export default function Page() {
 	const { state,dispatch } = useContext(AppContext)
+	const router = useRouter()
 	const styles = useStyles()
 
 	const [ loginData,setLoginData ] = useState({
@@ -63,6 +65,7 @@ export default function Page() {
 			setUx({ ...ux,pending:true })
 			const auth = await axios.post(`${ STRAPI_ENDPOINT }/api/auth/local`, { identifier, password })
 			dispatch({ type:'LOGIN', payload:auth.data })
+			router.replace('/personal-info')
 		} catch (e) {
 			setUx({ ...ux, showErrMsg:true, pending:false })
 		}
