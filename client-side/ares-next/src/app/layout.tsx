@@ -1,18 +1,27 @@
 'use client'
 
 import { StrictMode } from 'react'
+import { registerLicense } from '@syncfusion/ej2-base'
+import { AppBarComponent } from '@syncfusion/ej2-react-navigations'
+import { ButtonComponent } from '@syncfusion/ej2-react-buttons'
+
+import '../../node_modules/@syncfusion/ej2-base/styles/material.css'
+import '../../node_modules/@syncfusion/ej2-buttons/styles/material.css'
+import '../../node_modules/@syncfusion/ej2-navigations/styles/material.css'
 
 import './globals.css'
 
-import type { Metadata } from 'next'
-import { Barlow } from 'next/font/google'
+// import type { Metadata } from 'next'
+// import { Barlow } from 'next/font/google'
 
-import { FluentProvider, teamsLightTheme } from '@fluentui/react-components'
+// import { FluentProvider, teamsLightTheme } from '@fluentui/react-components'
 
-import { AppContextProvider } from '@/contexts/app.context.tsx'
-import { Nav } from '../components/Nav'
+// import { AppContextProvider } from '@/contexts/app.context.tsx'
+// import { Nav } from '../components/Nav'
 
-const barlow = Barlow({ subsets: ['vietnamese'], weight: '400' })
+// const barlow = Barlow({ subsets: ['vietnamese'], weight: '400' })
+
+registerLicense('Ngo9BigBOggjHTQxAR8/V1NGaF1cWGhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdEZjUX9fcXZRQGRcUUN/Wg==')
 
 export default function RootLayout({
 	children,
@@ -25,18 +34,38 @@ export default function RootLayout({
 		{ id:3, text:'ABOUT', href:'/' }
 	]
 	
+	// return (
+	// 	<html lang="en">
+	// 		<body className={barlow.className}>
+	// 			<StrictMode>
+	// 				<AppContextProvider>
+	// 					<FluentProvider theme={teamsLightTheme}>
+	// 						<section>
+	// 							<Nav height={48} items={menuItems}/>
+	// 						</section>
+	// 						<section style={{ marginLeft:'88px', marginTop:'32px' }}>{ children }</section>
+	// 					</FluentProvider>
+	// 				</AppContextProvider>
+	// 			</StrictMode>
+	// 		</body>
+	// 	</html>
+	// )
+
 	return (
 		<html lang="en">
-			<body className={barlow.className}>
+			<body>
 				<StrictMode>
-					<AppContextProvider>
-						<FluentProvider theme={teamsLightTheme}>
-							<section>
-								<Nav height={48} items={menuItems}/>
-							</section>
-							<section style={{ marginLeft:'88px', marginTop:'32px' }}>{ children }</section>
-						</FluentProvider>
-					</AppContextProvider>
+					<section>
+					
+                        <AppBarComponent colorMode="Primary">
+                            <ButtonComponent ref={regularBtn => (regularBtn = regularBtn)} aria-label='menu' cssClass='e-inherit menu' iconCss='e-icons e-menu'></ButtonComponent>
+                            <span className="regular">React AppBar</span>
+                            <div className="e-appbar-spacer"></div>
+                            <ButtonComponent cssClass='e-inherit login'>LOGIN</ButtonComponent>
+                        </AppBarComponent>
+                    
+					</section>
+					<section>{ children }</section>
 				</StrictMode>
 			</body>
 		</html>

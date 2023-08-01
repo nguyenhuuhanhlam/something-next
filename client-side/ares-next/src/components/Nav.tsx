@@ -64,7 +64,7 @@ export const Nav = (props:NavProps) => {
 			{
 				loggedInUser?.jwt
 				? 	<>
-						<Avatar color="brand" initials={loggedInUser.username.substring(0,2).toUpperCase()}/>
+						<Avatar color="brand" initials={loggedInUser.username.substring(0,2).toUpperCase()} style={{ marginRight:'8px' }}/>
 						<Link href="/personal-info">{loggedInUser.username}</Link>
 					</>
 				: 	<Link href="/login">LOGIN</Link>

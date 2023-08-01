@@ -23,7 +23,6 @@ const initialState:StateType = {
 const reducer = (state: StateType, action: ActionType) => {
 	switch (action.type) {
 		case 'LOGIN':
-				//console.log('REDUCER::LOGIN')
 				const { user:{username}, jwt } = action.payload
 				return { ...state, loggedInUser: { jwt, username }}
 			break
