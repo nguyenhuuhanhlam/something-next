@@ -1,25 +1,15 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { StrictMode } from 'react'
 import { registerLicense } from '@syncfusion/ej2-base'
-// import { AppBarComponent } from '@syncfusion/ej2-react-navigations'
-// import { ButtonComponent } from '@syncfusion/ej2-react-buttons'
 
 import '@/../node_modules/@syncfusion/ej2/material.css'
-
 import './globals.css'
 
 
-
-// import type { Metadata } from 'next'
-// import { Barlow } from 'next/font/google'
-
-// import { FluentProvider, teamsLightTheme } from '@fluentui/react-components'
-
-// import { AppContextProvider } from '@/contexts/app.context.tsx'
+import { AppContextProvider } from '@/contexts/app.context.tsx'
 import { AppBar } from '../components/AppBar'
-
-// const barlow = Barlow({ subsets: ['vietnamese'], weight: '400' })
 
 registerLicense('Ngo9BigBOggjHTQxAR8/V1NGaF1cWGhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdEZjUX9fcXZRQGRcUUN/Wg==')
 
@@ -28,11 +18,14 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode
 }) {
+	const router = useRouter()
 	const menuItems = [
-		{ id:1, text:'BITRIX', href:'/btx-helpers' },
-		{ id:2, text:'KIOT', href:'/kiot-helpers' },
-		{ id:3, text:'ABOUT', href:'/' }
+		{ id:11, text:'BITRIX', href:'/btx-helpers' },
+		{ id:20, text:'KIOT', href:'/kiot-helpers' },
+		{ id:32, text:'ABOUT', href:'/' }
 	]
+
+	const handleItemClick = (link) => router.replace(link.href)
 	
 	// return (
 	// 	<html lang="en">
@@ -55,8 +48,10 @@ export default function RootLayout({
 		<html lang="en">
 			<body>
 				<StrictMode>
-					<section><AppBar/></section>
-					<section className="main-section">{ children }</section>
+					<AppContextProvider>
+						<section><AppBar items={ menuItems } onItemClick={ handleItemClick } /></section>
+						<section className="main-section">{ children }</section>
+					</AppContextProvider>
 				</StrictMode>
 			</body>
 		</html>
