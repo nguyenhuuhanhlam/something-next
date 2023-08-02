@@ -5,9 +5,7 @@ import { registerLicense } from '@syncfusion/ej2-base'
 import { AppBarComponent } from '@syncfusion/ej2-react-navigations'
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons'
 
-import '../../node_modules/@syncfusion/ej2-base/styles/material.css'
-import '../../node_modules/@syncfusion/ej2-buttons/styles/material.css'
-import '../../node_modules/@syncfusion/ej2-navigations/styles/material.css'
+import '@/../node_modules/@syncfusion/ej2/material.css'
 
 import './globals.css'
 
@@ -57,15 +55,15 @@ export default function RootLayout({
 				<StrictMode>
 					<section>
 					
-                        <AppBarComponent colorMode="Primary">
-                            <ButtonComponent ref={regularBtn => (regularBtn = regularBtn)} aria-label='menu' cssClass='e-inherit menu' iconCss='e-icons e-menu'></ButtonComponent>
-                            <span className="regular">React AppBar</span>
+                        <AppBarComponent colorMode="Light">
+                            <ButtonComponent aria-label='menu' cssClass='e-inherit menu' iconCss='e-icons e-menu'></ButtonComponent>
+                            <span className="regular">LAB.X</span>
                             <div className="e-appbar-spacer"></div>
                             <ButtonComponent cssClass='e-inherit login'>LOGIN</ButtonComponent>
                         </AppBarComponent>
                     
 					</section>
-					<section>{ children }</section>
+					<section style={{ marginLeft:'32px', marginTop:'32px', marginRight:'32px' }}>{ children }</section>
 				</StrictMode>
 			</body>
 		</html>

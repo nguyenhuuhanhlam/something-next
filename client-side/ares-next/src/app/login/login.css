@@ -1,0 +1,11 @@
+.login {
+	max-width: 400px;
+}
+
+.login > div {
+	margin-top: 24px !important;
+}
+
+.login > button {
+	margin-top: 32px;
+}
