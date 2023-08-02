@@ -2,12 +2,14 @@
 
 import { StrictMode } from 'react'
 import { registerLicense } from '@syncfusion/ej2-base'
-import { AppBarComponent } from '@syncfusion/ej2-react-navigations'
-import { ButtonComponent } from '@syncfusion/ej2-react-buttons'
+// import { AppBarComponent } from '@syncfusion/ej2-react-navigations'
+// import { ButtonComponent } from '@syncfusion/ej2-react-buttons'
 
 import '@/../node_modules/@syncfusion/ej2/material.css'
 
 import './globals.css'
+
+
 
 // import type { Metadata } from 'next'
 // import { Barlow } from 'next/font/google'
@@ -15,7 +17,7 @@ import './globals.css'
 // import { FluentProvider, teamsLightTheme } from '@fluentui/react-components'
 
 // import { AppContextProvider } from '@/contexts/app.context.tsx'
-// import { Nav } from '../components/Nav'
+import { AppBar } from '../components/AppBar'
 
 // const barlow = Barlow({ subsets: ['vietnamese'], weight: '400' })
 
@@ -53,19 +55,20 @@ export default function RootLayout({
 		<html lang="en">
 			<body>
 				<StrictMode>
-					<section>
-					
-                        <AppBarComponent colorMode="Light">
-                            <ButtonComponent aria-label='menu' cssClass='e-inherit menu' iconCss='e-icons e-menu'></ButtonComponent>
-                            <span className="regular">LAB.X</span>
-                            <div className="e-appbar-spacer"></div>
-                            <ButtonComponent cssClass='e-inherit login'>LOGIN</ButtonComponent>
-                        </AppBarComponent>
-                    
-					</section>
-					<section style={{ marginLeft:'32px', marginTop:'32px', marginRight:'32px' }}>{ children }</section>
+					<section><AppBar/></section>
+					<section className="main-section">{ children }</section>
 				</StrictMode>
 			</body>
 		</html>
 	)
 }
+
+/*
+
+<AppBarComponent colorMode="Light">
+                            <ButtonComponent aria-label='menu' cssClass='e-inherit menu' iconCss='e-icons e-menu'></ButtonComponent>
+                            <span className="regular">LAB.X</span>
+                            <div className="e-appbar-spacer"></div>
+                            <ButtonComponent cssClass='e-inherit login'>LOGIN</ButtonComponent>
+                        </AppBarComponent>
+*/
