@@ -20,29 +20,14 @@ export default function RootLayout({
 }) {
 	const router = useRouter()
 	const menuItems = [
-		{ id:11, text:'BITRIX', href:'/btx-helpers' },
-		{ id:20, text:'KIOT', href:'/kiot-helpers' },
-		{ id:32, text:'ABOUT', href:'/' }
+		{ id:1, text:'BITRIX', href:'/btx-helpers' },
+		{ id:2, text:'KIOT', href:'/kiot-helpers' },
+		{ id:3, text:'ABOUT', href:'/' },
+		{ id:4, text:'DEMO', href:'/' }
 	]
 
 	const handleItemClick = (link) => router.replace(link.href)
 	
-	// return (
-	// 	<html lang="en">
-	// 		<body className={barlow.className}>
-	// 			<StrictMode>
-	// 				<AppContextProvider>
-	// 					<FluentProvider theme={teamsLightTheme}>
-	// 						<section>
-	// 							<Nav height={48} items={menuItems}/>
-	// 						</section>
-	// 						<section style={{ marginLeft:'88px', marginTop:'32px' }}>{ children }</section>
-	// 					</FluentProvider>
-	// 				</AppContextProvider>
-	// 			</StrictMode>
-	// 		</body>
-	// 	</html>
-	// )
 
 	return (
 		<html lang="en">
@@ -57,13 +42,3 @@ export default function RootLayout({
 		</html>
 	)
 }
-
-/*
-
-<AppBarComponent colorMode="Light">
-                            <ButtonComponent aria-label='menu' cssClass='e-inherit menu' iconCss='e-icons e-menu'></ButtonComponent>
-                            <span className="regular">LAB.X</span>
-                            <div className="e-appbar-spacer"></div>
-                            <ButtonComponent cssClass='e-inherit login'>LOGIN</ButtonComponent>
-                        </AppBarComponent>
-*/

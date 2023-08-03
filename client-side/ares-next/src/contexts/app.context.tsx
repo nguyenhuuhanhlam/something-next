@@ -4,7 +4,7 @@ import React, { Dispatch, createContext, useReducer } from 'react'
 import axios from 'axios'
 
 import { LoggedInUserType, ActionType } from '@/constants'
-import { STRAPI_ENDPOINT } from './store.ts'
+// import { STRAPI_ENDPOINT } from './store'
 
 /* - - - - - */
 

@@ -1,6 +1,8 @@
 'use client'
 
 import { useContext } from 'react'
+import { ButtonComponent } from '@syncfusion/ej2-react-buttons'
+
 import { AppContext } from '@/contexts/app.context.tsx'
 
 export default function PersonalInfoPage() {

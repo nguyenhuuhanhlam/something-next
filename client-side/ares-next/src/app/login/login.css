@@ -2,6 +2,10 @@
 	max-width: 400px;
 }
 
+.login > h4:first-child {
+	margin-bottom: 16px;
+}
+
 .login > div {
 	margin-top: 24px !important;
 }
