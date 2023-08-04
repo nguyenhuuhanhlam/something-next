@@ -9,13 +9,15 @@ import { LoggedInUserType, ActionType } from '@/constants'
 /* - - - - - */
 
 type StateType = {
-	loggedInUser:LoggedInUserType
+	loggedInUser:LoggedInUserType,
+	currentLocation: string
 }
 
 /* - - - - - */
 
 const initialState:StateType = {
-	loggedInUser: {}
+	loggedInUser: {},
+	currentLocation: '/'
 }
 
 /* - - - - - */
@@ -30,6 +32,9 @@ const reducer = (state: StateType, action: ActionType) => {
 			
 		case 'LOGOUT':
 				return initialState
+			break
+
+		case 'SET_LOCATION':
 			break
 
 		default:

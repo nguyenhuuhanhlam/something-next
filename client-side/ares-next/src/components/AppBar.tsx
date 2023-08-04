@@ -1,5 +1,3 @@
-'use client'
-
 import { useContext } from 'react'
 import { AppBarComponent } from '@syncfusion/ej2-react-navigations'
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons'
@@ -15,7 +13,7 @@ interface LinkItem {
 }
 
 interface NavProps {
-	height: number,
+	// height: number,
 	items: { id:number, text:string, href:string }[],
 	onItemClick: (link:LinkItem)=>void 
 }

@@ -17,7 +17,7 @@ export default function Page() {
 			<TabComponent heightAdjustMode="Auto">
 				<TabItemsDirective>
 					<TabItemDirective header={{text:'INTRO'}} />
-					<TabItemDirective header={{text:'USERS'}} content={()=><UsersTab/>} />
+					<TabItemDirective header={{text:'USERS'}} content={ UsersTab } />
 				</TabItemsDirective>
 			</TabComponent>
 		</>
