@@ -30,7 +30,7 @@ export const AppBar = (props:NavProps) => {
 	}
 
 	return (
-		<AppBarComponent colorMode="Light">
+		<AppBarComponent colorMode="Dark">
 			<ButtonComponent aria-label='menu' cssClass='e-inherit menu' iconCss='e-icons e-menu'></ButtonComponent>
 			
 			{

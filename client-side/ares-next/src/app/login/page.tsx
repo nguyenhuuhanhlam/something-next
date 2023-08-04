@@ -1,5 +1,6 @@
 'use client'
 
+import { Metadata } from 'next'
 import { useRouter } from 'next/navigation'
 import { useContext, useState } from 'react'
 import axios from 'axios'
@@ -12,6 +13,10 @@ import { ButtonComponent } from '@syncfusion/ej2-react-buttons'
 import { MessageComponent } from '@syncfusion/ej2-react-notifications'
 
 import './login.css'
+
+export const metadata: Metadata = {
+	title: 'LAB.X V1.0 | Login'
+}
 
 /* - - - - - */
 
