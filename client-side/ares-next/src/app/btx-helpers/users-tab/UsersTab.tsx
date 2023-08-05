@@ -32,7 +32,7 @@ export default function UsersTab () {
 
 			}
 
-			//setData({next,result})
+			setData({next,result})
 		}
 
 		fetchData()
