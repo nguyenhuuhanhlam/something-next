@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fluentui/react": "^8.110.8",
-    "@fluentui/react-components": "^9.26.0",
     "@syncfusion/ej2": "^22.2.5",
     "@syncfusion/ej2-layouts": "^22.2.5",
     "@syncfusion/ej2-react-base": "^22.2.5",
