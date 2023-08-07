@@ -10,11 +10,9 @@ import {
 	Toolbar } from '@syncfusion/ej2-react-grids'
 import { Browser } from '@syncfusion/ej2-base';
 
-import { BITRIX_ENDPOINT } from '@/contexts/store.tsx' 
-
-
 export default function UsersTab () {
 
+	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
 	const [ data,setData ] = useState(null)
 	const [ isDevice,setIsDevice ] = useState(Browser.isDevice)
 
@@ -22,7 +20,7 @@ export default function UsersTab () {
 
 		const fetchData = async () => {
 			let all = []
-			const res = await axios.post(`${ BITRIX_ENDPOINT[11] }/user.get`)
+			const res = await axios.post(`${ BITRIX_ENDPOINT }/user.get`)
 			const { data:{total}, data:{next}, data:{result} } = res
 
 			all = all.concat(result)
@@ -30,7 +28,7 @@ export default function UsersTab () {
 			const page_size = 50
 			if (next) {
 				for (let i=1; i<=Math.floor(total/page_size); i++) {
-					const res = await axios.post(`${ BITRIX_ENDPOINT[11] }/user.get`,{ start: i*page_size })
+					const res = await axios.post(`${ BITRIX_ENDPOINT }/user.get`,{ start: i*page_size })
 					const { data:{result} } = res
 
 					all = all.concat(result)

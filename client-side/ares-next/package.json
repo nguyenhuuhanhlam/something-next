@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@syncfusion/ej2": "^22.2.5",
     "@syncfusion/ej2-layouts": "^22.2.5",
     "@syncfusion/ej2-react-base": "^22.2.5",
     "@syncfusion/ej2-react-buttons": "^22.2.5",
