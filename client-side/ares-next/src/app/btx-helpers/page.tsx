@@ -17,7 +17,7 @@ export default function Page() {
 	
 	const { state,dispatch } = useContext(BTXContext)
 
-	console.log(state)
+	useEffect(()=>{},[])
 
 	return (
 		<>
