@@ -3,13 +3,16 @@
 import { useRouter } from 'next/navigation'
 import { registerLicense } from '@syncfusion/ej2-base'
 
-import { AppContextProvider } from '@/contexts/app.context.tsx'
+import { AppContextProvider } from '@/contexts/app.context'
 import { AppBar } from '../components/AppBar'
 
 import '@/../node_modules/@syncfusion/ej2-base/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-navigations/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-buttons/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-react-grids/styles/material.css'
+import '@/../node_modules/@syncfusion/ej2-inputs/styles/material.css'
+import '@/../node_modules/@syncfusion/ej2-dropdowns/styles/material.css'
+
 
 import './globals.css'
 

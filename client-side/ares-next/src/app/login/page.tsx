@@ -4,8 +4,8 @@ import { useRouter } from 'next/navigation'
 import { useContext, useState } from 'react'
 import axios from 'axios'
 
-import { STRAPI_ENDPOINT } from '@/contexts/store.tsx'
-import { AppContext } from '@/contexts/app.context.tsx'
+import { STRAPI_ENDPOINT } from '@/contexts/store'
+import { AppContext } from '@/contexts/app.context'
 
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs'
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons'

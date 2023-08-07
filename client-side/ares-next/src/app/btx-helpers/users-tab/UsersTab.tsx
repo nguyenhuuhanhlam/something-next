@@ -53,9 +53,9 @@ export default function UsersTab () {
 			rowRenderingMode={props.rowRenderingMode}
 			>
 			<ColumnsDirective>
-				<ColumnDirective field="LAST_NAME" headerText="Last Name" />
-				<ColumnDirective field="NAME" headerText="Name" />
-				<ColumnDirective field="EMAIL" headerText="E-Mail" />
+				<ColumnDirective field="LAST_NAME" headerText="Last Name" width={160} />
+				<ColumnDirective field="NAME" headerText="Name" width={96} />
+				<ColumnDirective field="EMAIL" headerText="E-Mail" width={240} />
 				<ColumnDirective field="UF_DEPARTMENT" headerText="Departments" />
 			</ColumnsDirective>
 			<Inject services={[ Toolbar,Page ]}/>
@@ -66,8 +66,13 @@ export default function UsersTab () {
 		<div style={{ marginTop: 16 +'px' }}>
 			{
 				isDevice
-				? <UsersGrid enableAdaptiveUI={true} rowRenderingMode={'Vertical'} height={'100%'} />
-				: <UsersGrid enableAdaptiveUI={true} height={440} />
+				? 	<div className="e-bigger">
+						<UsersGrid
+							enableAdaptiveUI={true}
+							rowRenderingMode={'Vertical'}
+							height={'100%'} />
+					</div>
+				: <UsersGrid height={440} />
 			}
 		</div>
 	)

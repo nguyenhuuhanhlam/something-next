@@ -2,8 +2,8 @@ import { useContext } from 'react'
 import { AppBarComponent } from '@syncfusion/ej2-react-navigations'
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons'
 
-import { Avatar } from '@/components/Avatar.tsx'
-import { AppContext } from '@/contexts/app.context.tsx'
+import { Avatar } from '@/components/Avatar'
+import { AppContext } from '@/contexts/app.context'
 import { LETTER_COLORS } from '@/constants'
 
 interface LinkItem {
