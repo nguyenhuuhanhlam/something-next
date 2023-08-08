@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react'
+import {
+	useEffect,
+	useState,
+	useContext } from 'react'
 import axios from 'axios' 
 
 import {
@@ -8,13 +11,16 @@ import {
 	Inject,
 	Page,
 	Toolbar } from '@syncfusion/ej2-react-grids'
-import { Browser } from '@syncfusion/ej2-base';
+import { Browser } from '@syncfusion/ej2-base'
+
+import { BTXContext } from '@/contexts/btx.context'
 
 export default function UsersTab () {
 
 	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
 	const [ data,setData ] = useState(null)
 	const [ isDevice,setIsDevice ] = useState(Browser.isDevice)
+	const { state } = useContext(BTXContext)
 
 	useEffect(()=>{
 
@@ -34,7 +40,8 @@ export default function UsersTab () {
 					all = all.concat(result)
 				}
 			}
-			setData({ result:all })
+			//setData({ result:all })
+			console.log(state.departmentList)
 		}
 
 		fetchData() // <---|

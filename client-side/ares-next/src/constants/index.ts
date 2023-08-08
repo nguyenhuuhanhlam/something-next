@@ -1,3 +1,11 @@
+type BTXDepartment = {
+	ID: number,
+	NAME: string,
+	PARENT: number
+}
+
+/* - - - - - */
+
 type UserProfile = {
 	LastName: string,
 	FirstName: string
@@ -9,6 +17,8 @@ export type LoggedInUserType = {
 	username: string,
 	email: string
 }
+
+/* - - - - - */
 
 export type ActionType = { type:string }
 

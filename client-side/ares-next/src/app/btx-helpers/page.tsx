@@ -4,6 +4,7 @@ import {
 	useEffect,
 	useState,
 	useContext } from 'react'
+import axios from 'axios'
 import {
 	TabComponent,
 	TabItemDirective,
@@ -15,9 +16,19 @@ import './btx.helpers.css'
 
 export default function Page() {
 	
+	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_13']
 	const { state,dispatch } = useContext(BTXContext)
 
-	useEffect(()=>{},[])
+	useEffect(()=>{
+		const fetchData = async () => {
+			const res = await axios.post(`${ BITRIX_ENDPOINT }/department.get`)
+			const { data:{total}, data:{result} } = res
+
+			dispatch({ type:'DEPARTMENT_GET', payload:result })
+		}
+
+		fetchData()
+	},[])
 
 	return (
 		<>
