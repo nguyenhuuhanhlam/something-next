@@ -40,8 +40,15 @@ export default function UsersTab () {
 					all = all.concat(result)
 				}
 			}
-			//setData({ result:all })
-			console.log(state.departmentList)
+
+			setData({
+				result: all.map(v=>{
+					v['UF_DEPARTMENT'] = v['UF_DEPARTMENT'].map(v=>
+						state.departmentList.find(x=>x['ID']===v.toString())['NAME']
+					).join(' / ')
+					return v
+				})
+			})
 		}
 
 		fetchData() // <---|
