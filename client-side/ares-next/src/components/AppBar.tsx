@@ -13,7 +13,6 @@ interface LinkItem {
 }
 
 interface NavProps {
-	// height: number,
 	items: { id:number, text:string, href:string }[],
 	onItemClick: (link:LinkItem)=>void 
 }

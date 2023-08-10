@@ -17,7 +17,7 @@ import './btx.helpers.css'
 export default function Page() {
 	
 	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_13']
-	const { state,dispatch } = useContext(BTXContext)
+	const { state, dispatch } = useContext(BTXContext)
 
 	useEffect(()=>{
 		const fetchData = async () => {

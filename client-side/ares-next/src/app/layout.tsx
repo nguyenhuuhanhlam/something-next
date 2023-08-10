@@ -13,7 +13,6 @@ import '@/../node_modules/@syncfusion/ej2-react-grids/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-inputs/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-dropdowns/styles/material.css'
 
-
 import './globals.css'
 
 registerLicense('Ngo9BigBOggjHTQxAR8/V1NGaF1cWGhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdEZjUX9fcXZRQGRcUUN/Wg==')
