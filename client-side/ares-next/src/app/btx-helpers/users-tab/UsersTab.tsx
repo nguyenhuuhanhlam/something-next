@@ -15,6 +15,8 @@ import { Browser } from '@syncfusion/ej2-base'
 
 import { BTXContext } from '@/contexts/btx.context'
 
+import './users.tab.css'
+
 export default function UsersTab () {
 
 	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
@@ -45,7 +47,7 @@ export default function UsersTab () {
 				result: all.map(v=>{
 					v['UF_DEPARTMENT'] = v['UF_DEPARTMENT'].map(v=>
 						state.departmentList.find(x=>x['ID']===v.toString())['NAME']
-					).join(' / ')
+					).join('::')
 					return v
 				})
 			})
@@ -55,6 +57,17 @@ export default function UsersTab () {
 
 	},[])
 
+	const departmentTmp = (props) => {
+		return (
+			<div className="dps">
+			{
+				props['UF_DEPARTMENT'].split('::').map((v,k)=>{
+					return <span key={k} className="dp-item">{v}</span>
+				})
+			}
+			</div>
+		)
+	}
 
 	const UsersGrid = (props) => (
 		<GridComponent
@@ -69,8 +82,8 @@ export default function UsersTab () {
 			<ColumnsDirective>
 				<ColumnDirective field="LAST_NAME" headerText="Last Name" width={160} />
 				<ColumnDirective field="NAME" headerText="Name" width={96} />
-				<ColumnDirective field="EMAIL" headerText="E-Mail" width={240} />
-				<ColumnDirective field="UF_DEPARTMENT" headerText="Departments" />
+				<ColumnDirective field="EMAIL" headerText="E-Mail" width={280} />
+				<ColumnDirective field="UF_DEPARTMENT" headerText="Departments" template={departmentTmp} />
 			</ColumnsDirective>
 			<Inject services={[ Toolbar,Page ]}/>
 		</GridComponent>

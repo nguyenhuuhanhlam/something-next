@@ -1,0 +1,9 @@
+.dps > span {
+	display: inline-block;
+	background-color: lightskyblue;
+	border-radius: 15px;
+	padding: 0 5px;
+}
+.dps > span:first-child {
+	margin-right: 5px;
+}
