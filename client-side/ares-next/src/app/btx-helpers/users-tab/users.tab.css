@@ -1,8 +1,10 @@
 .dps > span {
 	display: inline-block;
-	background-color: lightskyblue;
+	background-color: #eee;
+	color: steelblue;
 	border-radius: 15px;
 	padding: 0 5px;
+	cursor: pointer;
 }
 .dps > span:first-child {
 	margin-right: 5px;

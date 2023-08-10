@@ -24,11 +24,15 @@ export default function UsersTab () {
 	const [ isDevice,setIsDevice ] = useState(Browser.isDevice)
 	const { state } = useContext(BTXContext)
 
+	let grid
+
 	useEffect(()=>{
 
 		const fetchData = async () => {
 			let all = []
-			const res = await axios.post(`${ BITRIX_ENDPOINT }/user.get`)
+			const filter = { ACTIVE:true }
+
+			const res = await axios.post(`${ BITRIX_ENDPOINT }/user.get`, { filter })
 			const { data:{total}, data:{next}, data:{result} } = res
 
 			all = all.concat(result)
@@ -36,7 +40,7 @@ export default function UsersTab () {
 			const page_size = 50
 			if (next) {
 				for (let i=1; i<=Math.floor(total/page_size); i++) {
-					const res = await axios.post(`${ BITRIX_ENDPOINT }/user.get`,{ start: i*page_size })
+					const res = await axios.post(`${ BITRIX_ENDPOINT }/user.get`,{ filter, start: i*page_size })
 					const { data:{result} } = res
 
 					all = all.concat(result)
@@ -62,7 +66,16 @@ export default function UsersTab () {
 			<div className="dps">
 			{
 				props['UF_DEPARTMENT'].split('::').map((v,k)=>{
-					return <span key={k} className="dp-item">{v}</span>
+					return ( 
+						<span
+							key={k}
+							className="dp-item"
+							onClick={()=>{
+								if (grid)
+									grid.search(v)
+							}}
+						>{ v }</span>
+					)
 				})
 			}
 			</div>
@@ -78,6 +91,7 @@ export default function UsersTab () {
 			toolbar={['Search']}
 			enableAdaptiveUI={props.enableAdaptiveUI}
 			rowRenderingMode={props.rowRenderingMode}
+			ref={ g => grid = g }
 			>
 			<ColumnsDirective>
 				<ColumnDirective field="LAST_NAME" headerText="Last Name" width={160} />
