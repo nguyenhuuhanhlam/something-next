@@ -14,7 +14,7 @@ import { BTXContext } from '@/contexts/btx.context'
 import UsersTab from './users-tab/UsersTab'
 import './btx.helpers.css'
 
-export default function Page() {
+export default function BTXHelpersPage() {
 	
 	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_13']
 	const { state, dispatch } = useContext(BTXContext)
@@ -31,7 +31,7 @@ export default function Page() {
 	},[])
 
 	return (
-		<>
+		<div>
 			<h4>Bitrix Helpers</h4>
 			
 			<TabComponent heightAdjustMode="Auto">
@@ -40,6 +40,6 @@ export default function Page() {
 					<TabItemDirective header={{ text:'USERS' }} content={ UsersTab } />
 				</TabItemsDirective>
 			</TabComponent>
-		</>
+		</div>
 	)
 }

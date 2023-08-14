@@ -21,6 +21,11 @@ export const AppBar = (props:NavProps) => {
 
 	const { state: {loggedInUser} } = useContext(AppContext)
 
+	const handleMenuClick = () => {
+		if (props.onMenuClick)
+			props.onMenuClick()
+	}
+
 	const handleItemClick = (link) => {
 		if (props.onItemClick)
 			props.onItemClick(link)
@@ -28,7 +33,12 @@ export const AppBar = (props:NavProps) => {
 
 	return (
 		<AppBarComponent colorMode="Dark">
-			<ButtonComponent aria-label='menu' cssClass='e-inherit menu' iconCss='e-icons e-menu'></ButtonComponent>
+			<ButtonComponent
+				aria-label='menu'
+				cssClass='e-inherit menu'
+				iconCss='e-icons e-menu'
+				onClick={ handleMenuClick }
+			/>
 			
 			{
 				props.items.map((v,k)=>

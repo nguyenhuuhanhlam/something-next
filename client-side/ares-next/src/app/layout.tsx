@@ -5,6 +5,7 @@ import { registerLicense } from '@syncfusion/ej2-base'
 
 import { AppContextProvider } from '@/contexts/app.context'
 import { AppBar } from '../components/AppBar'
+import { SideBar } from '../components/SideBar'
 
 import '@/../node_modules/@syncfusion/ej2-base/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-navigations/styles/material.css'
@@ -25,14 +26,19 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
 		{ id:2, text:'KIOT', href:'/kiot-helpers' }
 	]
 
+	const handleMenuClick = () => {
+		console.log('mo menu side')
+	}
 	const handleItemClick = (link) => router.replace(link.href)
+
 	
 	return (
 		<html lang="en">
 			<body>
 				<AppContextProvider>
-					<section><AppBar items={ menuItems } onItemClick={ handleItemClick } /></section>
+					<section><AppBar items={ menuItems } onItemClick={ handleItemClick } onMenuClick={ handleMenuClick } /></section>
 					<section className="main-section">{ children }</section>
+					<SideBar target=".main-section"/>
 				</AppContextProvider>
 			</body>
 		</html>
