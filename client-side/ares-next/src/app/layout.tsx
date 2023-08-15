@@ -1,7 +1,9 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useRef, useState } from 'react'
 import { registerLicense } from '@syncfusion/ej2-base'
+import { SidebarComponent } from '@syncfusion/ej2-react-navigations'
 
 import { AppContextProvider } from '@/contexts/app.context'
 import { AppBar } from '../components/AppBar'
@@ -21,13 +23,14 @@ registerLicense('Ngo9BigBOggjHTQxAR8/V1NGaF1cWGhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnx
 export default function RootLayout({children}:{children:React.ReactNode}) {
 	
 	const router = useRouter()
+	let sidebar = useRef<SidebarComponent>(null)
 	const menuItems = [
 		{ id:1, text:'BITRIX', href:'/btx-helpers' },
 		{ id:2, text:'KIOT', href:'/kiot-helpers' }
 	]
 
 	const handleMenuClick = () => {
-		console.log('mo menu side')
+		sidebar.current.toggle()
 	}
 	const handleItemClick = (link) => router.replace(link.href)
 
@@ -36,9 +39,11 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
 		<html lang="en">
 			<body>
 				<AppContextProvider>
-					<section><AppBar items={ menuItems } onItemClick={ handleItemClick } onMenuClick={ handleMenuClick } /></section>
-					<section className="main-section">{ children }</section>
-					<SideBar target=".main-section"/>
+					<AppBar items={ menuItems } onItemClick={ handleItemClick } onMenuClick={ handleMenuClick } />
+					<div className="main_section">
+						<div className="main_contain">{ children }</div>
+					</div>
+					<SideBar _ref={ sidebar } target=".main_section" />
 				</AppContextProvider>
 			</body>
 		</html>

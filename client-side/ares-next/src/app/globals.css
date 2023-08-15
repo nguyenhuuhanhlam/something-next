@@ -16,8 +16,17 @@
 	}
 }
 
-body {}
+html, body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
 
-.main-section {
-	margin: 16px 32px;
+.main_section {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+.main_section > .main_contain {
+	padding: 32px;
 }

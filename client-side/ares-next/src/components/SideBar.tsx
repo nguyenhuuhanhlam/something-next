@@ -6,8 +6,10 @@ export const SideBar = (props:NavProps) => {
 
 	return (
 		<SidebarComponent
-			width={ 60 +'px' }
-			target={ props.target }
+			width={ 248 +'px' }
+			target={ props?.target }
+			ref={ props?._ref }
+			type="Push"
 		>
 			<TreeViewComponent/>
 		</SidebarComponent>
