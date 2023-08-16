@@ -35,7 +35,7 @@ export default function HomePage() {
 			<div className="app-icons pt-5">
 				<AppLink text="E-Book" icon="/ebook-icon.png" href="http://ebook.aresen.vn:8088" />
 				<AppLink text="NAS Drive" icon="/drive-icon.png" href="http://drive.aresen.vn" />
-				<AppLink />
+				<AppLink text="Cloud" icon="/cloud-icon.png" href="http://cloud.aresen.vn" />
 			</div>
 		</div>
 	)
