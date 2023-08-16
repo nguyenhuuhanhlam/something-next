@@ -2,7 +2,28 @@ import {
 	SidebarComponent,
 	TreeViewComponent } from '@syncfusion/ej2-react-navigations'
 
-export const SideBar = (props:NavProps) => {
+export const SideBar = (props) => {
+
+	const fields = {
+		dataSource: [
+			{ id:'home', name:'HOME' },
+			
+			{	id:'applinks', name:'APP LINKS',
+				subChild:[
+					{ id:'applinks-ebook', name:'E-Book' },
+					{ id:'applinks-drive', name:'NAS Drive' }
+				]
+			},
+
+			{	id:'btx', name:'BITRIX HELPERS',
+				subChild:[
+					{ id:'btx-users', name:'Users' }
+				]
+			},
+		],
+
+		id:'id', text:'name', child:'subChild'
+	}
 
 	return (
 		<SidebarComponent
@@ -11,7 +32,8 @@ export const SideBar = (props:NavProps) => {
 			ref={ props?._ref }
 			type="Push"
 		>
-			<TreeViewComponent/>
+			<div className="pt-5"></div>
+			<TreeViewComponent fields={ fields } nodeSelected={ props?.itemOnSelected } />
 		</SidebarComponent>
 	)
 }

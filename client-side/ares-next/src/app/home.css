@@ -1,0 +1,29 @@
+.app-icons {
+	display: flex;
+/*	width: 100%;*/
+/*	justify-content: space-around;*/
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: auto;
+}
+
+.app-icons > .app-link {
+	display: flex;
+/*	padding: 50px;*/
+	height: 128px;
+	max-width: 128px;
+	flex:1;
+}
+
+.app-link > div {
+	flex-direction: column;
+	display: inherit;
+	width: 100%;
+}
+
+.app-link > div > a {
+	align-self: center;
+}
+.app-link > div > div {
+	align-self: center;
+}
