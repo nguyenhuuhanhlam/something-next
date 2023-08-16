@@ -11,7 +11,8 @@ export const SideBar = (props) => {
 			{	id:'applinks', name:'APP LINKS',
 				subChild:[
 					{ id:'applinks-ebook', name:'E-Book' },
-					{ id:'applinks-drive', name:'NAS Drive' }
+					{ id:'applinks-nas', name:'NAS Synology' },
+					{ id:'applinks-drive', name:'NAS Drive' },
 				]
 			},
 
