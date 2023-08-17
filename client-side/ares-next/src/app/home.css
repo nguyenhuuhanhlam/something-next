@@ -10,6 +10,7 @@
 	height: 128px;
 	max-width: 128px;
 	flex:1;
+	padding: 16px;
 }
 
 .app-link > div {

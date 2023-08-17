@@ -36,6 +36,7 @@ export default function HomePage() {
 				<AppIconLink text="E-Book" icon="/ebook-icon.svg" href="http://ebook.aresen.vn:8088" />
 				<AppIconLink text="NAS Drive" icon="/nas-drive-icon.svg" href="http://drive.aresen.vn" />
 				<AppIconLink text="NAS Cloud" icon="/nas-synology-icon.svg" href="http://cloud.aresen.vn" />
+				<AppIconLink text="Superset" icon="/superset-icon.svg" href="http://115.75.90.30:8888" />
 			</div>
 		</div>
 	)
