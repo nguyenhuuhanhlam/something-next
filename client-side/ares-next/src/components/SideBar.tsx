@@ -10,10 +10,10 @@ export const SideBar = (props) => {
 			
 			{	id:'applinks', name:'APP LINKS',
 				subChild:[
-					{ id:'applinks-ebook', name:'E-Book' },
-					{ id:'applinks-nas', name:'NAS Synology' },
-					{ id:'applinks-drive', name:'Drive' },
-					{ id:'applinks-superset', name:'Superset' },
+					{ id:'applinks-ebook', name:'E-Book', image:'/ebook-icon.svg' },
+					{ id:'applinks-nas', name:'NAS Synology', image:'/nas-synology-icon.svg'  },
+					{ id:'applinks-drive', name:'Drive', image:'/nas-drive-icon.svg' },
+					{ id:'applinks-superset', name:'Superset', image:'/superset-icon.svg' },
 				]
 			},
 
@@ -24,7 +24,7 @@ export const SideBar = (props) => {
 			},
 		],
 
-		id:'id', text:'name', child:'subChild'
+		id:'id', text:'name', child:'subChild', imageUrl:'image'
 	}
 
 	return (
