@@ -11,8 +11,6 @@ import { TextBoxComponent } from '@syncfusion/ej2-react-inputs'
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons'
 import { MessageComponent } from '@syncfusion/ej2-react-notifications'
 
-import './login.css'
-
 /* - - - - - */
 
 export default function LoginPage() {
@@ -59,8 +57,8 @@ export default function LoginPage() {
 	/* - - RETURN - - */
 
 	return (
-		<div className="login">
-			<h4>Sign-In</h4>
+		<div className="login mx-5 my-5">
+			<h4 style={{ fontWeight:600 }}>Sign-In</h4>
 
 			<div style={{ display: ux.showErrMsg||'none' }}>
 				{ ux.showErrMsg
@@ -90,7 +88,7 @@ export default function LoginPage() {
 			/>
 
 			<ButtonComponent
-				cssClass="e-primary"
+				cssClass="e-primary my-5"
 				disabled={ ux.pending }
 				onClick={ submitHandle }
 			>Sign-in</ButtonComponent>
