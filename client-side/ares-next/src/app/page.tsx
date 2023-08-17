@@ -39,6 +39,7 @@ export default function HomePage() {
 				<AppIconLink text="NAS Drive" icon="/nas-drive-icon.svg" href="http://drive.aresen.vn" />
 				<AppIconLink text="NAS Cloud" icon="/nas-synology-icon.svg" href="http://cloud.aresen.vn" />
 				<AppIconLink text="Superset" icon="/superset-icon.svg" href="http://115.75.90.30:8888" />
+				<AppIconLink text="Bitrix24" icon="/bitrix24-icon.svg" href="https://aresen.bitrix24.com" />
 			</div>
 		</div>
 	)
