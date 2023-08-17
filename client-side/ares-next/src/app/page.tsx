@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Browser } from '@syncfusion/ej2-base'
+// import { Browser } from '@syncfusion/ej2-base'
 import Image from 'next/image'
 
 import './home.css'
@@ -34,8 +34,8 @@ const AppIconLink = (props) => {
 
 export default function HomePage() {
 	return (
-		<div>
-			<div className="app-icons pt-5">
+		<div className="home">
+			<div className="app-icons my-5">
 				<AppIconLink text="E-Book" icon="/ebook-icon.svg" href="http://ebook.aresen.vn:8088" />
 				<AppIconLink text="NAS Drive" icon="/nas-drive-icon.svg" href="http://drive.aresen.vn" />
 				<AppIconLink text="NAS Cloud" icon="/nas-synology-icon.svg" href="http://cloud.aresen.vn" />

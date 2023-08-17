@@ -49,8 +49,6 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
 		}
 	}
 
-
-	
 	return (
 		<html lang="en">
 			<body>
@@ -62,7 +60,7 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
 						/>
 					
 					<div className="main_section">
-						<div className="main_contain pt-5 px-5">
+						<div className="main_contain">
 						{ children }
 						</div>
 					</div>

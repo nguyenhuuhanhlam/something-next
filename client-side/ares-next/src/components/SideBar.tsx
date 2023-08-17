@@ -24,7 +24,7 @@ export const SideBar = (props) => {
 			},
 		],
 
-		id:'id', text:'name', child:'subChild', imageUrl:'image'
+		id:'id', text:'name', child:'subChild', imageUrl:'image', iconCss: 'icon'
 	}
 
 	return (

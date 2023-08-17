@@ -6,20 +6,9 @@ import { Avatar } from '@/components/Avatar'
 import { AppContext } from '@/contexts/app.context'
 import { LETTER_COLORS } from '@/constants'
 
-interface LinkItem {
-	id: number,
-	type: string,
-	href: string
-}
+export const AppBar = (props) => {
 
-interface NavProps {
-	items: { id:number, text:string, href:string }[],
-	onItemClick: (link:LinkItem)=>void 
-}
-
-export const AppBar = (props:NavProps) => {
-
-	const { state: {loggedInUser} } = useContext(AppContext)
+	const { state:{ loggedInUser }} = useContext(AppContext)
 
 	const handleMenuClick = () => {
 		if (props.onMenuClick)
@@ -62,7 +51,6 @@ export const AppBar = (props:NavProps) => {
 					/>
 				: 	<ButtonComponent onClick={ ()=>handleItemClick({type:'link',href:'/login'}) } cssClass="e-inherit">Login</ButtonComponent>
 			}
-			
 		</AppBarComponent>
 	)
 }
