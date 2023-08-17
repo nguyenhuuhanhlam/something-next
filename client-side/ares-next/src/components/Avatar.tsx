@@ -1,16 +1,8 @@
-type LetterColor = { name: string }
-
-interface AvatarProps {
-	palette: { [key: string]: LetterColor },
-	item: string,
-	itemOnClick: ()=>void
-}
-
-export const Avatar = (props:AvatarProps) => {
+export const Avatar = (props) => {
 	const letter = props.item.substring(0,1).toUpperCase()
 
 	return (
-		<span
+		<div
 			className="e-avatar e-avatar-xsmall e-avatar-circle"
 			style={{
 				backgroundColor: props.palette[letter][0],
@@ -20,6 +12,6 @@ export const Avatar = (props:AvatarProps) => {
 			onClick={ props.itemOnClick }
 		>
 		{ letter }	
-		</span>
+		</div>
 	)
 }

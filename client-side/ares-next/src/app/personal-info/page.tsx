@@ -9,17 +9,17 @@ export default function PersonalInfoPage() {
 	
 	const { state, dispatch } = useContext(AppContext)
 
-	const submitHandle = (e) => {
+	const submitHandle = () => {
 		dispatch({ type:'LOGOUT' })
 	}
 
 	if (state?.loggedInUser?.jwt)
 		return (
-			<>
+			<div className="mx-5 my-5">
 				<h1>Hello, loggedInUser!</h1>
 				<ButtonComponent onClick={ submitHandle }>Logout</ButtonComponent>
-			</>
+			</div>
 		)
 	else
-		return <h1>You Need To Login First!</h1>
+		return <h1 className="mx-5 my-5">You Need To Login First!</h1>
 }

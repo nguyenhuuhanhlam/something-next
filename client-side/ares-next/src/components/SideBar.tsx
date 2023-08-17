@@ -14,6 +14,7 @@ export const SideBar = (props) => {
 					{ id:'applinks-nas', name:'NAS Synology', image:'/nas-synology-icon.svg'  },
 					{ id:'applinks-drive', name:'Drive', image:'/nas-drive-icon.svg' },
 					{ id:'applinks-superset', name:'Superset', image:'/superset-icon.svg' },
+					{ id:'applinks-bitrix', name:'Bitrix24', image:'/bitrix24-icon.svg' },
 				]
 			},
 

@@ -22,11 +22,17 @@ html, body {
 	height: 100vh;
 }
 
-.main_section {
+.main_body {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
 }
-/*.main_section > .main_contain {
-	padding: 32px;
-}*/
+.main_body > .main_content {
+	display: inherit;
+	flex: 1;
+}
+
+/* override */
+.e-appbar {
+	box-shadow: none !important;
+}

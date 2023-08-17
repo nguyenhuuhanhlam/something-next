@@ -49,7 +49,7 @@ export const AppBar = (props) => {
 						palette={ LETTER_COLORS }
 						itemOnClick={ ()=>handleItemClick({type:'link',href:'/personal-info'}) }
 					/>
-				: 	<ButtonComponent onClick={ ()=>handleItemClick({type:'link',href:'/login'}) } cssClass="e-inherit">Login</ButtonComponent>
+				: 	<ButtonComponent onClick={ ()=>handleItemClick({ type:'link', href:'/login' }) } cssClass="e-inherit">Login</ButtonComponent>
 			}
 		</AppBarComponent>
 	)

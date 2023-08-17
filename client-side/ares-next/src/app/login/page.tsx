@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation'
 import { useContext, useState } from 'react'
 import axios from 'axios'
 
-import { STRAPI_ENDPOINT } from '@/contexts/store'
 import { AppContext } from '@/contexts/app.context'
 
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs'
@@ -14,6 +13,7 @@ import { MessageComponent } from '@syncfusion/ej2-react-notifications'
 /* - - - - - */
 
 export default function LoginPage() {
+	const STRAPI_ENDPOINT = process.env['NEXT_PUBLIC_STRAPI_ENDPOINT']
 	const { state,dispatch } = useContext(AppContext)
 	const router = useRouter()
 

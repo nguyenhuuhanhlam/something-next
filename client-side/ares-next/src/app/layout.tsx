@@ -10,6 +10,7 @@ import { AppBar } from '../components/AppBar'
 import { SideBar } from '../components/SideBar'
 
 import '@/../node_modules/@syncfusion/ej2-base/styles/material.css'
+import '@/../node_modules/@syncfusion/ej2-layouts/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-navigations/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-buttons/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-react-grids/styles/material.css'
@@ -59,15 +60,15 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
 						onItemClick={ handleItemClick }
 						/>
 					
-					<div className="main_section">
-						<div className="main_contain">
+					<div className="main_body">
+						<div className="main_content">
 						{ children }
 						</div>
 					</div>
 					
 					<SideBar
 						_ref={ sidebar }
-						target=".main_section"
+						target=".main_body"
 						itemOnSelected={ handleSideItemSelected }
 					/>
 				</AppContextProvider>
