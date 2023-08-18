@@ -5,25 +5,7 @@ import {
 export const SideBar = (props) => {
 
 	const fields = {
-		dataSource: [
-			{ id:'home', name:'HOME' },
-			
-			{	id:'applinks', name:'APP LINKS',
-				subChild:[
-					{ id:'applinks-ebook', name:'E-Book', image:'/ebook-icon.svg' },
-					{ id:'applinks-nas', name:'NAS Synology', image:'/nas-synology-icon.svg'  },
-					{ id:'applinks-drive', name:'Drive', image:'/nas-drive-icon.svg' },
-					{ id:'applinks-superset', name:'Superset', image:'/superset-icon.svg' },
-					{ id:'applinks-bitrix', name:'Bitrix24', image:'/bitrix24-icon.svg' },
-				]
-			},
-
-			{	id:'btx', name:'BITRIX HELPERS',
-				subChild:[
-					{ id:'btx-users', name:'Users' }
-				]
-			},
-		],
+		dataSource: props?.items,
 
 		id:'id', text:'name', child:'subChild', imageUrl:'image', iconCss: 'icon'
 	}

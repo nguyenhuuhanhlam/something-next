@@ -9,6 +9,8 @@ import { AppContextProvider } from '@/contexts/app.context'
 import { AppBar } from '../components/AppBar'
 import { SideBar } from '../components/SideBar'
 
+import { sidemenuData } from '@/contexts/store'
+
 import '@/../node_modules/@syncfusion/ej2-base/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-layouts/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-navigations/styles/material.css'
@@ -40,8 +42,8 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
 				router.replace('/')
 			break
 
-		case 'applinks-':
-				router.replace('/')
+		case 'applink-ebook':
+				console.log('---->EBOOK')
 			break
 
 			case 'btx-users':
@@ -69,6 +71,7 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
 					<SideBar
 						_ref={ sidebar }
 						target=".main_body"
+						items={ sidemenuData }
 						itemOnSelected={ handleSideItemSelected }
 					/>
 				</AppContextProvider>
