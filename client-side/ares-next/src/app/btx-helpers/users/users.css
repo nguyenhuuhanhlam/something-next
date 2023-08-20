@@ -1,0 +1,12 @@
+.dps > span {
+	display: inline-block;
+	background-color: peachpuff;
+	color: dimgray;
+	border-radius: 3px;
+	padding: 0 8px;
+	cursor: pointer;
+}
+.dps > span:first-child {
+	background-color: powderblue;
+	margin-right: 8px;
+}

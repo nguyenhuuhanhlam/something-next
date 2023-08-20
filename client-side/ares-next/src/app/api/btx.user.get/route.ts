@@ -1,5 +1,46 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST (req:NextRequest) {
-	return NextResponse.json({hello:'world!'})
+	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
+
+	let all = []
+	let options = { ACTIVE: true }
+
+	// 1
+	const res = await fetch(
+		`${ BITRIX_ENDPOINT }/user.get`,
+		{
+			method:'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body:JSON.stringify(options)
+		}
+	)
+
+	const { total, next, result } = await res.json()
+
+	// 2
+
+	all = all.concat(result)
+
+	// 3
+
+	const page_size = 50
+	if (next) {
+		for (let i=1; i<=Math.floor(total/page_size); i++) {
+			const res = await fetch(
+				`${ BITRIX_ENDPOINT }/user.get`,
+				{
+					method:'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body:JSON.stringify({ ...options, start: i*page_size })
+				}
+			)
+
+			const { result } = await res.json()
+
+			all = all.concat(result)
+		}
+	}
+
+	return NextResponse.json({ users: all })
 }
