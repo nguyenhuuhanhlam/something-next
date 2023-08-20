@@ -11,19 +11,19 @@ import {
 
 /* - - 2 - - */
 
-type StateType = {
-	departmentList: BTXDepartment[]
-}
+// type StateType = {
+// 	departmentList: BTXDepartment[]
+// }
 
 /* - - 3 - - */
 
-const initialState:StateType = {
+const initialState = {
 	departmentList: null
 }
 
 /* - - 4 - - */
 
-const reducer = (state: StateType, action: ActionType) => {
+const reducer = (state, action) => {
 	switch (action.type) {
 
 		case 'DEPARTMENT_GET':

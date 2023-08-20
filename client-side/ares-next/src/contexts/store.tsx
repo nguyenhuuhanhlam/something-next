@@ -1,3 +1,8 @@
+export const appConfig = {
+	title: 'LAB.X V1',
+	viewport: 'width=device-width, initial-scale=1.0, maximum-scale = 1.0'
+}
+
 export const sidemenuData = [
 	{ id:'home', name:'HOME' },
 	
@@ -18,8 +23,8 @@ export const sidemenuData = [
 	},
 
 	{	id:'kiot', name:'KIOT HELPERS',
-		// subChild:[
-		// 	{ id:'btx-users', name:'Users' }
-		// ]
+		subChild:[
+			{ id:'kiot-hooks', name:'Hooks' }
+		]
 	},
 ]

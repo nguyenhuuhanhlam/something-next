@@ -47,7 +47,7 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
 			break
 
 			case 'btx-users':
-				router.replace('/btx-helpers')
+				router.replace('/btx-helpers/users')
 			break
 		}
 	}

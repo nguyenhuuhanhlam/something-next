@@ -1,3 +1,5 @@
+'use client'
+
 import {
 	useEffect,
 	useState,
@@ -15,14 +17,15 @@ import { Browser } from '@syncfusion/ej2-base'
 
 import { BTXContext } from '@/contexts/btx.context'
 
-import './users.tab.css'
+// import './users.tab.css'
 
 export default function UsersTab () {
 
-	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
+	const BITRIX_ENDPOINT_11 = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
+	const BITRIX_ENDPOINT_13 = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_13']
 	const [ data,setData ] = useState(null)
 	const [ isDevice,setIsDevice ] = useState(Browser.isDevice)
-	const { state } = useContext(BTXContext)
+	const { state, dispatch } = useContext(BTXContext)
 
 	let grid
 
@@ -32,36 +35,42 @@ export default function UsersTab () {
 			let all = []
 			const filter = { ACTIVE:true }
 
-			const res = await axios.post(`${ BITRIX_ENDPOINT }/user.get`, { filter })
-			const { data:{total}, data:{next}, data:{result} } = res
+			const {data:{ departmentList }} = await axios.post('/api/btx.department.get')
+			const res = await axios.post('/api/btx.user.get')
 
-			all = all.concat(result)
+			console.log(departmentList,res.data)
+			
 
-			const page_size = 50
-			if (next) {
-				for (let i=1; i<=Math.floor(total/page_size); i++) {
-					const res = await axios.post(`${ BITRIX_ENDPOINT }/user.get`,{ filter, start: i*page_size })
-					const { data:{result} } = res
+			// const res = await axios.post(`${ BITRIX_ENDPOINT }/user.get`, { filter })
+			// const { data:{total}, data:{next}, data:{result} } = res
 
-					all = all.concat(result)
-				}
-			}
+			// all = all.concat(result)
 
-			setData({
-				result: all.map(v=>{
-					v['UF_DEPARTMENT'] = v['UF_DEPARTMENT'].map(v=>
-						state.departmentList.find(x=>x['ID']===v.toString())['NAME']
-					).join('::')
-					return v
-				})
-			})
+			// const page_size = 50
+			// if (next) {
+			// 	for (let i=1; i<=Math.floor(total/page_size); i++) {
+			// 		const res = await axios.post(`${ BITRIX_ENDPOINT }/user.get`,{ filter, start: i*page_size })
+			// 		const { data:{result} } = res
+
+			// 		all = all.concat(result)
+			// 	}
+			// }
+
+			// setData({
+			// 	result: all.map(v=>{
+			// 		v['UF_DEPARTMENT'] = v['UF_DEPARTMENT'].map(v=>
+			// 			state.departmentList.find(x=>x['ID']===v.toString())['NAME']
+			// 		).join('::')
+			// 		return v
+			// 	})
+			// })
 		}
 
 		fetchData() // <---|
 
 	},[])
 
-	const departmentTmp = (props) => {
+	const departmentTemplate = (props) => {
 		return (
 			<div className="dps">
 			{
@@ -97,14 +106,14 @@ export default function UsersTab () {
 				<ColumnDirective field="LAST_NAME" headerText="Last Name" width={160} />
 				<ColumnDirective field="NAME" headerText="Name" width={96} />
 				<ColumnDirective field="EMAIL" headerText="E-Mail" width={280} />
-				<ColumnDirective field="UF_DEPARTMENT" headerText="Departments" template={departmentTmp} />
+				{/*<ColumnDirective field="UF_DEPARTMENT" headerText="Departments" template={departmentTemplate} />*/}
 			</ColumnsDirective>
 			<Inject services={[ Toolbar,Page ]}/>
 		</GridComponent>
 	)
 
 	return (
-		<div style={{ marginTop: 16 +'px' }}>
+		<div className="p-5">
 			{
 				isDevice
 				? 	<div className="e-bigger">
