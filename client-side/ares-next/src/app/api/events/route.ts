@@ -7,12 +7,13 @@ export async function POST (req) {
 
 	// - - - - - - - - - -
 	/* PA1 */
-	const data = req.nextUrl
-	console.log(data)
+	//const data = req.nextUrl
+	//console.log(data)
 
 	/* PA2 */
-	// const data = await req.formData()
-	// let body = Object.fromEntries(data)
+	const data = await req.formData()
+	let body = Object.fromEntries(data)
+	console.log('BITRIX24::EVENTS', body)
 
 	// - - - - - - - - - -
 	//socket.emit('type-of-event', 'data of event')
