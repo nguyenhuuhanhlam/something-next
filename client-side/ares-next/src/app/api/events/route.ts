@@ -11,9 +11,13 @@ export async function POST (req) {
 	//console.log(data)
 
 	/* PA2 */
-	const data = await req.formData()
-	let body = Object.fromEntries(data)
-	console.log('BITRIX24::EVENTS', body)
+	try {
+		const data = await req.formData()
+		let body = Object.fromEntries(data)
+		console.log('BITRIX24::EVENTS', data)
+	} catch (e) {
+		console.log('NO FORM')
+	}
 	
 	/* output:
 
