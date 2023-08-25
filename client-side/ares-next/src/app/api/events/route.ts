@@ -14,9 +14,19 @@ export async function POST (req) {
 	try {
 		const data = await req.formData()
 		let body = Object.fromEntries(data)
-		console.log('BITRIX24::EVENTS', body.event)
+		
+		switch(body.event) {
+			case 'ONCRMDYNAMICITEMUPDATE':
+					console.log(
+						'ONCRMDYNAMICITEMUPDATE :: ',
+						body['data[FIELDS][ID]'], '|',
+						body['data[FIELDS][ENTITY_TYPE_ID]']
+						)
+				break
+		}
+
 	} catch (e) {
-		console.log('NO FORM')
+		console.log('NO FORM DATA')
 	}
 	
 	/* output:
