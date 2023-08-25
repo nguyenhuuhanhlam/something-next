@@ -4,7 +4,8 @@
   "info": {
     "singularName": "project",
     "pluralName": "projects",
-    "displayName": "Project"
+    "displayName": "Project",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,10 +15,17 @@
     "ProjectName": {
       "type": "string"
     },
+    "Note": {
+      "type": "text"
+    },
+    "project_timelines": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project-timeline.project-timeline",
+      "mappedBy": "project"
+    },
     "ProjectCode": {
-      "type": "string",
-      "unique": true,
-      "maxLength": 32
+      "type": "string"
     }
   }
 }

@@ -14,7 +14,7 @@ export async function POST (req) {
 	try {
 		const data = await req.formData()
 		let body = Object.fromEntries(data)
-		console.log('BITRIX24::EVENTS', data)
+		console.log('BITRIX24::EVENTS', body.event)
 	} catch (e) {
 		console.log('NO FORM')
 	}
