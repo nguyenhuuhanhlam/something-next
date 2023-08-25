@@ -24,6 +24,8 @@ export async function POST (req) {
 						parseInt(params['data[FIELDS][ENTITY_TYPE_ID]'])
 						)
 				break
+			case 'ONCRMDYNAMICITEMADD':
+				break
 		}
 
 	} catch (e) {
