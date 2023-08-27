@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { addSPA, updateSPA } from './spa.funcs.ts'
 
 export async function POST (req) {
-	
+
 	//const socket = io('ws://localhost:3033')
 
 	// - - - - - - - - - -

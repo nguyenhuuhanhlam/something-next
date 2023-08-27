@@ -1,4 +1,5 @@
-const APP_URL = process.env['NEXT_PUBLIC_URL']
+import excuteQuery from '@/lib/db.ts' 
+const APP_URL = process.env.NEXT_PUBLIC_URL
 
 export const addSPA = () => {
 	console.log('SPA ADD')
@@ -16,7 +17,19 @@ export const updateSPA = async (id, entityTypeId) => {
 	)
 
 	const json = await res.json()
+	const { result:{item} } = json
 
-	console.log('-->',json.result.item.id, json.result.item.title)
-	// UPDATE SQL
+	console.log('-->',item.id, item.title)
+	// DO UPDATE SQL
+	try {
+		const result = await excuteQuery({
+			query: 'UPDATE spa_raw SET title=? WHERE id=?',
+			values: [ item.title, item.id ]
+		})
+
+		console.log('UPDATE :: ', result)
+	} catch (e) {
+		console.log(e)
+	}
+
 }
