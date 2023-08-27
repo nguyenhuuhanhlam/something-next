@@ -22,7 +22,7 @@ export async function POST (req) {
 					updateSPA(
 						parseInt(params['data[FIELDS][ID]']),
 						parseInt(params['data[FIELDS][ENTITY_TYPE_ID]'])
-						)
+					)
 				break
 			case 'ONCRMDYNAMICITEMADD':
 				break
@@ -45,12 +45,6 @@ export async function POST (req) {
 	{
 	  event: 'ONCRMDYNAMICITEMUPDATE',
 	  'data[FIELDS][ID]': '351',
-	  'data[FIELDS][ENTITY_TYPE_ID]': '132',
-	  ts: '1692722035',
-	  'auth[domain]': 'aresen.bitrix24.com',
-	  'auth[client_endpoint]': 'https://aresen.bitrix24.com/rest/',
-	  'auth[server_endpoint]': 'https://oauth.bitrix.info/rest/',
-	  'auth[member_id]': '8559bb70602901c27836e1ca8138f882',
-	  'auth[application_token]': '00a6r54fbip89zhv0delumtzwkeoo80g'
+	  'data[FIELDS][ENTITY_TYPE_ID]': '132'
 	}
 */
