@@ -21,6 +21,7 @@ export async function POST (req) {
 
 			/* SPA */
 			case 'ONCRMDYNAMICITEMADD':
+					console.log(params)
 				break
 			case 'ONCRMDYNAMICITEMUPDATE':
 					updateSPA(

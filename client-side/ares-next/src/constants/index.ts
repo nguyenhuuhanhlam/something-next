@@ -56,32 +56,20 @@ export const UFS = {
 		CongTy: 'ufCrm19_1665394136',
 		NgayBaoCao: 'ufCrm19_1685433699',
 		Responsible: 'assignedById',
-		DoanhSoMucTieu: 'ufCrm19_1685433719'
+		DoanhSoMucTieu: 'ufCrm19_1685433719',
+		DoanhThuMucTieu: 'ufCrm19_1685433737',
+		DinhPhiMucTieu: 'ufCrm19_1685433842',
+		BienPhiMucTieu: 'ufCrm19_1685433870',
+		LNMucTieuTruocThue: 'ufCrm19_1685434101',
+		LNMucTieuSauThue: 'ufCrm19_1685434141',
+		DoanhSoDaDat: 'ufCrm19_1685434301',
+		DoanhThuDaDat: 'ufCrm19_1685434345',
+		DinhPhiDaChi: 'ufCrm19_1685434365',
+		BienPhiDaChi: 'ufCrm19_1685434545',
+		LNThucTeTruocThue: 'ufCrm19_1686714238',
+		LNThucTeSauThue: 'ufCrm19_1686714444'
 	}
 }
-
-// 'CongTy' => 'ufCrm19_1665394136',
-// 				'NgayBaoCao' => 'ufCrm19_1685433699',
-
-
-
-// 				'Responsible' => 'assignedById',
-// 				'DoanhSoMucTieu' =>'ufCrm19_1685433719',
-
-
-
-
-// 				'DoanhThuMucTieu' => 'ufCrm19_1685433737',
-// 				'DinhPhiMucTieu' => 'ufCrm19_1685433842',
-// 				'BienPhiMucTieu' => 'ufCrm19_1685433870',
-// 				'LNMucTieuTruocThue' => 'ufCrm19_1685434101',
-// 				'LNMucTieuSauThue' => 'ufCrm19_1685434141',
-// 				'DoanhSoDaDat' => 'ufCrm19_1685434301',
-// 				'DoanhThuDaDat' => 'ufCrm19_1685434345',
-// 				'DinhPhiDaChi' => 'ufCrm19_1685434365',
-// 				'BienPhiDaChi' => 'ufCrm19_1685434545',
-// 				'LNThucTeTruocThue' => 'ufCrm19_1686714238',
-// 				'LNThucTeSauThue' => 'ufCrm19_1686714444'
 
 export const SPA_STAGES = {
 	'DT132_125:CLIENT': 'Duyệt báo cáo',

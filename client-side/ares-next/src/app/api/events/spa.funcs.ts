@@ -1,12 +1,7 @@
 import excuteQuery from '@/lib/db.ts' 
 const APP_URL = process.env.NEXT_PUBLIC_URL
 
-export const addSPA = () => {
-	console.log('SPA ADD')
-}
-
-export const updateSPA = async (id, entityTypeId) => {
-
+const itemGet = async (id, entityTypeId) => {
 	const res = await fetch(
 		APP_URL + '/api/btx.crm.item.get',
 		{
@@ -19,8 +14,17 @@ export const updateSPA = async (id, entityTypeId) => {
 	const json = await res.json()
 	const { result:{item} } = json
 
-	// console.log('-->',item.id, item.title)
-	// DO UPDATE SQL
+	return item
+}
+
+export const addSPA = (id, entityTypeId) => {
+	console.log('SPA ADD')
+}
+
+export const updateSPA = async (id, entityTypeId) => {
+
+	const item = await itemGet(id, entityTypeId)
+
 	try {
 		const result = await excuteQuery({
 			query:
@@ -33,9 +37,8 @@ export const updateSPA = async (id, entityTypeId) => {
 				]
 		})
 
-		console.log('UPDATE :: ', result)
+		console.log('UPDATED :: ', result)
 	} catch (e) {
 		console.log(e)
 	}
-
 }
