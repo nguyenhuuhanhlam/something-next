@@ -18,13 +18,24 @@ export async function POST (req) {
 		const params = Object.fromEntries(form)
 
 		switch(params.event) {
+
+			/* SPA */
+			case 'ONCRMDYNAMICITEMADD':
+				break
 			case 'ONCRMDYNAMICITEMUPDATE':
 					updateSPA(
 						parseInt(params['data[FIELDS][ID]']),
 						parseInt(params['data[FIELDS][ENTITY_TYPE_ID]'])
 					)
 				break
-			case 'ONCRMDYNAMICITEMADD':
+			case 'ONCRMDYNAMICITEMDELETE':
+				break
+
+			/* LEAD */
+			case 'ONCRMDEALADD':
+				break
+			case 'ONCRMDEALUPDATE':
+				console.log('ONCRMDEALUPDATE : ', params)
 				break
 		}
 

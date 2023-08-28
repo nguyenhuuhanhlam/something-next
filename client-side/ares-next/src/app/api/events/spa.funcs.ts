@@ -19,12 +19,18 @@ export const updateSPA = async (id, entityTypeId) => {
 	const json = await res.json()
 	const { result:{item} } = json
 
-	console.log('-->',item.id, item.title)
+	// console.log('-->',item.id, item.title)
 	// DO UPDATE SQL
 	try {
 		const result = await excuteQuery({
-			query: 'UPDATE spa_raw SET title=? WHERE id=?',
-			values: [ item.title, item.id ]
+			query:
+				`UPDATE spa_raw
+				SET title=?
+				WHERE id=?`,
+			values: [
+				item.title,
+				item.id
+				]
 		})
 
 		console.log('UPDATE :: ', result)
