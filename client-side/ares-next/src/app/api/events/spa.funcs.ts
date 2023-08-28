@@ -2,7 +2,7 @@ import excuteQuery from '@/lib/db.ts'
 import { UFS } from '@/constants'
 const APP_URL = process.env.NEXT_PUBLIC_URL
 
-const itemGet = async (id, entityTypeId) => {
+const getItem = async (id, entityTypeId) => {
 	const res = await fetch(
 		APP_URL + '/api/btx.crm.item.get',
 		{
@@ -15,13 +15,7 @@ const itemGet = async (id, entityTypeId) => {
 	const json = await res.json()
 	const { result:{item} } = json
 
-	return item
-}
-
-export const addSPA = async (id, entityTypeId) => {
-	const item = await itemGet(id, entityTypeId)
-	
-	const v = {
+	const rebuild = {
 		Id: item.id,
 		Title: item.title,
 		CongTy: item[UFS[132]['CongTy']],
@@ -30,15 +24,26 @@ export const addSPA = async (id, entityTypeId) => {
 		Responsible: item[UFS[132]['Responsible']],
 	}
 
+	return rebuild
+}
+
+export const addSPA = async (id, entityTypeId) => {
+	const item = await getItem(id, entityTypeId)
+
 	try {
 		const result = await excuteQuery({
 			query:
-				`INSERT INTO spa132_125(${Object.keys(v)}) 
+				`INSERT INTO spa132_125(${Object.keys(item)}) 
 				VALUES(?,?,?,?,?,?)`,
-			values: Object.values(v)
+			values: Object.values(item)
 		})
 
-		console.log('ADDED :: ', result)
+		if (result?.error) {
+			const e = JSON.stringify(result.error)
+			console.log(JSON.parse(e).sqlMessage)
+		} else
+			console.log('ADDED :: ', result)
+
 	} catch (e) {
 		console.log(e)
 	}
@@ -46,22 +51,20 @@ export const addSPA = async (id, entityTypeId) => {
 
 export const updateSPA = async (id, entityTypeId) => {
 
-	// const item = await itemGet(id, entityTypeId)
+	const item = await getItem(id, entityTypeId)
+	const sets = Object.keys(item).map(k=>k+'=?')
 
-	// try {
-	// 	const result = await excuteQuery({
-	// 		query:
-	// 			`UPDATE spa_raw
-	// 			SET title=?
-	// 			WHERE id=?`,
-	// 		values: [
-	// 			item.title,
-	// 			item.id
-	// 			]
-	// 	})
+	try {
+		const result = await excuteQuery({
+			query:
+				`UPDATE spa132_125
+				SET ${sets}
+				WHERE id=${item.Id}`,
+			values: Object.values(item)
+		})
 
-	// 	console.log('UPDATED :: ', result)
-	// } catch (e) {
-	// 	console.log(e)
-	// }
+		console.log('UPDATED :: ', result)
+	} catch (e) {
+		console.log(e)
+	}
 }
