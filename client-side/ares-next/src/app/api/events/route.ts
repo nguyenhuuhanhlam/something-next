@@ -21,7 +21,10 @@ export async function POST (req) {
 
 			/* SPA */
 			case 'ONCRMDYNAMICITEMADD':
-					console.log(params)
+					addSPA(
+						parseInt(params['data[FIELDS][ID]']),
+						parseInt(params['data[FIELDS][ENTITY_TYPE_ID]'])
+					)
 				break
 			case 'ONCRMDYNAMICITEMUPDATE':
 					updateSPA(
