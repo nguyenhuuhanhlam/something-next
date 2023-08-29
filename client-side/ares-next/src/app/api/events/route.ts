@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 // import { io } from 'socket.io-client'
 
-import { addSPA, updateSPA } from './spa.funcs.ts'
+import { addSPA, updateSPA, deleteSPA } from './spa.funcs.ts'
 
 export async function POST (req) {
 
@@ -33,6 +33,10 @@ export async function POST (req) {
 					)
 				break
 			case 'ONCRMDYNAMICITEMDELETE':
+					deleteSPA(
+						parseInt(params['data[FIELDS][ID]']),
+						parseInt(params['data[FIELDS][ENTITY_TYPE_ID]'])
+					)
 				break
 
 			/* LEAD */
