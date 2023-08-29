@@ -75,7 +75,7 @@ export const addSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
 	switch (entityTypeId) {
 		case 132:
-				sqlInsert('spa132_125',item)
+				await sqlInsert('spa132_125',item)
 			break
 	}
 }
@@ -84,7 +84,7 @@ export const updateSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
 	switch (entityTypeId) {
 		case 132:
-				sqlUpdate('spa132_125',item)
+				await sqlUpdate('spa132_125',item)
 			break
 	}
 }
@@ -92,7 +92,7 @@ export const updateSPA = async (id, entityTypeId) => {
 export const deleteSPA = async (id, entityTypeId) => {
 	switch (entityTypeId) {
 		case 132:
-			sqlDelete('spa132_125', id)
+			await sqlDelete('spa132_125', id)
 		break
 	}
 }
