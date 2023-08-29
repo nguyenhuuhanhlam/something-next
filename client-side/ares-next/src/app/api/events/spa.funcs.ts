@@ -34,7 +34,7 @@ export const addSPA = async (id, entityTypeId) => {
 		const result = await excuteQuery({
 			query:
 				`INSERT INTO spa132_125(${Object.keys(item)}) 
-				VALUES(?,?,?,?,?,?)`,
+				VALUES(${Object.keys(item).map(k=>'?').join()})`,
 			values: Object.values(item)
 		})
 
@@ -64,6 +64,21 @@ export const updateSPA = async (id, entityTypeId) => {
 		})
 
 		console.log('UPDATED :: ', result)
+	} catch (e) {
+		console.log(e)
+	}
+}
+
+export const deleteSPA = async (id, entityTypeId) => {
+	try {
+		switch (entityTypeId) {
+			case 132:
+				const result = await excuteQuery({
+					query: `DELETE FROM spa132_125 WHERE Id=${id}`				
+				})
+				console.log('DELETED :: ', result)
+			break
+		}
 	} catch (e) {
 		console.log(e)
 	}
