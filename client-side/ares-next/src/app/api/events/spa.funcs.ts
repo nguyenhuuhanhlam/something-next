@@ -2,6 +2,10 @@ import excuteQuery from '@/lib/db.ts'
 import { UFS } from '@/constants'
 const APP_URL = process.env.NEXT_PUBLIC_URL
 
+
+/* - - - - - - - - - - */
+
+
 const getItem = async (id, entityTypeId) => {
 	const res = await fetch(
 		APP_URL + '/api/btx.crm.item.get',
@@ -27,39 +31,26 @@ const getItem = async (id, entityTypeId) => {
 	return rebuild
 }
 
-export const addSPA = async (id, entityTypeId) => {
-	const item = await getItem(id, entityTypeId)
+const sqlInsert = async (table=null, item) => {
+	const result = await excuteQuery({
+		query:
+			`INSERT INTO ${table}(${Object.keys(item)}) VALUES(${Object.keys(item).map(k=>'?').join()})`,
+		values: Object.values(item)
+	})
 
-	try {
-		const result = await excuteQuery({
-			query:
-				`INSERT INTO spa132_125(${Object.keys(item)}) 
-				VALUES(${Object.keys(item).map(k=>'?').join()})`,
-			values: Object.values(item)
-		})
-
-		if (result?.error) {
-			const e = JSON.stringify(result.error)
-			console.log(JSON.parse(e).sqlMessage)
-		} else
-			console.log('ADDED :: ', result)
-
-	} catch (e) {
-		console.log(e)
-	}
+	if (result?.error) {
+		const e = JSON.stringify(result.error)
+		console.log(JSON.parse(e).sqlMessage)
+	} else
+		console.log('ADDED :: ', result)
 }
 
-export const updateSPA = async (id, entityTypeId) => {
-
-	const item = await getItem(id, entityTypeId)
+const sqlUpdate = async (table=null, item) => {
 	const sets = Object.keys(item).map(k=>k+'=?')
 
 	try {
 		const result = await excuteQuery({
-			query:
-				`UPDATE spa132_125
-				SET ${sets}
-				WHERE id=${item.Id}`,
+			query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
 			values: Object.values(item)
 		})
 
@@ -69,17 +60,39 @@ export const updateSPA = async (id, entityTypeId) => {
 	}
 }
 
-export const deleteSPA = async (id, entityTypeId) => {
-	try {
-		switch (entityTypeId) {
-			case 132:
-				const result = await excuteQuery({
-					query: `DELETE FROM spa132_125 WHERE Id=${id}`				
-				})
-				console.log('DELETED :: ', result)
+const sqlDelete = async (table=null, id) => {
+	const result = await excuteQuery({
+		query: `DELETE FROM ${table} WHERE Id=${id}`				
+	})
+	console.log('DELETED :: ', result)
+}
+
+
+/* - - - - - - - - - - */
+
+
+export const addSPA = async (id, entityTypeId) => {
+	const item = await getItem(id, entityTypeId)
+	switch (entityTypeId) {
+		case 132:
+				sqlInsert('spa132_125',item)
 			break
-		}
-	} catch (e) {
-		console.log(e)
+	}
+}
+
+export const updateSPA = async (id, entityTypeId) => {
+	const item = await getItem(id, entityTypeId)
+	switch (entityTypeId) {
+		case 132:
+				sqlUpdate('spa132_125',item)
+			break
+	}
+}
+
+export const deleteSPA = async (id, entityTypeId) => {
+	switch (entityTypeId) {
+		case 132:
+			sqlDelete('spa132_125', id)
+		break
 	}
 }
