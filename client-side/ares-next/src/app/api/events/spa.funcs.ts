@@ -23,10 +23,36 @@ const getItem = async (id, entityTypeId) => {
 		Id: item.id,
 		Title: item.title,
 		CongTy: item[UFS[132]['CongTy']],
-		NgayBaoCao: item[UFS[132]['NgayBaoCao']],
 		Stage: item.stageId,
-		Responsible: item[UFS[132]['Responsible']],
+		CreatedDate: item.createdTime?.slice(0,10) ?? null,
+		MovedDate: item.movedTime?.slice(0,10) ?? null,
+		NgayBaoCao: item[UFS[132]['NgayBaoCao']]?.slice(0,10) ?? null,
+		Responsible: item.assignedById,
+		DoanhSoMucTieu: Number(item[UFS[132]['DoanhSoMucTieu']].split('|')[0]),
+		DoanhThuMucTieu: Number(item[UFS[132]['DoanhThuMucTieu']].split('|')[0]),
 	}
+
+	/*
+	'Title' => $this->helper->set($this->Item['title'])->wrap()->get(),
+	'CongTy' => $this->Item[Store::$ufs[132]['CongTy']],
+	'Stage' => $this->helper->set(Store::$stage[$this->Item['stageId']])->wrap()->get(),
+	'CreatedDate' => $this->helper->set($this->Item['createdTime'])->date()->wrap()->get(),
+	'MovedDate' => $this->helper->set($this->Item['movedTime'])->date()->wrap()->get(),
+	'NgayBaoCao' => $this->helper->set($this->Item[Store::$ufs[132]['NgayBaoCao']])->date()->wrap()->get(),
+	'Responsible' => $this->Item['assignedById'],
+	'DoanhSoMucTieu' => $this->helper->set($this->Item[Store::$ufs[132]['DoanhSoMucTieu']])->ccy()->get(),
+	'DoanhThuMucTieu' => $this->helper->set($this->Item[Store::$ufs[132]['DoanhThuMucTieu']])->ccy()->get(),
+	'DinhPhiMucTieu' => $this->helper->set($this->Item[Store::$ufs[132]['DinhPhiMucTieu']])->ccy()->get(),
+	'BienPhiMucTieu' => $this->helper->set($this->Item[Store::$ufs[132]['BienPhiMucTieu']])->ccy()->get(),
+	'LNMucTieuTruocThue' => $this->helper->set($this->Item[Store::$ufs[132]['LNMucTieuTruocThue']])->ccy()->get(),
+	'LNMucTieuSauThue' => $this->helper->set($this->Item[Store::$ufs[132]['LNMucTieuSauThue']])->ccy()->get(),
+	'DoanhSoDaDat' => $this->helper->set($this->Item[Store::$ufs[132]['DoanhSoDaDat']])->ccy()->get(),
+	'DoanhThuDaDat' => $this->helper->set($this->Item[Store::$ufs[132]['DoanhThuDaDat']])->ccy()->get(),
+	'DinhPhiDaChi' => $this->helper->set($this->Item[Store::$ufs[132]['DinhPhiDaChi']])->ccy()->get(),
+	'BienPhiDaChi' => $this->helper->set($this->Item[Store::$ufs[132]['BienPhiDaChi']])->ccy()->get(),
+	'LNThucTeTruocThue' => $this->helper->set($this->Item[Store::$ufs[132]['LNThucTeTruocThue']])->ccy()->get(),
+	'LNThucTeSauThue' => $this->helper->set($this->Item[Store::$ufs[132]['LNThucTeSauThue']])->ccy()->get()
+	*/
 
 	return rebuild
 }
@@ -84,7 +110,8 @@ export const updateSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
 	switch (entityTypeId) {
 		case 132:
-				await sqlUpdate('spa132_125',item)
+				// await sqlUpdate('spa132_125',item)
+			console.log(item)
 			break
 	}
 }
