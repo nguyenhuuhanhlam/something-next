@@ -34,6 +34,7 @@ const getItem = async (id, entityTypeId) => {
 		LNMucTieuSauThue: ~~Number(item[UFS[132]['LNMucTieuSauThue']]?.split('|')[0]),
 		DoanhSoDaDat: ~~Number(item[UFS[132]['DoanhSoDaDat']]?.split('|')[0]),
 		DoanhThuDaDat: ~~Number(item[UFS[132]['DoanhThuDaDat']]?.split('|')[0]),
+		BienPhiDaChi: ~~Number(item[UFS[132]['BienPhiDaChi']]?.split('|')[0]),
 		DinhPhiDaChi: ~~Number(item[UFS[132]['DinhPhiDaChi']]?.split('|')[0]),
 		LNThucTeTruocThue: ~~Number(item[UFS[132]['LNThucTeTruocThue']]?.split('|')[0]),
 		LNThucTeSauThue: ~~Number(item[UFS[132]['LNThucTeSauThue']]?.split('|')[0])
