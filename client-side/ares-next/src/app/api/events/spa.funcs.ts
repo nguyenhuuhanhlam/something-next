@@ -2,9 +2,7 @@ import excuteQuery from '@/lib/db.ts'
 import { UFS } from '@/constants'
 const APP_URL = process.env.NEXT_PUBLIC_URL
 
-
 /* - - - - - - - - - - */
-
 
 const getItem = async (id, entityTypeId) => {
 	const res = await fetch(
@@ -30,29 +28,16 @@ const getItem = async (id, entityTypeId) => {
 		Responsible: item.assignedById,
 		DoanhSoMucTieu: Number(item[UFS[132]['DoanhSoMucTieu']].split('|')[0]),
 		DoanhThuMucTieu: Number(item[UFS[132]['DoanhThuMucTieu']].split('|')[0]),
+		DinhPhiMucTieu: Number(item[UFS[132]['DinhPhiMucTieu']].split('|')[0]),
+		BienPhiMucTieu: Number(item[UFS[132]['BienPhiMucTieu']].split('|')[0]),
+		LNMucTieuTruocThue: Number(item[UFS[132]['LNMucTieuTruocThue']].split('|')[0]),
+		LNMucTieuSauThue: Number(item[UFS[132]['LNMucTieuSauThue']].split('|')[0]),
+		DoanhSoDaDat: Number(item[UFS[132]['DoanhSoDaDat']].split('|')[0]),
+		DoanhThuDaDat: Number(item[UFS[132]['DoanhThuDaDat']].split('|')[0]),
+		DinhPhiDaChi: Number(item[UFS[132]['DinhPhiDaChi']].split('|')[0]),
+		LNThucTeTruocThue: Number(item[UFS[132]['LNThucTeTruocThue']].split('|')[0]),
+		LNThucTeSauThue: Number(item[UFS[132]['LNThucTeSauThue']].split('|')[0])
 	}
-
-	/*
-	'Title' => $this->helper->set($this->Item['title'])->wrap()->get(),
-	'CongTy' => $this->Item[Store::$ufs[132]['CongTy']],
-	'Stage' => $this->helper->set(Store::$stage[$this->Item['stageId']])->wrap()->get(),
-	'CreatedDate' => $this->helper->set($this->Item['createdTime'])->date()->wrap()->get(),
-	'MovedDate' => $this->helper->set($this->Item['movedTime'])->date()->wrap()->get(),
-	'NgayBaoCao' => $this->helper->set($this->Item[Store::$ufs[132]['NgayBaoCao']])->date()->wrap()->get(),
-	'Responsible' => $this->Item['assignedById'],
-	'DoanhSoMucTieu' => $this->helper->set($this->Item[Store::$ufs[132]['DoanhSoMucTieu']])->ccy()->get(),
-	'DoanhThuMucTieu' => $this->helper->set($this->Item[Store::$ufs[132]['DoanhThuMucTieu']])->ccy()->get(),
-	'DinhPhiMucTieu' => $this->helper->set($this->Item[Store::$ufs[132]['DinhPhiMucTieu']])->ccy()->get(),
-	'BienPhiMucTieu' => $this->helper->set($this->Item[Store::$ufs[132]['BienPhiMucTieu']])->ccy()->get(),
-	'LNMucTieuTruocThue' => $this->helper->set($this->Item[Store::$ufs[132]['LNMucTieuTruocThue']])->ccy()->get(),
-	'LNMucTieuSauThue' => $this->helper->set($this->Item[Store::$ufs[132]['LNMucTieuSauThue']])->ccy()->get(),
-	'DoanhSoDaDat' => $this->helper->set($this->Item[Store::$ufs[132]['DoanhSoDaDat']])->ccy()->get(),
-	'DoanhThuDaDat' => $this->helper->set($this->Item[Store::$ufs[132]['DoanhThuDaDat']])->ccy()->get(),
-	'DinhPhiDaChi' => $this->helper->set($this->Item[Store::$ufs[132]['DinhPhiDaChi']])->ccy()->get(),
-	'BienPhiDaChi' => $this->helper->set($this->Item[Store::$ufs[132]['BienPhiDaChi']])->ccy()->get(),
-	'LNThucTeTruocThue' => $this->helper->set($this->Item[Store::$ufs[132]['LNThucTeTruocThue']])->ccy()->get(),
-	'LNThucTeSauThue' => $this->helper->set($this->Item[Store::$ufs[132]['LNThucTeSauThue']])->ccy()->get()
-	*/
 
 	return rebuild
 }
@@ -93,9 +78,7 @@ const sqlDelete = async (table=null, id) => {
 	console.log('DELETED :: ', result)
 }
 
-
 /* - - - - - - - - - - */
-
 
 export const addSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
@@ -110,8 +93,8 @@ export const updateSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
 	switch (entityTypeId) {
 		case 132:
-				// await sqlUpdate('spa132_125',item)
-			console.log(item)
+				await sqlUpdate('spa132_125',item)
+			// console.log(item)
 			break
 	}
 }
