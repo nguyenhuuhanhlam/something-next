@@ -99,6 +99,8 @@ export const addSPA = async (id, entityTypeId) => {
 }
 
 export const updateSPA = async (id, entityTypeId) => {
+	const item = await getItem(id, entityTypeId)
+	await sqlUpdate('spas', item)
 	// const item = await getItem(id, entityTypeId)
 	// switch (entityTypeId) {
 	// 	case 132:
