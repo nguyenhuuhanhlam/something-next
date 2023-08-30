@@ -1,5 +1,5 @@
 import excuteQuery from '@/lib/db.ts' 
-import { UFS } from '@/constants'
+import { SPA_UFS } from '@/constants'
 const APP_URL = process.env.NEXT_PUBLIC_URL
 
 /* - - - - - - - - - - */
