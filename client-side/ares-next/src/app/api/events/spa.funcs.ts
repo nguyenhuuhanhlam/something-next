@@ -17,7 +17,7 @@ const getItem = async (id, entityTypeId) => {
 	const json = await res.json()
 	const { result:{item} } = json
 
-	console.log('---->',item)
+	// console.log('---->',item)
 
 	const rebuild = {
 		Id: item.id,
@@ -38,8 +38,8 @@ const getItem = async (id, entityTypeId) => {
 		DoanhThuDaDat: ~~Number(item[UFS[132]['DoanhThuDaDat']]?.split('|')[0]),
 		BienPhiDaChi: ~~Number(item[UFS[132]['BienPhiDaChi']]?.split('|')[0]),
 		DinhPhiDaChi: ~~Number(item[UFS[132]['DinhPhiDaChi']]?.split('|')[0]),
-		LNThucTeTruocThue: ~~Number(item[UFS[132]['LNThucTeTruocThue']]?.split('|')[0]),
-		LNThucTeSauThue: ~~Number(item[UFS[132]['LNThucTeSauThue']]?.split('|')[0])
+		LNThucTeTruocThue: ~~Number(item[UFS[132]['LNThucTeTruocThue']]),
+		LNThucTeSauThue: ~~Number(item[UFS[132]['LNThucTeSauThue']])
 	}
 
 	return { rebuild, categoryId:item.categoryId }
