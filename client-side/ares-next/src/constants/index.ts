@@ -1,27 +1,3 @@
-// type BTXDepartment = {
-// 	ID: number,
-// 	NAME: string,
-// 	PARENT: number
-// }
-
-// /* - - - - - */
-
-// type UserProfile = {
-// 	LastName: string,
-// 	FirstName: string
-// }
-
-// export type LoggedInUserType = {
-// 	id: number,
-// 	jwt: string,
-// 	username: string,
-// 	email: string
-// }
-
-// /* - - - - - */
-
-// export type ActionType = { type:string }
-
 export const LETTER_COLORS = {
 	'A': ['Aquamarine','AntiqueWhite','Azure'],
 	'B': ['Bisque'],
@@ -51,7 +27,7 @@ export const LETTER_COLORS = {
 	'Z': ['White']
 }
 
-export const UFS = {
+export const SPA_UFS = {
 	132: {
 		CongTy: 'ufCrm19_1665394136',
 		NgayBaoCao: 'ufCrm19_1685433699',

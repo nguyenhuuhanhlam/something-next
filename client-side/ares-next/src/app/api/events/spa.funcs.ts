@@ -21,24 +21,24 @@ const getItem = async (id, entityTypeId) => {
 		Id: id,
 		Category: item.categoryId,
 		Title: item.title,
-		CongTy: item[UFS[132]['CongTy']],
+		CongTy: item[SPA_UFS[132]['CongTy']],
 		Stage: item.stageId,
 		CreatedDate: item.createdTime?.slice(0,10) ?? null,
 		MovedDate: item.movedTime?.slice(0,10) ?? null,
-		NgayBaoCao: item[UFS[132]['NgayBaoCao']]?.slice(0,10) ?? null,
+		NgayBaoCao: item[SPA_UFS[132]['NgayBaoCao']]?.slice(0,10) ?? null,
 		Responsible: item.assignedById,
-		DoanhSoMucTieu: ~~Number(item[UFS[132]['DoanhSoMucTieu']]?.split('|')[0]),
-		DoanhThuMucTieu: ~~Number(item[UFS[132]['DoanhThuMucTieu']]?.split('|')[0]),
-		DinhPhiMucTieu: ~~Number(item[UFS[132]['DinhPhiMucTieu']]?.split('|')[0]),
-		BienPhiMucTieu: ~~Number(item[UFS[132]['BienPhiMucTieu']]?.split('|')[0]),
-		LNMucTieuTruocThue: ~~Number(item[UFS[132]['LNMucTieuTruocThue']]?.split('|')[0]),
-		LNMucTieuSauThue: ~~Number(item[UFS[132]['LNMucTieuSauThue']]?.split('|')[0]),
-		DoanhSoDaDat: ~~Number(item[UFS[132]['DoanhSoDaDat']]?.split('|')[0]),
-		DoanhThuDaDat: ~~Number(item[UFS[132]['DoanhThuDaDat']]?.split('|')[0]),
-		BienPhiDaChi: ~~Number(item[UFS[132]['BienPhiDaChi']]?.split('|')[0]),
-		DinhPhiDaChi: ~~Number(item[UFS[132]['DinhPhiDaChi']]?.split('|')[0]),
-		LNThucTeTruocThue: ~~Number(item[UFS[132]['LNThucTeTruocThue']]),
-		LNThucTeSauThue: ~~Number(item[UFS[132]['LNThucTeSauThue']])
+		DoanhSoMucTieu: ~~Number(item[SPA_UFS[132]['DoanhSoMucTieu']]?.split('|')[0]),
+		DoanhThuMucTieu: ~~Number(item[SPA_UFS[132]['DoanhThuMucTieu']]?.split('|')[0]),
+		DinhPhiMucTieu: ~~Number(item[SPA_UFS[132]['DinhPhiMucTieu']]?.split('|')[0]),
+		BienPhiMucTieu: ~~Number(item[SPA_UFS[132]['BienPhiMucTieu']]?.split('|')[0]),
+		LNMucTieuTruocThue: ~~Number(item[SPA_UFS[132]['LNMucTieuTruocThue']]?.split('|')[0]),
+		LNMucTieuSauThue: ~~Number(item[SPA_UFS[132]['LNMucTieuSauThue']]?.split('|')[0]),
+		DoanhSoDaDat: ~~Number(item[SPA_UFS[132]['DoanhSoDaDat']]?.split('|')[0]),
+		DoanhThuDaDat: ~~Number(item[SPA_UFS[132]['DoanhThuDaDat']]?.split('|')[0]),
+		BienPhiDaChi: ~~Number(item[SPA_UFS[132]['BienPhiDaChi']]?.split('|')[0]),
+		DinhPhiDaChi: ~~Number(item[SPA_UFS[132]['DinhPhiDaChi']]?.split('|')[0]),
+		LNThucTeTruocThue: ~~Number(item[SPA_UFS[132]['LNThucTeTruocThue']]),
+		LNThucTeSauThue: ~~Number(item[SPA_UFS[132]['LNThucTeSauThue']])
 	}
 
 	return rebuild
@@ -59,47 +59,39 @@ const sqlInsert = async (table=null, item) => {
 }
 
 const sqlUpdate = async (table=null, item) => {
-	// const sets = Object.keys(item).map(k=>k+'=?')
+	const sets = Object.keys(item).map(k=>k+'=?')
 
-	// try {
-	// 	const result = await excuteQuery({
-	// 		query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
-	// 		values: Object.values(item)
-	// 	})
+	try {
+		const result = await excuteQuery({
+			query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
+			values: Object.values(item)
+		})
 
-	// 	console.log('SPA UPDATED :: ', item.Id, item.EntityType)
-	// } catch (e) {
-	// 	console.log(e)
-	// }
+		console.log('SPA UPDATED :: ', item.Id)
+	} catch (e) {
+		console.log(e)
+	}
 }
 
 const sqlDelete = async (table=null, id) => {
-	// const result = await excuteQuery({
-	// 	query: `DELETE FROM ${table} WHERE Id=${id}`				
-	// })
-	// console.log('SPA DELETED :: ', id)
+	const result = await excuteQuery({
+		query: `DELETE FROM ${table} WHERE Id=${id}`				
+	})
+	console.log('SPA DELETED :: ', id)
 }
 
 /* - - - - - - - - - - */
 
 export const addSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
-	// switch (entityTypeId) {
-	// 	case 132:
-	// 			switch (item.Category) {
-	// 				case 125:
-	// 					break
-	// 			}
-	// 		break
-	// }
 	await sqlInsert(`spa_${entityTypeId}_${item.Category}`, item)
 }
 
 export const updateSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
-	await sqlUpdate('spa_132_125', item)
+	await sqlUpdate(`spa_${entityTypeId}_${item.Category}`, item)
 }
 
 export const deleteSPA = async (id) => {
-	//await sqlDelete('spa_132_125', id)
+	await sqlDelete('spa_132_125', id)
 }
