@@ -86,34 +86,15 @@ const sqlDelete = async (table=null, id) => {
 export const addSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
 	await sqlInsert('spas', item)
-
-	// switch (entityTypeId) {
-	// 	case 132:
-	// 			switch (item.categoryId) {
-	// 				case 125:
-	// 						await sqlInsert('spa132_125', item.rebuild)
-	// 					break
-	// 			}
-	// 		break
-	// }
 }
 
 export const updateSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
 	await sqlUpdate('spas', item)
-	// const item = await getItem(id, entityTypeId)
-	// switch (entityTypeId) {
-	// 	case 132:
-	// 			switch (item.categoryId) {
-	// 				case 125:
-	// 						await sqlUpdate('spa132_125', item.rebuild)
-	// 					break
-	// 			}
-	// 		break
-	// }
 }
 
-export const deleteSPA = async (id, entityTypeId) => {
+export const deleteSPA = async (id) => {
+	await sqlDelete('spas', id)
 	// const item = await getItem(id, entityTypeId)
 	// switch (entityTypeId) {
 	// 	case 132:
