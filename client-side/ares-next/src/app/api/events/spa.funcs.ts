@@ -26,17 +26,17 @@ const getItem = async (id, entityTypeId) => {
 		MovedDate: item.movedTime?.slice(0,10) ?? null,
 		NgayBaoCao: item[UFS[132]['NgayBaoCao']]?.slice(0,10) ?? null,
 		Responsible: item.assignedById,
-		DoanhSoMucTieu: Number(item[UFS[132]['DoanhSoMucTieu']].split('|')[0]),
-		DoanhThuMucTieu: Number(item[UFS[132]['DoanhThuMucTieu']].split('|')[0]),
-		DinhPhiMucTieu: Number(item[UFS[132]['DinhPhiMucTieu']].split('|')[0]),
-		BienPhiMucTieu: Number(item[UFS[132]['BienPhiMucTieu']].split('|')[0]),
-		LNMucTieuTruocThue: Number(item[UFS[132]['LNMucTieuTruocThue']].split('|')[0]),
-		LNMucTieuSauThue: Number(item[UFS[132]['LNMucTieuSauThue']].split('|')[0]),
-		DoanhSoDaDat: Number(item[UFS[132]['DoanhSoDaDat']].split('|')[0]),
-		DoanhThuDaDat: Number(item[UFS[132]['DoanhThuDaDat']].split('|')[0]),
-		DinhPhiDaChi: Number(item[UFS[132]['DinhPhiDaChi']].split('|')[0]),
-		LNThucTeTruocThue: Number(item[UFS[132]['LNThucTeTruocThue']].split('|')[0]),
-		LNThucTeSauThue: Number(item[UFS[132]['LNThucTeSauThue']].split('|')[0])
+		DoanhSoMucTieu: ~~Number(item[UFS[132]['DoanhSoMucTieu']]?.split('|')[0]),
+		DoanhThuMucTieu: ~~Number(item[UFS[132]['DoanhThuMucTieu']]?.split('|')[0]),
+		DinhPhiMucTieu: ~~Number(item[UFS[132]['DinhPhiMucTieu']]?.split('|')[0]),
+		BienPhiMucTieu: ~~Number(item[UFS[132]['BienPhiMucTieu']]?.split('|')[0]),
+		LNMucTieuTruocThue: ~~Number(item[UFS[132]['LNMucTieuTruocThue']]?.split('|')[0]),
+		LNMucTieuSauThue: ~~Number(item[UFS[132]['LNMucTieuSauThue']]?.split('|')[0]),
+		DoanhSoDaDat: ~~Number(item[UFS[132]['DoanhSoDaDat']]?.split('|')[0]),
+		DoanhThuDaDat: ~~Number(item[UFS[132]['DoanhThuDaDat']]?.split('|')[0]),
+		DinhPhiDaChi: ~~Number(item[UFS[132]['DinhPhiDaChi']]?.split('|')[0]),
+		LNThucTeTruocThue: ~~Number(item[UFS[132]['LNThucTeTruocThue']]?.split('|')[0]),
+		LNThucTeSauThue: ~~Number(item[UFS[132]['LNThucTeSauThue']]?.split('|')[0])
 	}
 
 	return rebuild
