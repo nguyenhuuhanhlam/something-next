@@ -110,11 +110,12 @@ export const updateSPA = async (id, entityTypeId) => {
 }
 
 export const deleteSPA = async (id, entityTypeId) => {
+	const item = await getItem(id, entityTypeId)
 	switch (entityTypeId) {
 		case 132:
 			switch (item.categoryId) {
 					case 125:
-							await sqlDelete('spa132_125', item.rebuild)
+							await sqlDelete('spa132_125', id)
 						break
 				}
 		break

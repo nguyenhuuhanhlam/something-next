@@ -55,7 +55,6 @@ export const UFS = {
 	132: {
 		CongTy: 'ufCrm19_1665394136',
 		NgayBaoCao: 'ufCrm19_1685433699',
-		// Responsible: 'assignedById',
 		DoanhSoMucTieu: 'ufCrm19_1685433719',
 		DoanhThuMucTieu: 'ufCrm19_1685433737',
 		DinhPhiMucTieu: 'ufCrm19_1685433842',
