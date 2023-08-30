@@ -46,53 +46,53 @@ const getItem = async (id, entityTypeId) => {
 }
 
 const sqlInsert = async (table=null, item) => {
-	const result = await excuteQuery({
-		query:
-			`INSERT INTO ${table}(${Object.keys(item)}) VALUES(${Object.keys(item).map(k=>'?').join()})`,
-		values: Object.values(item)
-	})
+	// const result = await excuteQuery({
+	// 	query:
+	// 		`INSERT INTO ${table}(${Object.keys(item)}) VALUES(${Object.keys(item).map(k=>'?').join()})`,
+	// 	values: Object.values(item)
+	// })
 
-	if (result?.error) {
-		const e = JSON.stringify(result.error)
-		console.log(JSON.parse(e).sqlMessage)
-	} else
-		console.log('SPA ADDED :: ', item.Id, item.EntityType)
+	// if (result?.error) {
+	// 	const e = JSON.stringify(result.error)
+	// 	console.log(JSON.parse(e).sqlMessage)
+	// } else
+	// 	console.log('SPA ADDED :: ', item.Id, item.EntityType)
 }
 
 const sqlUpdate = async (table=null, item) => {
-	const sets = Object.keys(item).map(k=>k+'=?')
+	// const sets = Object.keys(item).map(k=>k+'=?')
 
-	try {
-		const result = await excuteQuery({
-			query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
-			values: Object.values(item)
-		})
+	// try {
+	// 	const result = await excuteQuery({
+	// 		query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
+	// 		values: Object.values(item)
+	// 	})
 
-		console.log('SPA UPDATED :: ', item.Id, item.EntityType)
-	} catch (e) {
-		console.log(e)
-	}
+	// 	console.log('SPA UPDATED :: ', item.Id, item.EntityType)
+	// } catch (e) {
+	// 	console.log(e)
+	// }
 }
 
 const sqlDelete = async (table=null, id) => {
-	const result = await excuteQuery({
-		query: `DELETE FROM ${table} WHERE Id=${id}`				
-	})
-	console.log('SPA DELETED :: ', id)
+	// const result = await excuteQuery({
+	// 	query: `DELETE FROM ${table} WHERE Id=${id}`				
+	// })
+	// console.log('SPA DELETED :: ', id)
 }
 
 /* - - - - - - - - - - */
 
 export const addSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
-	await sqlInsert('spas', item)
+	await sqlInsert('spa132', item)
 }
 
 export const updateSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
-	await sqlUpdate('spas', item)
+	await sqlUpdate('spa132', item)
 }
 
 export const deleteSPA = async (id) => {
-	await sqlDelete('spas', id)
+	await sqlDelete('spa132', id)
 }
