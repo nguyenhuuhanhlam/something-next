@@ -17,7 +17,7 @@ const getItem = async (id, entityTypeId) => {
 	const json = await res.json()
 	const { result:{item} } = json
 
-	// console.log('---->',item.categoryId)
+	console.log('---->',item)
 
 	const rebuild = {
 		Id: item.id,
