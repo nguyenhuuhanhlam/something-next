@@ -18,7 +18,8 @@ const getItem = async (id, entityTypeId) => {
 	const { result:{item} } = json
 
 	const rebuild = {
-		Id: item.id,
+		Id: id,
+		EntityType: entityTypeId,
 		Title: item.title,
 		CongTy: item[UFS[132]['CongTy']],
 		Stage: item.stageId,
@@ -41,7 +42,7 @@ const getItem = async (id, entityTypeId) => {
 		LNThucTeSauThue: ~~Number(item[UFS[132]['LNThucTeSauThue']])
 	}
 
-	return { rebuild, categoryId:item.categoryId }
+	return rebuild
 }
 
 const sqlInsert = async (table=null, item) => {
@@ -83,7 +84,9 @@ const sqlDelete = async (table=null, id) => {
 /* - - - - - - - - - - */
 
 export const addSPA = async (id, entityTypeId) => {
-	// const item = await getItem(id, entityTypeId)
+	const item = await getItem(id, entityTypeId)
+	await sqlInsert('spas', item)
+
 	// switch (entityTypeId) {
 	// 	case 132:
 	// 			switch (item.categoryId) {

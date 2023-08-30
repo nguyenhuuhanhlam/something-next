@@ -20,7 +20,6 @@ export async function POST (req) {
 					updateSPA(id, entityTypeId)
 				break
 			case 'ONCRMDYNAMICITEMDELETE':
-					console.log(params)
 					deleteSPA(id, entityTypeId)
 				break
 
