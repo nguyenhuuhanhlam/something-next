@@ -85,14 +85,14 @@ const sqlDelete = async (table=null, id) => {
 
 export const addSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
-	await sqlInsert('spa132', item)
+	await sqlInsert('spa_132_125', item)
 }
 
 export const updateSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
-	await sqlUpdate('spa132', item)
+	await sqlUpdate('spa_132_125', item)
 }
 
 export const deleteSPA = async (id) => {
-	await sqlDelete('spa132', id)
+	//await sqlDelete('spa_132_125', id)
 }
