@@ -17,8 +17,6 @@ const getItem = async (id, entityTypeId) => {
 	const json = await res.json()
 	const { result:{item} } = json
 
-	// console.log('---->',item)
-
 	const rebuild = {
 		Id: item.id,
 		Title: item.title,
@@ -28,6 +26,7 @@ const getItem = async (id, entityTypeId) => {
 		MovedDate: item.movedTime?.slice(0,10) ?? null,
 		NgayBaoCao: item[UFS[132]['NgayBaoCao']]?.slice(0,10) ?? null,
 		Responsible: item.assignedById,
+		Category: item.categoryId,
 		DoanhSoMucTieu: ~~Number(item[UFS[132]['DoanhSoMucTieu']]?.split('|')[0]),
 		DoanhThuMucTieu: ~~Number(item[UFS[132]['DoanhThuMucTieu']]?.split('|')[0]),
 		DinhPhiMucTieu: ~~Number(item[UFS[132]['DinhPhiMucTieu']]?.split('|')[0]),
@@ -84,29 +83,29 @@ const sqlDelete = async (table=null, id) => {
 /* - - - - - - - - - - */
 
 export const addSPA = async (id, entityTypeId) => {
-	const item = await getItem(id, entityTypeId)
-	switch (entityTypeId) {
-		case 132:
-				switch (item.categoryId) {
-					case 125:
-							await sqlInsert('spa132_125', item.rebuild)
-						break
-				}
-			break
-	}
+	// const item = await getItem(id, entityTypeId)
+	// switch (entityTypeId) {
+	// 	case 132:
+	// 			switch (item.categoryId) {
+	// 				case 125:
+	// 						await sqlInsert('spa132_125', item.rebuild)
+	// 					break
+	// 			}
+	// 		break
+	// }
 }
 
 export const updateSPA = async (id, entityTypeId) => {
-	const item = await getItem(id, entityTypeId)
-	switch (entityTypeId) {
-		case 132:
-				switch (item.categoryId) {
-					case 125:
-							await sqlUpdate('spa132_125', item.rebuild)
-						break
-				}
-			break
-	}
+	// const item = await getItem(id, entityTypeId)
+	// switch (entityTypeId) {
+	// 	case 132:
+	// 			switch (item.categoryId) {
+	// 				case 125:
+	// 						await sqlUpdate('spa132_125', item.rebuild)
+	// 					break
+	// 			}
+	// 		break
+	// }
 }
 
 export const deleteSPA = async (id, entityTypeId) => {
