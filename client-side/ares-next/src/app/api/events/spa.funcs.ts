@@ -17,7 +17,7 @@ const getItem = async (id, entityTypeId) => {
 	const json = await res.json()
 	const { result:{item} } = json
 
-	console.log('---->',item.categoryId)
+	// console.log('---->',item.categoryId)
 
 	const rebuild = {
 		Id: item.id,
@@ -42,7 +42,7 @@ const getItem = async (id, entityTypeId) => {
 		LNThucTeSauThue: ~~Number(item[UFS[132]['LNThucTeSauThue']]?.split('|')[0])
 	}
 
-	return rebuild
+	return { rebuild, categoryId:item.categoryId }
 }
 
 const sqlInsert = async (table=null, item) => {
@@ -87,7 +87,11 @@ export const addSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
 	switch (entityTypeId) {
 		case 132:
-				await sqlInsert('spa132_125',item)
+				switch (item.categoryId) {
+					case 125:
+							await sqlInsert('spa132_125', item.rebuild)
+						break
+				}
 			break
 	}
 }
@@ -96,8 +100,11 @@ export const updateSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
 	switch (entityTypeId) {
 		case 132:
-				await sqlUpdate('spa132_125',item)
-			// console.log(item)
+				switch (item.categoryId) {
+					case 125:
+							await sqlUpdate('spa132_125', item.rebuild)
+						break
+				}
 			break
 	}
 }
@@ -105,7 +112,11 @@ export const updateSPA = async (id, entityTypeId) => {
 export const deleteSPA = async (id, entityTypeId) => {
 	switch (entityTypeId) {
 		case 132:
-			await sqlDelete('spa132_125', id)
+			switch (item.categoryId) {
+					case 125:
+							await sqlDelete('spa132_125', item.rebuild)
+						break
+				}
 		break
 	}
 }
