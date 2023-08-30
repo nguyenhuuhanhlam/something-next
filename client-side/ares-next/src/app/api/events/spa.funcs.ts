@@ -56,7 +56,7 @@ const sqlInsert = async (table=null, item) => {
 		const e = JSON.stringify(result.error)
 		console.log(JSON.parse(e).sqlMessage)
 	} else
-		console.log('ADDED :: ', result)
+		console.log('SPA ADDED :: ', item.Id, item.EntityType)
 }
 
 const sqlUpdate = async (table=null, item) => {
@@ -68,7 +68,7 @@ const sqlUpdate = async (table=null, item) => {
 			values: Object.values(item)
 		})
 
-		console.log('UPDATED :: ', result)
+		console.log('SPA UPDATED :: ', item.Id, item.EntityType)
 	} catch (e) {
 		console.log(e)
 	}
@@ -78,7 +78,7 @@ const sqlDelete = async (table=null, id) => {
 	const result = await excuteQuery({
 		query: `DELETE FROM ${table} WHERE Id=${id}`				
 	})
-	console.log('DELETED :: ', result)
+	console.log('SPA DELETED :: ', id)
 }
 
 /* - - - - - - - - - - */
@@ -95,14 +95,4 @@ export const updateSPA = async (id, entityTypeId) => {
 
 export const deleteSPA = async (id) => {
 	await sqlDelete('spas', id)
-	// const item = await getItem(id, entityTypeId)
-	// switch (entityTypeId) {
-	// 	case 132:
-	// 		switch (item.categoryId) {
-	// 				case 125:
-	// 						await sqlDelete('spa132_125', id)
-	// 					break
-	// 			}
-	// 	break
-	// }
 }
