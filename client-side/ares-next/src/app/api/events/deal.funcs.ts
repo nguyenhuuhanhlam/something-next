@@ -15,6 +15,12 @@ const getItem = async (id) => {
 	)
 	json = await res.json()
 	const ufList = json.result
+		.reduce((acc, {FIELD_NAME, LIST})=>{
+			if (LIST)
+				acc[FIELD_NAME]=LIST
+			return acc
+		},{})
+
 
 	// 2.
 	res = await fetch(
@@ -39,18 +45,18 @@ const getItem = async (id) => {
 		Source: result.SOURCE_ID,
 		Amount: parseFloat(result.OPPORTUNITY),
 		Possible: Number(result[DEAL_UFS['Possible']]),
-		SalesObject: result[DEAL_UFS['SalesObject']],
-		BusinessSectors: result[DEAL_UFS['BusinessSectors']],
+		SalesObject: ufList[DEAL_UFS['SalesObject']].find(o=>o.ID==result[DEAL_UFS['SalesObject']])?.VALUE,
+		BusinessSectors: ufList[DEAL_UFS['BusinessSectors']].find(o=>o.ID==result[DEAL_UFS['BusinessSectors']])?.VALUE,
 		TargetDate: result[DEAL_UFS['TargetDate']]?.slice(0,10) || null,
-		Province: result[DEAL_UFS['Province']],
-		LostReasons: result[DEAL_UFS['LostReasons']],
+		Province: ufList[DEAL_UFS['Province']].find(o=>o.ID==result[DEAL_UFS['Province']])?.VALUE,
+		LostReasons: ufList[DEAL_UFS['LostReasons']].find(o=>o.ID==result[DEAL_UFS['LostReasons']])?.VALUE,
 		DeliveryDate: result[DEAL_UFS['DeliveryDate']]?.slice(0,10) || null,
 		Responsible: result.ASSIGNED_BY_ID,
 		FollowReasons: result[DEAL_UFS['FollowReasons']],
 		Company: result.COMPANY_ID
 	}
 
-	console.log(ufList[0],rebuild)
+	console.log(rebuild)
 
 	return null
 }
