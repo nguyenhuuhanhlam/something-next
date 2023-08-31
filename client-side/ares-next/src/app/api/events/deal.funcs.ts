@@ -93,7 +93,7 @@ const sqlDelete = async (table, id) => {
 	const result = await excuteQuery({
 		query: `DELETE FROM ${table} WHERE Id=${id}`				
 	})
-	console.log('EAL DELETED :: ', id)
+	console.log('DEAL DELETED :: ', id)
 }
 /* - - - - - - - - - - */
 
