@@ -51,17 +51,17 @@ const getItem = async (id) => {
 		Province: ufList[DEAL_UFS['Province']].find(o=>o.ID==result[DEAL_UFS['Province']])?.VALUE,
 		LostReasons: ufList[DEAL_UFS['LostReasons']].find(o=>o.ID==result[DEAL_UFS['LostReasons']])?.VALUE,
 		DeliveryDate: result[DEAL_UFS['DeliveryDate']]?.slice(0,10) || null,
-		Responsible: result.ASSIGNED_BY_ID,
-		FollowReasons: result[DEAL_UFS['FollowReasons']],
-		Company: result.COMPANY_ID
+		Responsible: Number(result.ASSIGNED_BY_ID),
+		FollowReasons: ufList[DEAL_UFS['FollowReasons']].find(o=>o.ID==result[DEAL_UFS['FollowReasons']])?.VALUE,
+		Company: Number(result.COMPANY_ID)
 	}
 
 	console.log(rebuild)
 
-	return null
+	return rebuild
 }
 
-const sqlInsert = async (table=null, item) => {
+const sqlInsert = async (table, item) => {
 	const result = await excuteQuery({
 		query: `INSERT INTO ${table}(${Object.keys(item)}) VALUES(${Object.keys(item).map(k=>'?').join()})`,
 		values: Object.values(item)
@@ -74,7 +74,7 @@ const sqlInsert = async (table=null, item) => {
 		console.log('DEAL ADDED :: ', item.Id)
 }
 
-const sqlUpdate = async (table=null, item) => {
+const sqlUpdate = async (table, item) => {
 	const sets = Object.keys(item).map(k=>k+'=?')
 
 	try {
@@ -89,20 +89,24 @@ const sqlUpdate = async (table=null, item) => {
 	}
 }
 
+const sqlDelete = async (table, id) => {
+	const result = await excuteQuery({
+		query: `DELETE FROM ${table} WHERE Id=${id}`				
+	})
+	console.log('EAL DELETED :: ', id)
+}
 /* - - - - - - - - - - */
 
 export const addDEAL = async (id) => {
 	const item = await getItem(id)
-	// console.log(item)
-	// await sqlInsert(`deal_${item.Category}`, item)
+	await sqlInsert(`deal_${item.Category}`, item)
 }
 
 export const updateDEAL = async (id) => {
 	const item = await getItem(id)
-	// console.log(item)
-	// await sqlUpdate(`deal_${item.Category}`, item)
+	await sqlUpdate(`deal_${item.Category}`, item)
 }
 
 export const deleteDEAL = async (id) => {
-	// await sqlDelete('deal_0', id)
+	await sqlDelete('deal_0', id)
 }
