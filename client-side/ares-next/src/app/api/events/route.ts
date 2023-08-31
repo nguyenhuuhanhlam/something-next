@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { addSPA, updateSPA, deleteSPA } from './spa.funcs.ts'
+import { addSPA, updateSPA, deleteSPA } from './spa.funcs'
+import { updateDeal } from './deal.funcs'
 
 export async function POST (req) {
 
@@ -7,8 +8,8 @@ export async function POST (req) {
 		const form = await req.formData()
 		const params = Object.fromEntries(form)
 
-		const id = parseInt(params['data[FIELDS][ID]'])
-		const entityTypeId = parseInt(params['data[FIELDS][ENTITY_TYPE_ID]'])
+		const id = parseInt(params['data[FIELDS][ID]']) /* DEAL, SPA */
+		const entityTypeId = parseInt(params['data[FIELDS][ENTITY_TYPE_ID]']) /* SPA */
 
 		switch(params.event) {
 
@@ -27,7 +28,7 @@ export async function POST (req) {
 			case 'ONCRMDEALADD':
 				break
 			case 'ONCRMDEALUPDATE':
-				console.log('ONCRMDEALUPDATE : ', params)
+				updateDeal(id)
 				break
 		}
 
@@ -36,4 +37,4 @@ export async function POST (req) {
 	}
 	
 	return NextResponse.json({ events:true })
-} 
+}
