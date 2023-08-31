@@ -2,9 +2,23 @@ import excuteQuery from '@/lib/db.ts'
 import { DEAL_UFS } from '@/constants'
 const APP_URL = process.env.NEXT_PUBLIC_URL
 
+/* - - - - - - - - - - */
+
 const getItem = async (id) => {
-	const res = await fetch(
-		`${APP_URL}/api/btx.crm.deal.get`,
+
+	let res, json
+	
+	// 1.
+	res = await fetch(
+		`${ APP_URL }/api/btx.crm.deal.userfield.list`,
+		{ method:'POST', headers:{'Content-Type':'application/json'} }
+	)
+	json = await res.json()
+	const ufList = json.result
+
+	// 2.
+	res = await fetch(
+		`${ APP_URL }/api/btx.crm.deal.get`,
 		{
 			method:'POST',
 			headers:{'Content-Type':'application/json'},
@@ -12,7 +26,7 @@ const getItem = async (id) => {
 		}
 	)
 
-	const json = await res.json()
+	json = await res.json()
 	const { result } = json
 
 	const rebuild = {
@@ -30,16 +44,59 @@ const getItem = async (id) => {
 		TargetDate: result[DEAL_UFS['TargetDate']]?.slice(0,10) || null,
 		Province: result[DEAL_UFS['Province']],
 		LostReasons: result[DEAL_UFS['LostReasons']],
-		DeliveryDate: result[DEAL_UFS['DeliveryDate']],
+		DeliveryDate: result[DEAL_UFS['DeliveryDate']]?.slice(0,10) || null,
 		Responsible: result.ASSIGNED_BY_ID,
 		FollowReasons: result[DEAL_UFS['FollowReasons']],
 		Company: result.COMPANY_ID
 	}
 
-	return rebuild
+	console.log(ufList[0],rebuild)
+
+	return null
 }
 
-export const updateDeal = async (id) => {
+const sqlInsert = async (table=null, item) => {
+	const result = await excuteQuery({
+		query: `INSERT INTO ${table}(${Object.keys(item)}) VALUES(${Object.keys(item).map(k=>'?').join()})`,
+		values: Object.values(item)
+	})
+
+	if (result?.error) {
+		const e = JSON.stringify(result.error)
+		console.log(JSON.parse(e).sqlMessage)
+	} else
+		console.log('DEAL ADDED :: ', item.Id)
+}
+
+const sqlUpdate = async (table=null, item) => {
+	const sets = Object.keys(item).map(k=>k+'=?')
+
+	try {
+		const result = await excuteQuery({
+			query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
+			values: Object.values(item)
+		})
+
+		console.log('DEAL UPDATED :: ', item.Id)
+	} catch (e) {
+		console.log(e)
+	}
+}
+
+/* - - - - - - - - - - */
+
+export const addDEAL = async (id) => {
 	const item = await getItem(id)
-	console.log(item)
+	// console.log(item)
+	// await sqlInsert(`deal_${item.Category}`, item)
+}
+
+export const updateDEAL = async (id) => {
+	const item = await getItem(id)
+	// console.log(item)
+	// await sqlUpdate(`deal_${item.Category}`, item)
+}
+
+export const deleteDEAL = async (id) => {
+	// await sqlDelete('deal_0', id)
 }

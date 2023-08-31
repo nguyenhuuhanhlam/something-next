@@ -1,9 +1,18 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { addSPA, updateSPA, deleteSPA } from './spa.funcs'
-import { updateDeal } from './deal.funcs'
+import {
+	NextRequest,
+	NextResponse } from 'next/server'
+import {
+	addSPA,
+	updateSPA,
+	deleteSPA } from './spa.funcs'
+import {
+	addDEAL,
+	updateDEAL,
+	deleteDEAL } from './deal.funcs'
+
+/* - - - - - - - - - - */
 
 export async function POST (req) {
-
 	try {
 		const form = await req.formData()
 		const params = Object.fromEntries(form)
@@ -26,9 +35,13 @@ export async function POST (req) {
 
 			/* LEAD */
 			case 'ONCRMDEALADD':
+					addDEAL(id)
 				break
 			case 'ONCRMDEALUPDATE':
-				updateDeal(id)
+					updateDEAL(id)
+				break
+			case 'ONCRMDEALDELETE':
+					deleteDEAL(id)
 				break
 		}
 

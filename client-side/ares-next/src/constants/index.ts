@@ -53,6 +53,8 @@ export const SPA_STAGES = {
 	'DT132_125:SUCCESS': 'Hoàn thành'
 }
 
+/* - - - - - - - - - - */
+
 export const DEAL_UFS = {
 	Possible: 'UF_CRM_1661152152',
 	SalesObject: 'UF_CRM_1667981442',
