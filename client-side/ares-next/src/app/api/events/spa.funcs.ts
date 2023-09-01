@@ -6,7 +6,7 @@ const APP_URL = process.env.NEXT_PUBLIC_URL
 
 const getItem = async (id, entityTypeId) => {
 	const res = await fetch(
-		APP_URL + '/api/btx.crm.item.get',
+		APP_URL + '/api/btx/crm.item.get',
 		{
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },

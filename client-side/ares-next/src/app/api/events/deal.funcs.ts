@@ -10,7 +10,7 @@ const getItem = async (id) => {
 	
 	// 1.
 	res = await fetch(
-		`${ APP_URL }/api/btx.crm.deal.userfield.list`,
+		`${ APP_URL }/api/btx/crm.deal.userfield.list`,
 		{ method:'POST', headers:{'Content-Type':'application/json'} }
 	)
 	json = await res.json()
@@ -24,7 +24,7 @@ const getItem = async (id) => {
 
 	// 2.
 	res = await fetch(
-		`${ APP_URL }/api/btx.crm.deal.get`,
+		`${ APP_URL }/api/btx/crm.deal.get`,
 		{
 			method:'POST',
 			headers:{'Content-Type':'application/json'},

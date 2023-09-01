@@ -31,8 +31,8 @@ export default function UsersTab () {
 
 		const fetchData = async () => {
 
-			const {data:{ departmentList }} = await axios.post('/api/btx.department.get')
-			const {data:{ users }} = await axios.post('/api/btx.user.get')
+			const {data:{ departmentList }} = await axios.post('/api/btx/department.get')
+			const {data:{ users }} = await axios.post('/api/btx/user.get')
 
 			setData({
 				result: users.map(v=>{
