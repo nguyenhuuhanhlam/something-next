@@ -56,7 +56,7 @@ const getItem = async (id) => {
 		Company: Number(result.COMPANY_ID)
 	}
 
-	console.log(rebuild)
+	// console.log(rebuild)
 
 	return rebuild
 }
