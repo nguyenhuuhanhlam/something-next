@@ -123,6 +123,12 @@ export async function POST (req) {
 			Province: v[DEAL_UFS.Province]
 				? '"'+uf_list[DEAL_UFS.Province].find(o=>o.ID==v[DEAL_UFS.Province]).VALUE+'"'
 				: 'NULL',
+			SalesObject: v[DEAL_UFS.SalesObject]
+				? '"'+uf_list[DEAL_UFS.SalesObject].find(o=>o.ID==v[DEAL_UFS.SalesObject]).VALUE+'"'
+				: 'NULL',
+			TargetDate: v[DEAL_UFS.TargetDate]
+				? '"'+v[DEAL_UFS.TargetDate].slice(0,10)+'"'
+				: 'NULL',
 		} 
 
 		sql_values.push(`
@@ -140,8 +146,9 @@ export async function POST (req) {
 			${rebuild.DeliveryDate},
 			${rebuild.FollowReasons},
 			${rebuild.LostReasons},
-			${rebuild.Province}
-			)`
+			${rebuild.Province},
+			${rebuild.SalesObject},
+			${rebuild.TargetDate})`
 		)
 	})
 
