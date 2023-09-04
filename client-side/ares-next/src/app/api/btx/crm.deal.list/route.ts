@@ -83,27 +83,6 @@ export async function POST (req) {
 			return acc
 		},{})
 
-	// const rebuild = {
-	// 	Id: id,
-	// 	Title: result.TITLE,
-	// 	Category: Number(result.CATEGORY_ID),
-	// 	Stage: result.STAGE_ID,
-	// 	CloseDate: result.CLOSEDATE?.slice(0,10) || null,
-	// 	CreateDate: result.DATE_CREATE?.slice(0,10) || null,
-	// 	Source: result.SOURCE_ID,
-	// 	Amount: parseFloat(result.OPPORTUNITY),
-	// 	Possible: Number(result[DEAL_UFS['Possible']]),
-	// 	SalesObject: ufList[DEAL_UFS['SalesObject']].find(o=>o.ID==result[DEAL_UFS['SalesObject']])?.VALUE,
-	// 	BusinessSectors: ufList[DEAL_UFS['BusinessSectors']].find(o=>o.ID==result[DEAL_UFS['BusinessSectors']])?.VALUE,
-	// 	TargetDate: result[DEAL_UFS['TargetDate']]?.slice(0,10) || null,
-	// 	Province: ufList[DEAL_UFS['Province']].find(o=>o.ID==result[DEAL_UFS['Province']])?.VALUE,
-	// 	LostReasons: ufList[DEAL_UFS['LostReasons']].find(o=>o.ID==result[DEAL_UFS['LostReasons']])?.VALUE,
-	// 	DeliveryDate: result[DEAL_UFS['DeliveryDate']]?.slice(0,10) || null,
-	// 	Responsible: Number(result.ASSIGNED_BY_ID),
-	// 	FollowReasons: ufList[DEAL_UFS['FollowReasons']].find(o=>o.ID==result[DEAL_UFS['FollowReasons']])?.VALUE,
-	// 	Company: Number(result.COMPANY_ID)
-	// }
-
 
 	let sql_values = []
 	all.map(v => {
