@@ -1,6 +1,7 @@
 import {
 	NextRequest,
 	NextResponse } from 'next/server'
+import fs from 'fs'
 
 import { DEAL_UFS } from '@/constants'
 
@@ -88,8 +89,18 @@ export async function POST (req) {
 	all.map(v => {
 
 		const rebuild ={
-			CLOSEDATE: v.CLOSEDATE ? '"'+v.CLOSEDATE.slice(0,10)+'"' : 'NULL',
-			DATE_CREATE: v.DATE_CREATE ? '"'+v.DATE_CREATE.slice(0,10)+'"' : 'NULL',
+			CloseDate: v.CLOSEDATE
+				? '"'+v.CLOSEDATE.slice(0,10)+'"'
+				: 'NULL',
+			CreateDate: v.DATE_CREATE
+				? '"'+v.DATE_CREATE.slice(0,10)+'"'
+				: 'NULL',
+			Source: v.SOURCE_ID
+				? '"'+v.SOURCE_ID+'"'
+				: 'NULL',
+			Stage: v.STAGE_ID
+				? '"'+v.STAGE_ID+'"'
+				: 'NULL',
 			DeliveryDate: v[DEAL_UFS.DeliveryDate]
 				? '"'+v[DEAL_UFS.DeliveryDate].slice(0,10)+'"'
 				: 'NULL',
@@ -114,12 +125,12 @@ export async function POST (req) {
 			(${v.ID},
 			${v.ASSIGNED_BY_ID},
 			${v.CATEGORY_ID},
-			${rebuild.CLOSEDATE},
+			${rebuild.CloseDate},
 			${Number(v.COMPANY_ID)},
-			${rebuild.DATE_CREATE},
+			${rebuild.CreateDate},
 			${parseFloat(v.OPPORTUNITY)},
-			${v.SOURCE_ID},
-			"${v.STAGE_ID}",
+			${rebuild.Source},
+			${rebuild.Stage},
 			"${v.TITLE}",
 			"${uf_list[DEAL_UFS.BusinessSectors].find(o=>o.ID==v[DEAL_UFS.BusinessSectors])?.VALUE}",
 			${rebuild.DeliveryDate},
@@ -131,7 +142,12 @@ export async function POST (req) {
 		)
 	})
 
-	console.log(sql_values[0])
+	const txt = 'INSERT INTO deal_0(Id,Responsible,Category,CloseDate,Company,CreateDate,Amount,Source,Stage,Title,BusinessSectors,DeliveryDate,FollowReasons,LostReasons,Province,SalesObject,TargetDate) VALUES' + sql_values.join()
+
+	fs.writeFile('/devs/uploads/deal_0.sql',txt,err=>{
+		if (err) console.log(err)
+		else console.log('OK')
+	})
 
 	/* END */
 
