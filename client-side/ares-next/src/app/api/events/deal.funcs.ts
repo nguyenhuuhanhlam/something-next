@@ -99,14 +99,14 @@ const sqlDelete = async (table, id) => {
 
 export const addDEAL = async (id) => {
 	const item = await getItem(id)
-	await sqlInsert(`deal_${item.Category}`, item)
+	await sqlInsert('deals', item)
 }
 
 export const updateDEAL = async (id) => {
 	const item = await getItem(id)
-	await sqlUpdate(`deal_${item.Category}`, item)
+	await sqlUpdate('deals', item)
 }
 
 export const deleteDEAL = async (id) => {
-	await sqlDelete('deal_0', id)
+	await sqlDelete('deals', id)
 }
