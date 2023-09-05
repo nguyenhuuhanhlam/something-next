@@ -110,6 +110,9 @@ export async function POST (req) {
 			LostReasons: v[DEAL_UFS.LostReasons]
 				? '"'+uf_list[DEAL_UFS.LostReasons].find(o=>o.ID==v[DEAL_UFS.LostReasons]).VALUE+'"'
 				: 'NULL',
+			Possible: v[DEAL_UFS.Possible]
+				? 1
+				: 'NULL',
 			Province: v[DEAL_UFS.Province]
 				? '"'+uf_list[DEAL_UFS.Province].find(o=>o.ID==v[DEAL_UFS.Province]).VALUE+'"'
 				: 'NULL',
@@ -122,29 +125,23 @@ export async function POST (req) {
 		} 
 
 		sql_values.push(`
-			(${v.ID},
-			${v.ASSIGNED_BY_ID},
-			${v.CATEGORY_ID},
-			${rebuild.CloseDate},
-			${Number(v.COMPANY_ID)},
-			${rebuild.CreateDate},
-			${parseFloat(v.OPPORTUNITY)},
-			${rebuild.Source},
-			${rebuild.Stage},
-			"${v.TITLE}",
+			(${v.ID},${v.ASSIGNED_BY_ID},${v.CATEGORY_ID},${rebuild.CloseDate},
+			${Number(v.COMPANY_ID)},${rebuild.CreateDate},${parseFloat(v.OPPORTUNITY)},
+			${rebuild.Source},${rebuild.Stage},"${v.TITLE}",
 			"${uf_list[DEAL_UFS.BusinessSectors].find(o=>o.ID==v[DEAL_UFS.BusinessSectors])?.VALUE}",
 			${rebuild.DeliveryDate},
 			${rebuild.FollowReasons},
 			${rebuild.LostReasons},
+			${rebuild.Possible},
 			${rebuild.Province},
 			${rebuild.SalesObject},
 			${rebuild.TargetDate})`
 		)
 	})
 
-	const txt = 'INSERT INTO deal_0(Id,Responsible,Category,CloseDate,Company,CreateDate,Amount,Source,Stage,Title,BusinessSectors,DeliveryDate,FollowReasons,LostReasons,Province,SalesObject,TargetDate) VALUES' + sql_values.join()
+	const txt = 'INSERT INTO deals(Id,Responsible,Category,CloseDate,Company,CreateDate,Amount,Source,Stage,Title,BusinessSectors,DeliveryDate,FollowReasons,LostReasons,Possible,Province,SalesObject,TargetDate) VALUES' + sql_values.join()
 
-	fs.writeFile('/devs/uploads/deal_0.sql',txt,err=>{
+	fs.writeFile('/devs/uploads/deals.sql',txt,err=>{
 		if (err) console.log(err)
 		else console.log('OK')
 	})
