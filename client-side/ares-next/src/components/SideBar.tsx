@@ -6,8 +6,11 @@ export const SideBar = (props) => {
 
 	const fields = {
 		dataSource: props?.items,
-
-		id:'id', text:'name', child:'subChild', imageUrl:'image', iconCss: 'icon'
+		id: 'id',
+		text: 'name',
+		child: 'subChild',
+		imageUrl: 'image',
+		iconCss: 'icon',
 	}
 
 	return (

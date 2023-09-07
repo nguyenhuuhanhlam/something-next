@@ -5,6 +5,8 @@ import { useRef, useState } from 'react'
 import { registerLicense } from '@syncfusion/ej2-base'
 import { SidebarComponent } from '@syncfusion/ej2-react-navigations'
 
+registerLicense('Ngo9BigBOggjHTQxAR8/V1NGaF1cWGhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdEZjUX9fcXZRQGRcUUN/Wg==')
+
 import { AppContextProvider } from '@/contexts/app.context'
 import { AppBar } from '../components/AppBar'
 import { SideBar } from '../components/SideBar'
@@ -18,23 +20,21 @@ import '@/../node_modules/@syncfusion/ej2-buttons/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-react-grids/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-inputs/styles/material.css'
 import '@/../node_modules/@syncfusion/ej2-dropdowns/styles/material.css'
-
 import './globals.css'
 
-registerLicense('Ngo9BigBOggjHTQxAR8/V1NGaF1cWGhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdEZjUX9fcXZRQGRcUUN/Wg==')
-
-export default function RootLayout({children}:{children:React.ReactNode}) {
+export default function RootLayout({children}) {
 	
 	const router = useRouter()
 	let sidebar = useRef<SidebarComponent>(null)
 	const menuItems = []
 
-	const handleMenuClick = () => {
-		sidebar.current.toggle()
-	}
+	const handleMenuClick = () => sidebar.current.toggle()
 	const handleItemClick = (link) => router.replace(link.href)
 
 	const handleSideItemSelected = (e) => {
+
+		console.log(e)
+		
 		const { nodeData:{id} } = e
 		
 		switch (id) {
@@ -43,7 +43,7 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
 			break
 
 		case 'applink-ebook':
-				console.log('---->EBOOK')
+				window.location.href = 'http://ebook.aresen.vn:8088'
 			break
 
 			case 'btx-users':
