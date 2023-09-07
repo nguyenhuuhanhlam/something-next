@@ -4,12 +4,12 @@ export const appConfig = {
 }
 
 export const sidemenuData = [
-	{ id:'home', name:'HOME', tooltip:'heloo there' },
+	{ id:'home', name:'HOME' },
 	
 	{	id:'applinks', name:'APP LINKS',
 		subChild:[
-			{ id:'applink-ebook', name:'E-Book', image:'/ebook-icon.svg'},
-			{ id:'applink-nas', name:'NAS Synology', image:'/nas-synology-icon.svg'  },
+			{ id:'applink-ebook', name:'E-Book', image:'/ebook-icon.svg' },
+			{ id:'applink-nas', name:'NAS Synology', image:'/nas-synology-icon.svg', navigateUrl:'http://drive.aresen.vn' },
 			{ id:'applink-drive', name:'Drive', image:'/nas-drive-icon.svg' },
 			{ id:'applink-superset', name:'Superset', image:'/superset-icon.svg' },
 			{ id:'applink-bitrix', name:'Bitrix24', image:'/bitrix24-icon.svg' },
