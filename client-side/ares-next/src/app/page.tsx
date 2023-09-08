@@ -40,8 +40,10 @@ export default function HomePage() {
 				<AppIconLink text="NAS Cloud" icon="/nas-synology-icon.svg" href="http://cloud.aresen.vn" />
 				<AppIconLink text="Superset" icon="/superset-icon.svg" href="http://115.75.90.30:8888" />
 				<AppIconLink text="Bitrix24" icon="/bitrix24-icon.svg" href="https://aresen.bitrix24.com" />
-				<AppIconLink text="N8N" icon="/n8n-icon.svg" href="http://115.75.90.30:5678" />
 				<AppIconLink text="Miro" icon="/miro-icon.svg" href="https://miro.com" />
+			</div>
+			<div className="app-icons my-5">				
+				<AppIconLink text="N8N" icon="/n8n-icon.svg" href="http://115.75.90.30:5678" />
 			</div>
 		</div>
 	)

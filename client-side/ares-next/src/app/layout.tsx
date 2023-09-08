@@ -33,22 +33,16 @@ export default function RootLayout({children}) {
 
 	const handleSideItemSelected = (e) => {
 
-		console.log(e)
-		
 		const { nodeData:{id} } = e
 		
 		switch (id) {
 			case 'home':
-				router.replace('/')
-			break
-
-		case 'applink-ebook':
-				window.location.href = 'http://ebook.aresen.vn:8088'
-			break
+					router.replace('/')
+				break		
 
 			case 'btx-users':
-				router.replace('/btx-helpers/users')
-			break
+					router.replace('/btx-helpers/users')
+				break
 		}
 	}
 
