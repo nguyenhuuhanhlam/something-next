@@ -22,6 +22,11 @@ export async function POST (req) {
 
 		switch(params.event) {
 
+			/* USER */
+			case 'ONUSERADD':
+				
+				break
+
 			/* SPA */
 			case 'ONCRMDYNAMICITEMADD':
 					addSPA(id, entityTypeId)
