@@ -1,15 +1,16 @@
-import { NextRequest, NextResponse } from 'next/server'
+import {
+	NextRequest,
+	NextResponse } from 'next/server'
 
 export async function POST (req:NextRequest) {
 	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
 
 	let all = []
-	let options = { ACTIVE: true }
+	let options = {} // ACTIVE: true 
 
 	// 1
 	const res = await fetch(
-		`${ BITRIX_ENDPOINT }/user.get`,
-		{
+		`${ BITRIX_ENDPOINT }/user.get`, {
 			method:'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body:JSON.stringify(options)
@@ -28,8 +29,7 @@ export async function POST (req:NextRequest) {
 	if (next) {
 		for (let i=1; i<=Math.floor(total/page_size); i++) {
 			const res = await fetch(
-				`${ BITRIX_ENDPOINT }/user.get`,
-				{
+				`${ BITRIX_ENDPOINT }/user.get`, {
 					method:'POST',
 					headers: { 'Content-Type': 'application/json' },
 					body:JSON.stringify({ ...options, start: i*page_size })
