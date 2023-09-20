@@ -43,6 +43,9 @@ export async function POST (req:NextRequest) {
 		)
 	})
 
+	const del_result = await excuteQuery({ query: 'DELETE FROM users_copy' })
+	const ins_result = await excuteQuery({})
+
 	console.log(sql_values.join())
 
 	return NextResponse.json({ overwrite: true })
