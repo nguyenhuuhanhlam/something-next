@@ -16,6 +16,7 @@ export default async function excuteQuery({ query, values }) {
 		await db.end()
 		return results
 	} catch (error) {
+		console.log('db::errors: ',error)
 		return { error }
 	}
 }

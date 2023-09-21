@@ -43,42 +43,27 @@ export async function POST (req:NextRequest) {
 		)
 	})
 
-	const del_result = await excuteQuery({ query: 'DELETE FROM users_copy' })
-	const ins_result = await excuteQuery({})
+	const q =
+		`INSERT INTO users(
+				Id,
+				Active,
+				Email,
+				UserName,
+				LastName,
+				SecondName,
+				Birthday,
+				Mobile,
+				Phone,
+				Position,
+				Department)
+		VALUES ${sql_values.join()}`
 
-	console.log(sql_values.join())
+	const del_result = await excuteQuery({ query: 'DELETE FROM users' })
+	const ins_result = await excuteQuery({
+		query: q.replace(/(\r\n|\n|\r|\t)/gm,'')
+	})
+
+	/* END.SQL */
 
 	return NextResponse.json({ overwrite: true })
 }
-
-/*
-{
-"ID": "11",
-"XML_ID": "38262651",
-"ACTIVE": true,
-"NAME": "ARES",
-"LAST_NAME": "Admin",
-"SECOND_NAME": "",
-"EMAIL": "admin@aresen.vn",
-"LAST_LOGIN": "2023-09-19T03:34:04+03:00",
-"DATE_REGISTER": "2022-02-19T03:00:00+03:00",
-"TIME_ZONE": "",
-"IS_ONLINE": "Y",
-"TIME_ZONE_OFFSET": "14400",
-"TIMESTAMP_X": {},
-"LAST_ACTIVITY_DATE": {},
-"PERSONAL_GENDER": "",
-"PERSONAL_WWW": "",
-"PERSONAL_BIRTHDAY": "2003-10-28T03:00:00+03:00",
-"PERSONAL_PHOTO": "https://cdn.bitrix24.com/b20600929/main/3e8/3e89afd6d67f953b13187cae0a6a0841/Artboard 8 copy 3.png",
-"PERSONAL_MOBILE": "",
-"PERSONAL_CITY": "",
-"WORK_PHONE": "",
-"WORK_POSITION": "Quản trị hệ thống",
-"UF_EMPLOYMENT_DATE": "2003-10-28T03:00:00+03:00",
-"UF_DEPARTMENT": [
-    69
-],
-"USER_TYPE": "employee"
-}
-*/
