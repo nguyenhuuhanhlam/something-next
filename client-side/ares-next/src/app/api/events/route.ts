@@ -38,7 +38,7 @@ export async function POST (req) {
 					deleteSPA(id)
 				break
 
-			/* LEAD */
+			/* DEAL */
 			case 'ONCRMDEALADD':
 					addDEAL(id)
 				break
@@ -47,6 +47,17 @@ export async function POST (req) {
 				break
 			case 'ONCRMDEALDELETE':
 					deleteDEAL(id)
+				break
+
+			/* LEAD */
+			case 'ONCRMLEADADD':
+					console.log('EVENT::LEAD:ADD: ', id)
+				break
+			case 'ONCRMLEADUPDATE':
+					console.log('EVENT::LEAD:UPDATE: ', id)
+				break
+			case 'ONCRMLEADDELETE':
+					console.log('EVENT::LEAD:DELETE: ', id)
 				break
 		}
 
