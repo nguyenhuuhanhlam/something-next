@@ -89,7 +89,13 @@ export const addSPA = async (id, entityTypeId) => {
 
 export const updateSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
-	await sqlUpdate(`spa_${entityTypeId}_${item.Category}`, item)
+
+	const _table = `spa_${entityTypeId}_${item.Category}`
+
+	if (_table=='spa_132_125')
+		await sqlUpdate(_table, item)
+	else
+		console.log('NOT YET PROGRAMMING FOR THIS SPA : ', _table)
 }
 
 export const deleteSPA = async (id) => {
