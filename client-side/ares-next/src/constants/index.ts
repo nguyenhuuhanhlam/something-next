@@ -73,3 +73,7 @@ export const DEAL_UFS = {
 	DIFFERENTIAL_COST: 'UF_CRM_1657269475429',
 	DeliveryDate: 'UF_CRM_1657945039'
 }
+
+export const LEAD_UFS = {
+
+}
