@@ -26,6 +26,10 @@
     },
     "ProjectCode": {
       "type": "string"
+    },
+    "Group": {
+      "type": "string",
+      "maxLength": 3
     }
   }
 }
