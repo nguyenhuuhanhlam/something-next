@@ -2,28 +2,17 @@ import {
 	NextRequest,
 	NextResponse } from 'next/server'
 
-import { LEAD_UFS } from '@/constants'
-
 /* - - - - - - - - - - */
 
 export async function POST (req) {
 
 	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
 	let all = []
-	let options = {
-		select: [
-			'ID','TITLE','STATUS_ID','SOURCE_ID','OPPORTUNITY',
-			'DATE_CREATE','DATE_CLOSED','ASSIGNED_BY_ID',
-			LEAD_UFS.BusinessSectors, LEAD_UFS.ConvertDate,
-			LEAD_UFS.FollowReasons, LEAD_UFS.FailedReasons,
-			LEAD_UFS.Province, LEAD_UFS.Account, LEAD_UFS.SalesType, LEAD_UFS.SalesObject
-		],
-		start: 0
-	}
+	let options = { select: ['ID','TITLE'],	start: 0 }
 
 	// 1.
 	const res = await fetch(
-		`${ BITRIX_ENDPOINT }/crm.lead.list`,
+		`${ BITRIX_ENDPOINT }/crm.company.list`,
 		{
 			method:'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -41,7 +30,7 @@ export async function POST (req) {
 	if (next) {
 		for (let i=1; i<=Math.floor(total/page_size); i++) {
 			const res = await fetch(
-				`${ BITRIX_ENDPOINT }/crm.lead.list`,
+				`${ BITRIX_ENDPOINT }/crm.company.list`,
 				{
 					method:'POST',
 					headers: { 'Content-Type': 'application/json' },
@@ -55,5 +44,5 @@ export async function POST (req) {
 		}
 	}
 
-	return NextResponse.json({ leads:all })
+	return NextResponse.json({ companies:all })
 }
