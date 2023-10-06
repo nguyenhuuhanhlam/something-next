@@ -29,4 +29,4 @@ export const updateLEAD = async (id) => {
 
 	console.log('updateLEAD::',item.ID,' : ',item.TITLE)
 	//await sqlUpdate('deals', item)
-}
+} // TEST
