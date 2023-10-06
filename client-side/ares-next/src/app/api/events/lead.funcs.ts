@@ -27,6 +27,6 @@ const getItem = async (id) => {
 export const updateLEAD = async (id) => {
 	const item = await getItem(id)
 
-	console.log('updateLEAD::',item)
+	console.log('updateLEAD::',item.ID,' : ',item.TITLE)
 	//await sqlUpdate('deals', item)
 }
