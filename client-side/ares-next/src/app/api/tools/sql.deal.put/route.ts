@@ -33,16 +33,16 @@ export async function POST (req:NextRequest) {
 			CloseDate: v.CLOSEDATE,
 			CreateDate: v.DATE_CREATE,
 			Source: v.SOURCE_ID,
-			Amount: v.OPPORTUNITY,
+			Amount: parseFloat(v.OPPORTUNITY),
 			Possible: v[DEAL_UFS.Possible],
-			SalesObject:
-			BusinessSectors:
-			TargetDate:
-			Province:
-			LostReasons:
-			DeliveryDate:
-			Responsible:
-			FollowReasons:
+			SalesObject: v[DEAL_UFS.SalesObject],
+			BusinessSectors: v[DEAL_UFS.BusinessSectors],
+			TargetDate: v[DEAL_UFS.TargetDate],
+			Province: v[DEAL_UFS.Province],
+			LostReasons: v[DEAL_UFS.LostReasons],
+			DeliveryDate: v[DEAL_UFS.DeliveryDate],
+			Responsible: v[DEAL_UFS.Responsible],
+			FollowReasons: v[DEAL_UFS.FollowReasons]
 		}
 
 		sql_values.push(rebuild)
