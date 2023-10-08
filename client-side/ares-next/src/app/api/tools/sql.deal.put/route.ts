@@ -37,39 +37,37 @@ export async function POST (req:NextRequest) {
 		const r = {
 			Id: parseInt(v.ID),
 			Title: '"'+ v.TITLE +'"',
-			Responsible: parseInt(v.ASSIGNED_BY_ID),
+			Responsible: parseInt(v.ASSIGNED_BY_ID) || 0,
 			Category: parseInt(v.CATEGORY_ID),
-			Company: parseInt(v.COMPANY_ID),
+			Company: parseInt(v.COMPANY_ID) || 0,
 			Stage: v.STAGE_ID ? '"'+ v.STAGE_ID +'"' : 'NULL',
 			CloseDate: v.CLOSEDATE ? '"'+ v.CLOSEDATE.slice(0,10) +'"' : 'NULL',
 			CreateDate: v.DATE_CREATE ? '"'+ v.DATE_CREATE.slice(0,10) +'"' : 'NULL',
 			Source: v.SOURCE_ID ? '"'+ v.SOURCE_ID +'"' : 'NULL',
-			Amount: parseFloat(v.OPPORTUNITY),
-			Possible: v[DEAL_UFS.Possible],
-			SalesObject: parseInt(v[DEAL_UFS.SalesObject]),
-			BusinessSectors: parseInt(v[DEAL_UFS.BusinessSectors]),
-			TargetDate: v[DEAL_UFS.TargetDate],
-			Province: parseInt(v[DEAL_UFS.Province]),
-			LostReasons: v[DEAL_UFS.LostReasons],
-			DeliveryDate: v[DEAL_UFS.DeliveryDate] ? '"'+ v[DEAL_UFS.DeliveryDate] +'"' : 'NULL',
-			FollowReasons: v[DEAL_UFS.FollowReasons]
+			Amount: parseFloat(v.OPPORTUNITY) || 0,
+			Possible: v[DEAL_UFS.Possible] ? 1 : 'NULL',
+			SalesObject: v[DEAL_UFS.SalesObject] ? '"'+ list_UF[DEAL_UFS.SalesObject].find(o=>o.ID==v[DEAL_UFS.SalesObject]).VALUE +'"' : 'NULL',
+			BusinessSectors: v[DEAL_UFS.BusinessSectors] ? '"'+ list_UF[DEAL_UFS.BusinessSectors].find(o=>o.ID==v[DEAL_UFS.BusinessSectors]).VALUE +'"' : 'NULL',
+			TargetDate: v[DEAL_UFS.TargetDate] ? '"'+ v[DEAL_UFS.TargetDate].slice(0,10) +'"' : 'NULL',
+			Province: v[DEAL_UFS.Province] ? '"'+ list_UF[DEAL_UFS.Province].find(o=>o.ID==v[DEAL_UFS.Province]).VALUE +'"' : 'NULL',
+			LostReasons: v[DEAL_UFS.LostReasons] ? '"'+ list_UF[DEAL_UFS.LostReasons].find(o=>o.ID==v[DEAL_UFS.LostReasons]).VALUE +'"' : 'NULL',
+			DeliveryDate: v[DEAL_UFS.DeliveryDate] ? '"'+ v[DEAL_UFS.DeliveryDate].slice(0,10) +'"' : 'NULL',
+			FollowReasons: v[DEAL_UFS.FollowReasons] ? '"'+ list_UF[DEAL_UFS.FollowReasons].find(o=>o.ID==v[DEAL_UFS.FollowReasons]).VALUE +'"' : 'NULL'
 		}
 
 		sql_values.push(`
 			(${r.Id},${r.Title},${r.Responsible},
 			${r.Category},${r.Company},${r.Stage},${r.CloseDate},${r.CreateDate},${r.Source},
 			${r.Amount},${r.Possible},${r.SalesObject},${r.BusinessSectors},${r.TargetDate},
-			${r.Province},${r.LostReasons},${r.DeliveryDate},${r.FollowReasons})`
-			.replace(/(\r\n|\n|\r|\t)/gm,'')
-		)
+			${r.Province},${r.LostReasons},${r.DeliveryDate},${r.FollowReasons})`)
 	})
 
-	const q = `INSERT INTO
-		deals_clone(Id,Title,Responsible,Category,Company,Stage,CloseDate,CreateDate,
+	const q = `INSERT INTO deals_clone(Id,Title,Responsible,Category,Company,Stage,CloseDate,CreateDate,
 		Source,Amount,Possible,SalesObject,BusinessSectors,TargetDate,
-		Province,LostReasons,DeliveryDate,FollowReasons) VALUES ${sql_values.join()}`
+		Province,LostReasons,DeliveryDate,FollowReasons) VALUES ${sql_values.join()}`.replace(/(\r\n|\n|\r|\t)/gm,'')
 
-	console.log(sql_values)
+	const del_result = await excuteQuery({ query: 'DELETE FROM deals_clone' })
+	const ins_result = await excuteQuery({ query: q })
 
 	return NextResponse.json({ overwrite: true })
 }
