@@ -45,29 +45,28 @@ export async function POST (req) {
 
 	const { total, next, result } = await res.json()
 
-	// 2
+	// 2.
 
 	all = all.concat(result)
 
-	// 3
+	// 3.
+	// const page_size = 50
+	// if (next) {
+	// 	for (let i=1; i<=Math.floor(total/page_size); i++) {
+	// 		const res = await fetch(
+	// 			`${ BITRIX_ENDPOINT }/crm.deal.list`,
+	// 			{
+	// 				method:'POST',
+	// 				headers: { 'Content-Type': 'application/json' },
+	// 				body:JSON.stringify({ ...options, start: i*page_size })
+	// 			}
+	// 		)
 
-	const page_size = 50
-	if (next) {
-		for (let i=1; i<=Math.floor(total/page_size); i++) {
-			const res = await fetch(
-				`${ BITRIX_ENDPOINT }/crm.deal.list`,
-				{
-					method:'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body:JSON.stringify({ ...options, start: i*page_size })
-				}
-			)
+	// 		const { result } = await res.json()
 
-			const { result } = await res.json()
-
-			all = all.concat(result)
-		}
-	}
+	// 		all = all.concat(result)
+	// 	}
+	// }
 
 	/* - - - - - - - - - - CSV EXPORT - - - - - - - - - - */
 	
