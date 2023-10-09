@@ -3,11 +3,24 @@ import {
 	NextResponse } from 'next/server'
 import excuteQuery from '@/lib/db.ts'
 
-const APP_URL = process.env.NEXT_PUBLIC_URL
-
 export async function POST (req:NextRequest) {
+
+	/* GET */
+	const res_UF = await fetch(
+		`${ process.env.NEXT_PUBLIC_URL }/api/btx/crm.lead.userfield.list`,
+		{ method:'POST', headers:{'Content-Type':'application/json'} }
+	)
+
+	const json_UF = await res_UF.json()
+	const list_UF = json_UF.result
+		.reduce((acc, {FIELD_NAME, LIST})=>{
+			if (LIST)
+				acc[FIELD_NAME]=LIST
+			return acc
+		},{})
+
 	const res = await fetch(
-		`${ APP_URL }/api/btx/crm.lead.list`, {
+		`${ process.env.NEXT_PUBLIC_URL }/api/btx/crm.lead.list`, {
 			method:'POST',
 			headers:{ 'Content-Type':'application/json' }
 		}
@@ -19,14 +32,17 @@ export async function POST (req:NextRequest) {
 	let sql_values = []
 	json.leads.map(v => {
 		
-		const rebuild = {
-			Id: v.ID,
+		const r = {
+			Id: parseInt(v.ID),
 			Title: '"'+ v.TITLE +'"',
 			Status: '"'+ v.STATUS_ID +'"',
+			Source: v.SOURCE_ID,
 		}
 
-		sql_values.push(`(${rebuild.Id},${rebuild.Title},${rebuild.Status})`)
+		sql_values.push(`(${r.Id},${r.Title},${r.Status})`)
 	})
+
+	console.log(sql_values)
 
 	return NextResponse.json({ overwrite: true })
 }
