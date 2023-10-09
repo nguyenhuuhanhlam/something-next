@@ -54,9 +54,25 @@ const getItem = async (id) => {
 	return rebuild
 }
 
+/* - - - - - - - - - - */
+
+const sqlUpdate = async (table, item) => {
+	const sets = Object.keys(item).map(k=>k+'=?')
+	try {
+		const result = await excuteQuery({
+			query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
+			values: Object.values(item)
+		})
+
+		console.log('LEAD UPDATED :: ', item.Id)
+	} catch (e) {
+		console.log(e)
+	}
+}
+
+/* - - - - - - - - - - */
+
 export const updateLEAD = async (id) => {
 	const item = await getItem(id)
-
-	console.log('updateLEAD::',item)
-	//await sqlUpdate('deals', item)
-} // TEST
+	await sqlUpdate('leads', item)
+}
