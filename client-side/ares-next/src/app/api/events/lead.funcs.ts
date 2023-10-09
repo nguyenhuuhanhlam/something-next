@@ -63,16 +63,25 @@ const sqlUpdate = async (table, item) => {
 			query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
 			values: Object.values(item)
 		})
-
 		console.log('LEAD UPDATED :: ', item.Id)
 	} catch (e) {
 		console.log(e)
 	}
 }
 
+const sqlDelete = async (table, id) => {
+	const result = await excuteQuery({
+		query: `DELETE FROM ${table} WHERE Id=${id}`				
+	})
+	console.log('LEAD DELETED :: ', id)
+}
 /* - - - - - - - - - - */
 
 export const updateLEAD = async (id) => {
 	const item = await getItem(id)
 	await sqlUpdate('leads', item)
+}
+
+export const deleteLEAD = async (id) => {
+	await sqlDelete('leads', id)
 }

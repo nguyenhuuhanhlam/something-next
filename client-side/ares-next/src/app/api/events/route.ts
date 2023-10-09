@@ -10,7 +10,8 @@ import {
 	updateDEAL,
 	deleteDEAL } from './deal.funcs'
 import {
-	updateLEAD
+	updateLEAD,
+	deleteLEAD
 	} from './lead.funcs'
 
 /* - - - - - - - - - - */
@@ -60,7 +61,7 @@ export async function POST (req) {
 					updateLEAD(id)
 				break
 			case 'ONCRMLEADDELETE':
-					console.log('EVENT::LEAD:DELETE: ', id)
+					deleteLEAD(id)
 				break
 		}
 
