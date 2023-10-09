@@ -38,6 +38,10 @@ const getItem = async (id) => {
 		Id: id,
 		Title: result.TITLE,
 		Status: result.STATUS_ID,
+		Source: result.SOURCE_ID,
+		CloseDate: result.DATE_CLOSED?.slice(0,10) || null,
+		CreateDate: result.DATE_CREATE?.slice(0,10) || null,
+		Amount: parseFloat(result.OPPORTUNITY),
 	}
 
 	return rebuild
