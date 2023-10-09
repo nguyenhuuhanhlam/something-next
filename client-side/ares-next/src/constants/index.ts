@@ -79,7 +79,7 @@ export const LEAD_UFS = {
 	ConvertDate:'UF_CRM_1648808731',
 	Province:'UF_CRM_1651659416',
 	// DESCRIPTION:'UF_CRM_1649410817',
-	FollowReasons:'UF_CRM_1651134422',
+	// FollowReasons:'UF_CRM_1651134422',
 	FailedReasons:'UF_CRM_1651134757',
 	Account:'UF_CRM_1678677176',
 	SalesType:'UF_CRM_1649410807',

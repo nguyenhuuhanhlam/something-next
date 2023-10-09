@@ -3,6 +3,8 @@ import {
 	NextResponse } from 'next/server'
 import excuteQuery from '@/lib/db.ts'
 
+import { LEAD_UFS } from '@/constants'
+
 export async function POST (req:NextRequest) {
 
 	/* GET */
@@ -36,34 +38,34 @@ export async function POST (req:NextRequest) {
 			Id: parseInt(v.ID),
 			Title: '"'+ v.TITLE +'"',
 			Status: '"'+ v.STATUS_ID +'"',
-			Source: v.SOURCE_ID,
+			Source: v.SOURCE_ID ? '"'+ v.SOURCE_ID +'"' : 'NULL',
+			Amount: parseFloat(v.OPPORTUNITY) || 0,
+			CreateDate: v.DATE_CREATE ? '"'+ v.DATE_CREATE.slice(0,10) +'"' : 'NULL',
+			CloseDate: v.DATE_CLOSED ? '"'+ v.DATE_CLOSED.slice(0,10) +'"' : 'NULL',
+			BusinessSectors: v[LEAD_UFS.BusinessSectors] ? '"'+ list_UF[LEAD_UFS.BusinessSectors].find(o=>o.ID==v[LEAD_UFS.BusinessSectors]).VALUE +'"' : 'NULL',
+			ConvertDate: v[LEAD_UFS.ConvertDate] ? '"'+ v[LEAD_UFS.ConvertDate].slice(0,10) +'"' : 'NULL',
+			FailedReasons: v[LEAD_UFS.FailedReasons] ? '"'+ list_UF[LEAD_UFS.FailedReasons].find(o=>o.ID==v[LEAD_UFS.FailedReasons]).VALUE +'"' : 'NULL',
+			Province: v[LEAD_UFS.Province] ? '"'+ list_UF[LEAD_UFS.Province].find(o=>o.ID==v[LEAD_UFS.Province]).VALUE +'"' : 'NULL',
+			SalesType: v[LEAD_UFS.SalesType] ? '"'+ list_UF[LEAD_UFS.SalesType].find(o=>o.ID==v[LEAD_UFS.SalesType]).VALUE +'"' : 'NULL',
+			Responsible: parseInt(v.ASSIGNED_BY_ID) || 0,
+			SalesObject: v[LEAD_UFS.SalesObject] ? '"'+ list_UF[LEAD_UFS.SalesObject].find(o=>o.ID==v[LEAD_UFS.SalesObject]).VALUE +'"' : 'NULL',
 		}
 
-		sql_values.push(`(${r.Id},${r.Title},${r.Status})`)
+		sql_values.push(`
+			(${r.Id},${r.Title},${r.Status},
+			${r.Source},${r.Amount},${r.CreateDate},${r.CloseDate},
+			${r.BusinessSectors},${r.ConvertDate},
+			${r.FailedReasons},${r.Province},${r.SalesType},${r.Responsible},${r.SalesObject})`)
 	})
 
-	console.log(sql_values)
+	const q = `INSERT INTO leads(Id,Title,Status,
+		Source,Amount,CreateDate,CloseDate,
+		BusinessSectors,ConvertDate,FailedReasons,
+		Province,SalesType,Responsible,SalesObject) 
+		VALUES ${sql_values.join()}`.replace(/(\r\n|\n|\r|\t)/gm,'')
+
+	const del_result = await excuteQuery({ query: 'DELETE FROM leads' })
+	const ins_result = await excuteQuery({ query: q })
 
 	return NextResponse.json({ overwrite: true })
 }
-
-/*
-console.log(sql_values[0]) -->
-
-	ID: '67',
-	TITLE: 'NT TT Kiểm nghiệm Mỹ Dược Thực phẩm',
-	STATUS_ID: 'CONVERTED',
-	SOURCE_ID: 'CALL',
-	OPPORTUNITY: '400000000.00',
-	DATE_CREATE: '2022-05-13T09:55:01+03:00',
-	DATE_CLOSED: '2022-07-03T16:32:43+03:00',
-	ASSIGNED_BY_ID: '17',
-	UF_CRM_1652256472: '1155',
-	UF_CRM_1648808731: '2022-07-03T03:00:00+03:00',
-	UF_CRM_1651134422: null,
-	UF_CRM_1651134757: null,
-	UF_CRM_1651659416: '285',
-	UF_CRM_1678677176: false,
-	UF_CRM_1649410807: '89',
-	UF_CRM_1678699905: '2497'
-*/

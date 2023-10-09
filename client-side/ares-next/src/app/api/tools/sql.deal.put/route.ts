@@ -62,11 +62,11 @@ export async function POST (req:NextRequest) {
 			${r.Province},${r.LostReasons},${r.DeliveryDate},${r.FollowReasons})`)
 	})
 
-	const q = `INSERT INTO deals_clone(Id,Title,Responsible,Category,Company,Stage,CloseDate,CreateDate,
+	const q = `INSERT INTO deals(Id,Title,Responsible,Category,Company,Stage,CloseDate,CreateDate,
 		Source,Amount,Possible,SalesObject,BusinessSectors,TargetDate,
 		Province,LostReasons,DeliveryDate,FollowReasons) VALUES ${sql_values.join()}`.replace(/(\r\n|\n|\r|\t)/gm,'')
 
-	const del_result = await excuteQuery({ query: 'DELETE FROM deals_clone' })
+	const del_result = await excuteQuery({ query: 'DELETE FROM deals' })
 	const ins_result = await excuteQuery({ query: q })
 
 	return NextResponse.json({ overwrite: true })
