@@ -41,6 +41,7 @@ const getItem = async (id) => {
 		Source: result.SOURCE_ID,
 		CloseDate: result.DATE_CLOSED?.slice(0,10) || null,
 		CreateDate: result.DATE_CREATE?.slice(0,10) || null,
+		BusinessSectors: list_UF[LEAD_UFS['BusinessSectors']].find(o=>o.ID==result[LEAD_UFS['BusinessSectors']])?.VALUE,
 		Amount: parseFloat(result.OPPORTUNITY),
 	}
 
