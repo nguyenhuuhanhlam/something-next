@@ -45,6 +45,8 @@ const getItem = async (id) => {
 		ConvertDate: result[LEAD_UFS.ConvertDate]?.slice(0,10) || null,
 		FailedReasons: list_UF[LEAD_UFS['FailedReasons']].find(o=>o.ID==result[LEAD_UFS['FailedReasons']])?.VALUE,
 		Province: list_UF[LEAD_UFS['Province']].find(o=>o.ID==result[LEAD_UFS['Province']])?.VALUE,
+		SalesType: list_UF[LEAD_UFS['SalesType']].find(o=>o.ID==result[LEAD_UFS['SalesType']])?.VALUE,
+		Responsible: parseInt(result.ASSIGNED_BY_ID),
 		Amount: parseFloat(result.OPPORTUNITY),
 	}
 
