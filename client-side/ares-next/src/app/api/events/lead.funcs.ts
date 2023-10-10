@@ -54,7 +54,20 @@ const getItem = async (id) => {
 	return rebuild
 }
 
-/* - - - - - - - - - - */
+/* - SQL - - - - - - - - */
+
+const sqlInsert = async (table, item) => {
+	const result = await excuteQuery({
+		query: `INSERT INTO ${table}(${Object.keys(item)}) VALUES(${Object.keys(item).map(k=>'?').join()})`,
+		values: Object.values(item)
+	})
+
+	if (result?.error) {
+		const e = JSON.stringify(result.error)
+		console.log(JSON.parse(e).sqlMessage)
+	} else
+		console.log('LEAD ADDED :: ', item.Id)
+}
 
 const sqlUpdate = async (table, item) => {
 	const sets = Object.keys(item).map(k=>k+'=?')
@@ -75,7 +88,13 @@ const sqlDelete = async (table, id) => {
 	})
 	console.log('LEAD DELETED :: ', id)
 }
-/* - - - - - - - - - - */
+
+/* - ACTIONS - - - - - - - - */
+
+export const addLEAD = async (id) => {
+	const item = await getItem(id)
+	await sqlInsert('leads', item)
+}
 
 export const updateLEAD = async (id) => {
 	const item = await getItem(id)

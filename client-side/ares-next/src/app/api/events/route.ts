@@ -10,6 +10,7 @@ import {
 	updateDEAL,
 	deleteDEAL } from './deal.funcs'
 import {
+	addLEAD,
 	updateLEAD,
 	deleteLEAD
 	} from './lead.funcs'
@@ -55,7 +56,7 @@ export async function POST (req) {
 
 			/* LEAD */
 			case 'ONCRMLEADADD':
-					console.log('EVENT::LEAD:ADD: ', id)
+					addLEAD(id)
 				break
 			case 'ONCRMLEADUPDATE':
 					updateLEAD(id)
