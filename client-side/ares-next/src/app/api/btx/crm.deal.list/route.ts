@@ -1,7 +1,7 @@
 import {
 	NextRequest,
 	NextResponse } from 'next/server'
-import fs from 'fs'
+// import fs from 'fs'
 
 import { DEAL_UFS } from '@/constants'
 
