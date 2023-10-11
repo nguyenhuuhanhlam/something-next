@@ -84,7 +84,12 @@ const sqlDelete = async (table=null, id) => {
 
 export const addSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
-	await sqlInsert(`spa_${entityTypeId}_${item.Category}`, item)
+	const _table = `spa_${entityTypeId}_${item.Category}`
+	
+	if (_table=='spa_132_125')
+		await sqlInsert(_table, item)
+	else
+		console.log('ADDSPA::UNDER-CONSTRUCTION: ', _table)
 }
 
 export const updateSPA = async (id, entityTypeId) => {
