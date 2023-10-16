@@ -38,6 +38,7 @@ export default function HomePage() {
 				<AppIconLink text="E-Book" icon="/ebook-icon.svg" href="http://ebook.aresen.vn:8088" />
 				<AppIconLink text="NAS Drive" icon="/nas-drive-icon.svg" href="http://drive.aresen.vn" />
 				<AppIconLink text="NAS Cloud" icon="/nas-synology-icon.svg" href="http://cloud.aresen.vn" />
+				<AppIconLink text="NAS Photo" icon="/nas-photo-icon.svg" href="http://115.75.90.30:5000/?launchApp=SYNO.Foto.AppInstance&SynoToken=QOfnfUXTMizc2#/shared_space/folder/1" />
 				<AppIconLink text="Superset" icon="/superset-icon.svg" href="http://115.75.90.30:8888" />
 				<AppIconLink text="Bitrix24" icon="/bitrix24-icon.svg" href="https://aresen.bitrix24.com" />
 				<AppIconLink text="Miro" icon="/miro-icon.svg" href="https://miro.com" />
