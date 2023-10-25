@@ -64,6 +64,17 @@ export async function POST (req) {
 			case 'ONCRMLEADDELETE':
 					deleteLEAD(id)
 				break
+
+			/* TASK */
+			case 'ONTASKADD':
+					console.log('ONTASKADD:',id)
+				break
+			case 'ONTASKUPDATE':
+					console.log('ONTASKUPDATE',id)
+				break
+			case 'ONTASKDELETE':
+					console.log('ONTASKDELETE',id)
+				break	
 		}
 
 	} catch (e) {
