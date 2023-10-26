@@ -13,7 +13,9 @@ const getItem = async (id) => {
     const json = await res.json()
     const { result:{item} } = json
 
-    const rebuild = {}
+    const rebuild = {
+        
+    }
 
     return result
 }
