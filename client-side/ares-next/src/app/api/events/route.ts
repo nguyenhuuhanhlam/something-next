@@ -24,6 +24,7 @@ export async function POST (req) {
 
 		const id = parseInt(params['data[FIELDS][ID]']) /* DEAL, SPA */
 		const entityTypeId = parseInt(params['data[FIELDS][ENTITY_TYPE_ID]']) /* SPA */
+		const taskAfterId = parseInt(params['data[FIELDS_AFTER][ID]']) // data[FIELDS_BEFORE][ID]
 
 		switch(params.event) {
 
@@ -67,13 +68,13 @@ export async function POST (req) {
 
 			/* TASK */
 			case 'ONTASKADD':
-					console.log('ONTASKADD:',params)
+					console.log('ONTASKADD:',taskAfterId)
 				break
 			case 'ONTASKUPDATE':
-					console.log('ONTASKUPDATE',params)
+					console.log('ONTASKUPDATE',taskAfterId)
 				break
 			case 'ONTASKDELETE':
-					console.log('ONTASKDELETE',params)
+					console.log('ONTASKDELETE',taskAfterId)
 				break	
 		}
 
