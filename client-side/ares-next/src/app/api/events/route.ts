@@ -67,13 +67,13 @@ export async function POST (req) {
 
 			/* TASK */
 			case 'ONTASKADD':
-					console.log('ONTASKADD:',id)
+					console.log('ONTASKADD:',params)
 				break
 			case 'ONTASKUPDATE':
-					console.log('ONTASKUPDATE',id)
+					console.log('ONTASKUPDATE',params)
 				break
 			case 'ONTASKDELETE':
-					console.log('ONTASKDELETE',id)
+					console.log('ONTASKDELETE',params)
 				break	
 		}
 
