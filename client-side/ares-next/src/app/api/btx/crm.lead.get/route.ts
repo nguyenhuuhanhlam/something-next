@@ -1,7 +1,6 @@
 import {
 	NextRequest,
 	NextResponse } from 'next/server'
-// import fs from 'fs'
 
 export async function POST (req) {
 	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
@@ -18,8 +17,6 @@ export async function POST (req) {
 	)
 
 	const { result } = await res.json()
-
-	// console.log(result)
 
 	return NextResponse.json({ result })
 }
