@@ -24,7 +24,7 @@ export async function POST (req) {
 
 		const id = parseInt(params['data[FIELDS][ID]']) /* DEAL, SPA */
 		const entityTypeId = parseInt(params['data[FIELDS][ENTITY_TYPE_ID]']) /* SPA */
-		const taskAfterId = parseInt(params['data[FIELDS_AFTER][ID]']) // data[FIELDS_BEFORE][ID]
+		const taskAfterId = params['data[FIELDS_AFTER][ID]'] // data[FIELDS_BEFORE][ID]
 
 		switch(params.event) {
 
