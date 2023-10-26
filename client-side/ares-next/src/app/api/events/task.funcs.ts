@@ -1,7 +1,7 @@
 import excuteQuery from '@/lib/db.ts'
 
 const getItem = async (id) => {
-	res = await fetch(
+	const res = await fetch(
 		`${ process.env.NEXT_PUBLIC_URL }/api/btx/task.item.getdata`,
 		{
 			method:'POST',
@@ -9,6 +9,13 @@ const getItem = async (id) => {
 			body:JSON.stringify({ id })
 		}
 	)
+
+    const json = await res.json()
+    const { result:{item} } = json
+
+    const rebuild = {}
+
+    return result
 }
 
 /* - SQL - - - - - - - - */
@@ -17,6 +24,7 @@ const getItem = async (id) => {
 
 export const updateTASK = async (id) => {
 	const item = await getItem(id)
+    console.log(item)
 	// await sqlUpdate('leads', item)
 }
 

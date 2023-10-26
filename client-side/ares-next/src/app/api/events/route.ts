@@ -14,6 +14,9 @@ import {
 	updateLEAD,
 	deleteLEAD
 	} from './lead.funcs'
+import {
+	updateTASK
+} from './task.funcs'
 
 /* - - - - - - - - - - */
 
@@ -71,7 +74,7 @@ export async function POST (req) {
 					console.log('ONTASKADD:',taskAfterId)
 				break
 			case 'ONTASKUPDATE':
-					console.log('ONTASKUPDATE',taskAfterId)
+					updateTASK(11361)
 				break
 			case 'ONTASKDELETE':
 					console.log('ONTASKDELETE',taskAfterId)
