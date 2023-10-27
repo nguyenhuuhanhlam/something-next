@@ -29,6 +29,20 @@ const getItem = async (id) => {
 }
 
 /* - SQL - - - - - - - - */
+const sqlInsert = async (table=null, item) => {
+    const result = await excuteQuery({
+        query:
+            `INSERT INTO ${table}(${Object.keys(item)}) VALUES(${Object.keys(item).map(k=>'?').join()})`,
+        values: Object.values(item)
+    })
+
+    if (result?.error) {
+        const e = JSON.stringify(result.error)
+        console.log(JSON.parse(e).sqlMessage)
+    } else
+        console.log('TASK ADDED :: ', item.Id)
+}
+
 const sqlUpdate = async (table=null, item) => {
     const sets = Object.keys(item).map(k=>k+'=?')
 
