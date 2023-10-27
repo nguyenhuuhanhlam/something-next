@@ -58,6 +58,13 @@ const sqlUpdate = async (table=null, item) => {
     }
 }
 
+const sqlDelete = async (table=null, id) => {
+    const result = await excuteQuery({
+        query: `DELETE FROM ${table} WHERE Id=${id}`                
+    })
+    console.log('TASK DELETED :: ', id)
+}
+
 /* - ACTIONS - - - - - - - - */
 
 export const addTASK = async (id) => {
@@ -70,5 +77,7 @@ export const updateTASK = async (id) => {
 	await sqlUpdate('tasks', item)
 }
 
-export const deleteTASK = async (id) => {}
+export const deleteTASK = async (id) => {
+    await sqlDelete('tasks', id)
+}
 
