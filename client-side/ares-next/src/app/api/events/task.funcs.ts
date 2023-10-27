@@ -31,13 +31,33 @@ const getItem = async (id) => {
 /* - SQL - - - - - - - - */
 const sqlUpdate = async (table=null, item) => {
     const sets = Object.keys(item).map(k=>k+'=?')
+
+    try {
+        const result = await excuteQuery({
+            query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
+            values: Object.values(item)
+        })
+
+        console.log('TASK UPDATED :: ', item.Id)
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 /* - ACTIONS - - - - - - - - */
 
+export const addTASK = async (id) => {
+    const item = await getItem(id)
+
+    console.log('add task ', item)
+}
+
 export const updateTASK = async (id) => {
 
     const item = await getItem(id)
-    console.log('update task for :', item)
+    // console.log('update task for :', item)
 	await sqlUpdate('tasks', item)
 }
+
+export const deleteTASK = async (id) => {}
+
