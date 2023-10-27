@@ -62,14 +62,11 @@ const sqlUpdate = async (table=null, item) => {
 
 export const addTASK = async (id) => {
     const item = await getItem(id)
-
-    console.log('add task ', item)
+    await sqlInsert('tasks', item)
 }
 
 export const updateTASK = async (id) => {
-
     const item = await getItem(id)
-    // console.log('update task for :', item)
 	await sqlUpdate('tasks', item)
 }
 
