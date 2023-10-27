@@ -20,7 +20,7 @@ const getItem = async (id) => {
         Responsible: parseInt(result.GROUP_ID),
         Deadline: result.DEADLINE?.slice(0,10) || null,
         CreatedBy: parseInt(result.CREATED_BY),
-        ClosedBy: parseInt(result.CLOSED_BY),
+        ClosedBy: result.CLOSED_BY ? parseInt(result.CLOSED_BY) : null,
         CreatedDate: result.CREATED_DATE?.slice(0,10) || null,
         ClosedDate: result.CLOSED_DATE?.slice(0,10) || null
     }
