@@ -13,11 +13,9 @@ const getItem = async (id) => {
     const json = await res.json()
     const { result } = json
 
-    console.log(result)
-
     const rebuild = {
-        // Id: id,
-        // Title: item.result.TITLE
+        Id: id,
+        Title: result.TITLE
     }
 
     return rebuild
@@ -28,9 +26,10 @@ const getItem = async (id) => {
 /* - ACTIONS - - - - - - - - */
 
 export const updateTASK = async (id) => {
-	// console.log('update task for :', id)
+
     const item = await getItem(id)
-    
+    console.log('update task for :', item)
+
 	// await sqlUpdate('leads', item)
 }
 
