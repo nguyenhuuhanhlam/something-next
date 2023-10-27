@@ -17,7 +17,7 @@ const getItem = async (id) => {
 
     const rebuild = {
         Id: id,
-        Title: item.TITLE
+        Title: item.result.TITLE
     }
 
     return rebuild
