@@ -15,7 +15,14 @@ const getItem = async (id) => {
 
     const rebuild = {
         Id: id,
-        Title: result.TITLE
+        Title: result.TITLE,
+        Status: result.STATUS,
+        Responsible: result.GROUP_ID,
+        Deadline: result.DEADLINE,
+        CreatedBy: result.CREATED_BY,
+        ClosedBy: result.CLOSED_BY,
+        CreatedDate: result.CREATED_DATE,
+        CloseDate: result.CLOSED_DATE
     }
 
     return rebuild
