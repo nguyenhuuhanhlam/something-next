@@ -11,9 +11,9 @@ const getItem = async (id) => {
 	)
 
     const json = await res.json()
-    const { result:{item} } = json
+    const { result } = json
 
-    console.log(item)
+    console.log(result)
 
     const rebuild = {
         // Id: id,
