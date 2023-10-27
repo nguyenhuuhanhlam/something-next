@@ -15,7 +15,9 @@ import {
 	deleteLEAD
 	} from './lead.funcs'
 import {
-	updateTASK
+	addTASK,
+	updateTASK,
+	deleteTASK
 } from './task.funcs'
 
 /* - - - - - - - - - - */
@@ -71,7 +73,7 @@ export async function POST (req) {
 
 			/* TASK */
 			case 'ONTASKADD':
-					console.log('ONTASKADD:',taskAfterId)
+					addTASK(taskAfterId)
 				break
 			case 'ONTASKUPDATE':
 					updateTASK(taskAfterId)
