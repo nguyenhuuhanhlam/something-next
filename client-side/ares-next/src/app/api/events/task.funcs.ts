@@ -52,7 +52,9 @@ const sqlUpdate = async (table=null, item) => {
             values: Object.values(item)
         })
 
-        console.log('R:',result)
+        if (result.affectedRows==0)
+            await sqlInsert('tasks', item)
+
         console.log('TASK UPDATED :: ', item.Id)
     } catch (e) {
         console.log(e)
