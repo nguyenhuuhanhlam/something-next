@@ -47,15 +47,18 @@ const sqlUpdate = async (table=null, item) => {
     const sets = Object.keys(item).map(k=>k+'=?')
 
     try {
+        
         const result = await excuteQuery({
             query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
             values: Object.values(item)
         })
 
-        if (result.affectedRows==0)
+        if (result.affectedRows==0) {
             await sqlInsert('tasks', item)
+            console.log('TASK MISSING :: ADDED :: ', item.Id)
+        } else
+            console.log('TASK UPDATED :: ', item.Id)
 
-        console.log('TASK UPDATED :: ', item.Id)
     } catch (e) {
         console.log(e)
     }
