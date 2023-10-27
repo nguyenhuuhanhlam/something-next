@@ -13,6 +13,8 @@ const getItem = async (id) => {
     const json = await res.json()
     const { result:{item} } = json
 
+    console.log(item)
+
     const rebuild = {
         Id: id,
         Title: item.TITLE
