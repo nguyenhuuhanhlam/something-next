@@ -14,10 +14,11 @@ const getItem = async (id) => {
     const { result:{item} } = json
 
     const rebuild = {
-        
+        Id: id,
+        Title: item.TITLE
     }
 
-    return result
+    return rebuild
 }
 
 /* - SQL - - - - - - - - */
