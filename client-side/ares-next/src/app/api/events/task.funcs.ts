@@ -6,7 +6,7 @@ const getItem = async (id) => {
 		{
 			method:'POST',
 			headers:{'Content-Type':'application/json'},
-			body:JSON.stringify({ id })
+			body:JSON.stringify({ TASKID:id })
 		}
 	)
 
@@ -16,8 +16,8 @@ const getItem = async (id) => {
     console.log(item)
 
     const rebuild = {
-        Id: id,
-        Title: item.result.TITLE
+        // Id: id,
+        // Title: item.result.TITLE
     }
 
     return rebuild
@@ -28,8 +28,8 @@ const getItem = async (id) => {
 /* - ACTIONS - - - - - - - - */
 
 export const updateTASK = async (id) => {
-	console.log('update task for :', id)
-    //const item = await getItem(id)
+	// console.log('update task for :', id)
+    const item = await getItem(id)
     
 	// await sqlUpdate('leads', item)
 }
