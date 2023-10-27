@@ -29,7 +29,9 @@ export async function POST (req) {
 
 		const id = parseInt(params['data[FIELDS][ID]']) /* DEAL, SPA */
 		const entityTypeId = parseInt(params['data[FIELDS][ENTITY_TYPE_ID]']) /* SPA */
-		const taskAfterId = params['data[FIELDS_AFTER][ID]'] // data[FIELDS_BEFORE][ID]
+		
+		const taskBeforeId = params['data[FIELDS_BEFORE][ID]'] /* DELETE ITEM */
+		const taskAfterId = params['data[FIELDS_AFTER][ID]'] /* ADD + UPDATE ITEM */
 
 		switch(params.event) {
 
@@ -79,7 +81,7 @@ export async function POST (req) {
 					updateTASK(taskAfterId)
 				break
 			case 'ONTASKDELETE':
-					console.log('ONTASKDELETE',params)
+					console.log('ONTASKDELETE',taskBeforeId)
 				break	
 		}
 
