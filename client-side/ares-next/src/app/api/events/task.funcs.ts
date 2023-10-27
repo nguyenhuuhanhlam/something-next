@@ -28,8 +28,9 @@ const getItem = async (id) => {
 /* - ACTIONS - - - - - - - - */
 
 export const updateTASK = async (id) => {
-	const item = await getItem(id)
-    console.log(item)
+	console.log('update task for :', id)
+    //const item = await getItem(id)
+    
 	// await sqlUpdate('leads', item)
 }
 
