@@ -22,7 +22,7 @@ const getItem = async (id) => {
         CreatedBy: parseInt(result.CREATED_BY),
         ClosedBy: parseInt(result.CLOSED_BY),
         CreatedDate: result.CREATED_DATE?.slice(0,10) || null,
-        CloseDate: result.CLOSED_DATE?.slice(0,10) || null
+        ClosedDate: result.CLOSED_DATE?.slice(0,10) || null
     }
 
     return rebuild
