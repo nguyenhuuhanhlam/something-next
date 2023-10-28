@@ -32,24 +32,24 @@ export async function POST (req) {
 	all = all.concat(result.tasks.map(v=>_.omit(v,['group','creator','subStatus','stageId'])))
 
 	// 3.
-	const page_size = 50
+	// const page_size = 50
 
-	if (next) {
-	  for (let i=1; i<=Math.floor(total/page_size); i++) {
-	      const res = await fetch(
-	          `${ process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_13'] }/tasks.task.list`,
-	          {
-	              method:'POST',
-	              headers: { 'Content-Type': 'application/json' },
-	              body:JSON.stringify({ ...options, start: i*page_size })
-	          }
-	      )
+	// if (next) {
+	//   for (let i=1; i<=Math.floor(total/page_size); i++) {
+	//       const res = await fetch(
+	//           `${ process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_13'] }/tasks.task.list`,
+	//           {
+	//               method:'POST',
+	//               headers: { 'Content-Type': 'application/json' },
+	//               body:JSON.stringify({ ...options, start: i*page_size })
+	//           }
+	//       )
 
-	      const { result } = await res.json()
+	//       const { result } = await res.json()
 
-	      all = all.concat(result.tasks.map(v=>_.omit(v,['group','creator','subStatus','stageId'])))
-	  }
-	}
+	//       all = all.concat(result.tasks.map(v=>_.omit(v,['group','creator','subStatus','stageId'])))
+	//   }
+	// }
 
 	return NextResponse.json({ tasks:all })
 }
