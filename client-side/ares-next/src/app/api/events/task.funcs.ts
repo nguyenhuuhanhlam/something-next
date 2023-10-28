@@ -15,7 +15,7 @@ const getItem = async (id) => {
 
     const rebuild = {
         Id: id,
-        Title: result.TITLE,
+        Title: result.TITLE.replace(/[\r\n\t\"]/g, "|"),
         Status: parseInt(result.STATUS),
         Responsible: parseInt(result.GROUP_ID),
         Deadline: result.DEADLINE?.slice(0,10) || null,
