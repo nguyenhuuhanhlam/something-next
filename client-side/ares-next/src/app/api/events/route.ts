@@ -79,7 +79,7 @@ export async function POST (req) {
 					updateTASK(taskAfterId)
 				break
 			case 'ONTASKDELETE':
-					console.log('ONTASKDELETE',taskAfterId)
+					deleteTASK(taskAfterId)
 				break	
 		}
 
