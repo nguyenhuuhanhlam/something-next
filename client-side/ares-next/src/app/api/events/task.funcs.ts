@@ -15,7 +15,7 @@ const getItem = async (id) => {
 
     const rebuild = {
         Id: id,
-        Title: result.TITLE,
+        Title: result.TITLE.replace(/[\r\n\t\"]/g, "|"),
         Status: parseInt(result.STATUS),
         Responsible: parseInt(result.GROUP_ID),
         Deadline: result.DEADLINE?.slice(0,10) || null,
@@ -29,35 +29,61 @@ const getItem = async (id) => {
 }
 
 /* - SQL - - - - - - - - */
+const sqlInsert = async (table=null, item) => {
+    const result = await excuteQuery({
+        query:
+            `INSERT INTO ${table}(${Object.keys(item)}) VALUES(${Object.keys(item).map(k=>'?').join()})`,
+        values: Object.values(item)
+    })
+
+    if (result?.error) {
+        const e = JSON.stringify(result.error)
+        console.log(JSON.parse(e).sqlMessage)
+    } else
+        console.log('TASK ADDED :: ', item.Id)
+}
+
 const sqlUpdate = async (table=null, item) => {
     const sets = Object.keys(item).map(k=>k+'=?')
 
     try {
+        
         const result = await excuteQuery({
             query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
             values: Object.values(item)
         })
 
-        console.log('TASK UPDATED :: ', item.Id)
+        if (result.affectedRows==0) {
+            await sqlInsert('tasks', item)
+            console.log('TASK MISSING :: ADDED :: ', item.Id)
+        } else
+            console.log('TASK UPDATED :: ', item.Id)
+
     } catch (e) {
         console.log(e)
     }
+}
+
+const sqlDelete = async (table=null, id) => {
+    const result = await excuteQuery({
+        query: `DELETE FROM ${table} WHERE Id=${id}`                
+    })
+    console.log('TASK DELETED :: ', id)
 }
 
 /* - ACTIONS - - - - - - - - */
 
 export const addTASK = async (id) => {
     const item = await getItem(id)
-
-    console.log('add task ', item)
+    await sqlInsert('tasks', item)
 }
 
 export const updateTASK = async (id) => {
-
     const item = await getItem(id)
-    // console.log('update task for :', item)
 	await sqlUpdate('tasks', item)
 }
 
-export const deleteTASK = async (id) => {}
+export const deleteTASK = async (id) => {
+    await sqlDelete('tasks', id)
+}
 
