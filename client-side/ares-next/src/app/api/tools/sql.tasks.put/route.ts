@@ -32,20 +32,20 @@ export async function POST (req:NextRequest) {
 
 	const q = `INSERT INTO tasks(Id,Title,Status,Responsible,Deadline,CreatedBy,ClosedBy,CreatedDate,ClosedDate) VALUES ${ sql_values.join() }`
 
-	// try {
-	// 	const del_result = await excuteQuery({ query: 'DELETE FROM tasks' })
-	// 	const ins_result = await excuteQuery({
-	// 		query: q.replace(/(\r\n|\n|\r|\t)/gm,'')
-	// 	})
-	// } catch (e) {
-	// 	console.log(e)
-	// }
+	try {
+		const del_result = await excuteQuery({ query: 'DELETE FROM tasks' })
+		const ins_result = await excuteQuery({
+			query: q.replace(/(\r\n|\n|\r|\t)/gm,'')
+		})
+	} catch (e) {
+		console.log(e)
+	}
 
 
-	fs.writeFile('./public/uploads/tasks.sql',q,err=>{
-		if (err) console.log(err)
-		else console.log('OK')
-	})
+	// fs.writeFile('./public/uploads/tasks.sql',q,err=>{
+	// 	if (err) console.log(err)
+	// 	else console.log('OK')
+	// })
 
 
 	return NextResponse.json({ done:true })
