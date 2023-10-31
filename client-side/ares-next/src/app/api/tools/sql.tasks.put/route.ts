@@ -19,7 +19,7 @@ export async function POST (req:NextRequest) {
 		Id: v.id,
 		Title: '"' + v.title.replace(/[\r\n\t\"]/g, "|") + '"',
 		Status: parseInt(v.status),
-		Responsible: parseInt(v.groupId),
+		Responsible: parseInt(v.responsibleId),
 		Deadline: v.deadline ? '"' + v.deadline.slice(0,10) + '"' : 'NULL',
 		CreatedBy: parseInt(v.createdBy) || 'NULL',
 		ClosedBy: parseInt(v.closedBy) || 'NULL',

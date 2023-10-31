@@ -17,7 +17,7 @@ const getItem = async (id) => {
         Id: id,
         Title: result.TITLE.replace(/[\r\n\t\"]/g, "|"),
         Status: parseInt(result.STATUS),
-        Responsible: parseInt(result.GROUP_ID),
+        Responsible: parseInt(result.RESPONSIBLE_ID),
         Deadline: result.DEADLINE?.slice(0,10) || null,
         CreatedBy: parseInt(result.CREATED_BY),
         ClosedBy: result.CLOSED_BY ? parseInt(result.CLOSED_BY) : null,
