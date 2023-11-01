@@ -81,11 +81,7 @@ export async function POST (req) {
 					updateTASK(taskAfterId)
 				break
 			case 'ONTASKDELETE':
-<<<<<<< HEAD
-					deleteTASK(taskAfterId)
-=======
 					deleteTASK(taskBeforeId)
->>>>>>> a8f16f93ad79e05eb55ad5c2fbf017f24f3cf449
 				break	
 		}
 
