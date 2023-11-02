@@ -37,8 +37,8 @@ function KiotVietGetToken() {
     method:'post',
     contentType:'application/x-www-form-urlencoded',
     payload:{
-      client_id:'e79b9cba-ea82-46c8-987b-7fb1facb03ca',
-      client_secret:'F52A4DC060F1E358BA773FECFC02F86362864804',
+      client_id:process.env.NEXT_PUBLIC_KIOT_KANEN_CI,
+      client_secret:process.env.NEXT_PUBLIC_KIOT_KANEN_CL_SECRET,
       grant_type:'client_credentials',
       scopes:'PublicApi.Access'
     }
