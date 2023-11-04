@@ -21,4 +21,5 @@ export async function POST (req) {
 	const result = await res.json()
 
 	return NextResponse.json({ result })
+	/* result.access_token */
 }
