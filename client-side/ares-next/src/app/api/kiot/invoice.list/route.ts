@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function POST (req) {
-
+export async function POST (req)
+{
 	const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/kiot/token.get`,{method:'POST'})
 	const { result:{access_token} } = await res.json()
 
@@ -17,15 +17,15 @@ export async function POST (req) {
 		}
 	)
 
-  const { data,total } = await invoice_res.json()
+	const { data,total } = await invoice_res.json()
 
-  let all = []
-  data.map(v => {
-  	const { code, branchId, branchName } = v
-  	all.push({ code, branchId, branchName })
-  })
-  
-  return NextResponse.json({ result:all, total })
+	let all = []
+	data.map(v => {
+		const { code, branchId, branchName } = v
+		all.push({ code, branchId, branchName })
+	})
+
+	return NextResponse.json({ result:all })
 }
 
 
