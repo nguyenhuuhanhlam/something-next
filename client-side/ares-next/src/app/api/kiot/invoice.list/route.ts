@@ -17,9 +17,15 @@ export async function POST (req) {
 		}
 	)
 
-  const json = await invoice_res.json()
+  const { data,total } = await invoice_res.json()
 
-  return NextResponse.json({ result:json })
+  let all = []
+  data.map(v => {
+  	const { code, branchId, branchName } = v
+  	all.push({ code, branchId, branchName })
+  })
+  
+  return NextResponse.json({ result:all, total })
 }
 
 
