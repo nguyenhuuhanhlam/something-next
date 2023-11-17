@@ -28,7 +28,7 @@ export const LETTER_COLORS = {
 }
 
 export const CONTACT_UFS = {
-	HOBBY:'UF_CRM_1649409773',
+	// HOBBY:'UF_CRM_1649409773',
 	Character:'UF_CRM_1649409787',
 	Description:'UF_CRM_62734757533E5',
 	Province:'UF_CRM_6273475910A74',
