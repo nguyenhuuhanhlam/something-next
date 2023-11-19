@@ -21,8 +21,6 @@ export async function POST (req)
 			CONTACT_UFS.SupplierType,
 			CONTACT_UFS.BusinessSectors,
 			CONTACT_UFS.Province,
-			// CONTACT_UFS.Description,
-			// CONTACT_UFS.Character
 		]
 	}
 	const response = await fetch(
@@ -33,5 +31,9 @@ export async function POST (req)
 		})
 	const { total, next, result } = await response.json()
 
-	return NextResponse.json({ contacts: result })
+	// * * * * *
+	let all = []
+	all = all.concat(result)
+
+	return NextResponse.json({ total, contacts: all })
 }
