@@ -21,7 +21,8 @@ export async function POST (req)
 			CONTACT_UFS.SupplierType,
 			CONTACT_UFS.BusinessSectors,
 			CONTACT_UFS.Province,
-		]
+		],
+		start: 0
 	}
 	const response = await fetch(
 		`${ endpoint }/crm.contact.list`, {
@@ -35,5 +36,23 @@ export async function POST (req)
 	let all = []
 	all = all.concat(result)
 
-	return NextResponse.json({ total, contacts: all })
+	const page_size = 50
+	if (next) {
+		for (let i=1; i<=Math.floor(total/page_size); i++) {
+			const response = await fetch(
+				`${ endpoint }/crm.contact.list`,
+				{
+					method:'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body:JSON.stringify({ ...opt, start: i*page_size })
+				}
+			)
+
+			const { result } = await response.json()
+
+			all = all.concat(result)
+		}
+	}
+
+	return NextResponse.json({ contacts: all })
 }

@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import excuteQuery from '@/lib/db.ts'
-import { HONORIFICS, CONTACT_UFS } from '@/constants'
 import _ from 'lodash'
+import fs from 'fs'
+
+import { HONORIFICS, CONTACT_UFS } from '@/constants'
+
 
 export async function POST (req:NextRequest)
 {
@@ -19,20 +22,20 @@ export async function POST (req:NextRequest)
 	json.contacts.map(v => {
 		const rebuild = {
 			Id: v.ID,
-			Honorific: HONORIFICS[v.HONORIFIC],
+			Honorific: HONORIFICS[v.HONORIFIC] || 'NULL',
 			LastName: v.LAST_NAME ? '"' + v.LAST_NAME + '"' : 'NULL',
 			SecondName: v.SECOND_NAME ? '"' + v.SECOND_NAME + '"' : 'NULL',
 			Name: v.NAME ? '"' + v.NAME + '"' : 'NULL',
 			Phones: '"' + _.map(v.PHONE,'VALUE').join() + '"',
 			Emails: '"' + _.map(v.EMAIL,'VALUE').join() + '"',
 			Birthdate: v.BIRTHDATE ? '"' + v.BIRTHDATE.slice(0,10) + '"' : 'NULL',
-			CompanyID: v.COMPANY_ID,
+			CompanyID: v.COMPANY_ID || 'NULL',
 			Post: v.POST ? '"' + v.POST + '"' : 'NULL',
-			ClientType: v[CONTACT_UFS.ClientType],
+			ClientType: v[CONTACT_UFS.ClientType] || 'NULL',
 			Account: v[CONTACT_UFS.Account] ? '"' + v[CONTACT_UFS.Account].join() + '"' : 'NULL',
 			SupplierType: v[CONTACT_UFS.SupplierType] || 'NULL',
-			BusinessSectors: v[CONTACT_UFS.BusinessSectors],
-			Province: v[CONTACT_UFS.Province],
+			BusinessSectors: v[CONTACT_UFS.BusinessSectors] || 'NULL',
+			Province: v[CONTACT_UFS.Province] || 'NULL',
 		}
 
 		sql_values.push(`(${ Object.keys(rebuild).map(k=>rebuild[k]) })`)
@@ -48,6 +51,11 @@ export async function POST (req:NextRequest)
 	} catch (e) {
 		console.log(e)
 	}
+
+	// fs.writeFile('./public/uploads/contacts.sql',q,err=>{
+	// 	if (err) console.log(err)
+	// 	else console.log('OK')
+	// })
 
 	return NextResponse.json({ overwrite: true })
 }
