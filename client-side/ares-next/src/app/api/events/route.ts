@@ -36,8 +36,12 @@ export async function POST (req) {
 		switch(params.event) {
 
 			/* USER */
-			case 'ONUSERADD':
-				
+			case 'ONUSERADD':				
+				break
+
+			/* CONTACT */
+			case 'ONCRMCONTACTADD':
+				console.log('ONCRMCONTACTADD',params)
 				break
 
 			/* SPA */

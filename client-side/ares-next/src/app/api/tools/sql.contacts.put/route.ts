@@ -29,6 +29,7 @@ export async function POST (req:NextRequest)
 			Phones: '"' + _.map(v.PHONE,'VALUE').join() + '"',
 			Emails: '"' + _.map(v.EMAIL,'VALUE').join() + '"',
 			Birthdate: v.BIRTHDATE ? '"' + v.BIRTHDATE.slice(0,10) + '"' : 'NULL',
+			AssignedByID: v.ASSIGNED_BY_ID || 'NULL',
 			CompanyID: v.COMPANY_ID || 'NULL',
 			Post: v.POST ? '"' + v.POST + '"' : 'NULL',
 			ClientType: v[CONTACT_UFS.ClientType] || 'NULL',
@@ -41,7 +42,7 @@ export async function POST (req:NextRequest)
 		sql_values.push(`(${ Object.keys(rebuild).map(k=>rebuild[k]) })`)
 	})
 
-	const q = `INSERT INTO contacts(Id,Honorific,LastName,SecondName,Name,Phones,Emails,Birthdate,CompanyID,Post,ClientType,Account,SupplierType,BusinessSectors,Province) VALUES ${ sql_values.join() }`
+	const q = `INSERT INTO contacts(Id,Honorific,LastName,SecondName,Name,Phones,Emails,Birthdate,AssignedByID,CompanyID,Post,ClientType,Account,SupplierType,BusinessSectors,Province) VALUES ${ sql_values.join() }`
 
 	try {
 		const del_result = await excuteQuery({ query: 'DELETE FROM contacts' })

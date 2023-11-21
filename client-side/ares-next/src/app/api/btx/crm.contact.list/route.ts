@@ -16,6 +16,7 @@ export async function POST (req)
 			'BIRTHDATE',
 			'COMPANY_ID',
 			'POST',
+			'ASSIGNED_BY_ID',
 			CONTACT_UFS.ClientType,
 			CONTACT_UFS.Account,
 			CONTACT_UFS.SupplierType,
