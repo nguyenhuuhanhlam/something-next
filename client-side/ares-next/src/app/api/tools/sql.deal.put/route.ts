@@ -60,7 +60,7 @@ export async function POST (req:NextRequest) {
 			(${r.Id},${r.Title},${r.Responsible},
 			${r.Category},${r.Company},${r.Stage},${r.CloseDate},${r.CreateDate},${r.Source},
 			${r.Amount},${r.Possible},${r.SalesObject},${r.BusinessSectors},${r.TargetDate},
-			${r.Province},${r.LostReasons},${r.DeliveryDate},${r.FollowReasons})`)
+			${r.Province},${r.LostReasons},${r.DeliveryDate},${r.FollowReasons},${r.ContactID})`)
 	})
 
 	const q = `INSERT INTO deals(Id,Title,Responsible,Category,Company,Stage,CloseDate,CreateDate,

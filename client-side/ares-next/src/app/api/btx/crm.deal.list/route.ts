@@ -14,7 +14,6 @@ export async function POST (req) {
 		select: [
 			'ID',
 			'ASSIGNED_BY_ID',
-			'CONTACT_ID',
 			'CATEGORY_ID',
 			'CLOSEDATE',
 			'COMPANY_ID',
@@ -31,6 +30,7 @@ export async function POST (req) {
 			DEAL_UFS.Province,
 			DEAL_UFS.SalesObject,
 			DEAL_UFS.TargetDate,
+			'CONTACT_ID',
 			],
 			start: 0
 		}
