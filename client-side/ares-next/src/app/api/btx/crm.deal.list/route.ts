@@ -14,6 +14,7 @@ export async function POST (req) {
 		select: [
 			'ID',
 			'ASSIGNED_BY_ID',
+			'CONTACT_ID',
 			'CATEGORY_ID',
 			'CLOSEDATE',
 			'COMPANY_ID',

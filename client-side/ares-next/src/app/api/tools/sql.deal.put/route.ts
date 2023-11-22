@@ -52,7 +52,8 @@ export async function POST (req:NextRequest) {
 			Province: v[DEAL_UFS.Province] ? '"'+ list_UF[DEAL_UFS.Province].find(o=>o.ID==v[DEAL_UFS.Province]).VALUE +'"' : 'NULL',
 			LostReasons: v[DEAL_UFS.LostReasons] ? '"'+ list_UF[DEAL_UFS.LostReasons].find(o=>o.ID==v[DEAL_UFS.LostReasons]).VALUE +'"' : 'NULL',
 			DeliveryDate: v[DEAL_UFS.DeliveryDate] ? '"'+ v[DEAL_UFS.DeliveryDate].slice(0,10) +'"' : 'NULL',
-			FollowReasons: v[DEAL_UFS.FollowReasons] ? '"'+ list_UF[DEAL_UFS.FollowReasons].find(o=>o.ID==v[DEAL_UFS.FollowReasons]).VALUE +'"' : 'NULL'
+			FollowReasons: v[DEAL_UFS.FollowReasons] ? '"'+ list_UF[DEAL_UFS.FollowReasons].find(o=>o.ID==v[DEAL_UFS.FollowReasons]).VALUE +'"' : 'NULL',
+			ContactID: v.CONTACT_ID || 'NULL'
 		}
 
 		sql_values.push(`
@@ -64,7 +65,7 @@ export async function POST (req:NextRequest) {
 
 	const q = `INSERT INTO deals(Id,Title,Responsible,Category,Company,Stage,CloseDate,CreateDate,
 		Source,Amount,Possible,SalesObject,BusinessSectors,TargetDate,
-		Province,LostReasons,DeliveryDate,FollowReasons) VALUES ${sql_values.join()}`.replace(/(\r\n|\n|\r|\t)/gm,'')
+		Province,LostReasons,DeliveryDate,FollowReasons,ContactID) VALUES ${sql_values.join()}`.replace(/(\r\n|\n|\r|\t)/gm,'')
 
 	const del_result = await excuteQuery({ query: 'DELETE FROM deals' })
 	const ins_result = await excuteQuery({ query: q })

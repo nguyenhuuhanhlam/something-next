@@ -53,7 +53,8 @@ const getItem = async (id) => {
 		DeliveryDate: result[DEAL_UFS['DeliveryDate']]?.slice(0,10) || null,
 		Responsible: Number(result.ASSIGNED_BY_ID),
 		FollowReasons: ufList[DEAL_UFS['FollowReasons']].find(o=>o.ID==result[DEAL_UFS['FollowReasons']])?.VALUE,
-		Company: Number(result.COMPANY_ID)
+		Company: Number(result.COMPANY_ID),
+		ContactID: Number(result.CONTACT_ID)
 	}
 
 	return rebuild
