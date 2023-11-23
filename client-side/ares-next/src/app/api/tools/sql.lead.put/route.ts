@@ -49,19 +49,20 @@ export async function POST (req:NextRequest) {
 			SalesType: v[LEAD_UFS.SalesType] ? '"'+ list_UF[LEAD_UFS.SalesType].find(o=>o.ID==v[LEAD_UFS.SalesType]).VALUE +'"' : 'NULL',
 			Responsible: parseInt(v.ASSIGNED_BY_ID) || 0,
 			SalesObject: v[LEAD_UFS.SalesObject] ? '"'+ list_UF[LEAD_UFS.SalesObject].find(o=>o.ID==v[LEAD_UFS.SalesObject]).VALUE +'"' : 'NULL',
+			ContactID: v.CONTACT_ID || 'NULL'
 		}
 
 		sql_values.push(`
 			(${r.Id},${r.Title},${r.Status},
 			${r.Source},${r.Amount},${r.CreateDate},${r.CloseDate},
 			${r.BusinessSectors},${r.ConvertDate},
-			${r.FailedReasons},${r.Province},${r.SalesType},${r.Responsible},${r.SalesObject})`)
+			${r.FailedReasons},${r.Province},${r.SalesType},${r.Responsible},${r.SalesObject},${r.ContactID})`)
 	})
 
 	const q = `INSERT INTO leads(Id,Title,Status,
 		Source,Amount,CreateDate,CloseDate,
 		BusinessSectors,ConvertDate,FailedReasons,
-		Province,SalesType,Responsible,SalesObject) 
+		Province,SalesType,Responsible,SalesObject,ContactID) 
 		VALUES ${sql_values.join()}`.replace(/(\r\n|\n|\r|\t)/gm,'')
 
 	const del_result = await excuteQuery({ query: 'DELETE FROM leads' })
