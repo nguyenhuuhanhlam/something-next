@@ -48,7 +48,8 @@ const getItem = async (id) => {
 		SalesType: list_UF[LEAD_UFS['SalesType']].find(o=>o.ID==result[LEAD_UFS['SalesType']])?.VALUE,
 		Responsible: parseInt(result.ASSIGNED_BY_ID),
 		SalesObject: list_UF[LEAD_UFS['SalesObject']].find(o=>o.ID==result[LEAD_UFS['SalesObject']])?.VALUE,
-		Amount: parseFloat(result.OPPORTUNITY)
+		Amount: parseFloat(result.OPPORTUNITY),
+		ContactID: Number(result.CONTACT_ID)
 	}
 
 	return rebuild

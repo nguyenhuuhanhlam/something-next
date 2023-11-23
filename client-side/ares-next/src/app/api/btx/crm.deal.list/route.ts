@@ -7,7 +7,8 @@ import { DEAL_UFS } from '@/constants'
 
 /* - - - - - - - - - - */
 
-export async function POST (req) {
+export async function POST (req)
+{
 	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
 	let all = []
 	let options = {
