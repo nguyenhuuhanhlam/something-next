@@ -3,29 +3,16 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>360-Dg Images</title>
+		<title>360 VR LAB</title>
 		<link rel="stylesheet" href="libs/pannellum.css" />
+		<link rel="stylesheet" href="_.css" />
 		<script type="text/javascript" src="libs/pannellum.js"></script>
-
-		<style>
-			#panorama {
-				width: 800px;
-				height: 600px;
-			}
-		</style>
+		<script type="text/javascript" src="_.js"></script>
 	</head>
 	<body>
 		<div style="display: flex; justify-content: center;">
 			<div id="panorama"></div>
 		</div>
-
-		<script>
-			var config = {
-				default: {},
-				scenes: {}
-			}
-			pannellum.viewer('panorama', config)
-		</script>
-
+		<script>pannellum.viewer('panorama', start)</script>
 	</body>
 </html>
