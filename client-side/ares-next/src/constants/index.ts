@@ -60,6 +60,20 @@ export const SPA_UFS = {
 		BienPhiDaChi: 'ufCrm19_1685434545',
 		LNThucTeTruocThue: 'ufCrm19_1686714238',
 		LNThucTeSauThue: 'ufCrm19_1686714444'
+	},
+	131: {
+		Id: 'Id',
+		Title: 'Title',
+		CompanyID: 'companyId',
+		Stage: 'stageId',
+		Responsible: 'assignedById',
+		CreatedDate: 'createdTime',
+		MovedDate: 'movedTime',
+		NgayTapKet: 'ufCrm15_1649732702',
+		NgayLapDatHoanThanh: 'ufCrm15_1649732751',
+		NgayThuMauNoiBo: 'ufCrm15_1649732783',
+		NgayThuMauAB: 'ufCrm15_1649732806',
+		NgayBanGiao: 'ufCrm15_1649732833'
 	}
 }
 
