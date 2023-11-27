@@ -2,6 +2,7 @@ import excuteQuery from '@/lib/db.ts'
 import { SPA_UFS } from '@/constants'
 const APP_URL = process.env.NEXT_PUBLIC_URL
 
+import rebuilds from './spa.rebuilds'
 /* - - - - - - - - - - */
 
 const getItem = async (id, entityTypeId) => {
