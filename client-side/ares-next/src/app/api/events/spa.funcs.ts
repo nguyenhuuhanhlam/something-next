@@ -9,8 +9,7 @@ import { rebuilds } from './spa.rebuilds'
 const getItem = async (id, entityTypeId) => {
 
 	const res = await fetch(
-		APP_URL + '/api/btx/crm.item.get',
-		{
+		APP_URL + '/api/btx/crm.item.get', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ id, entityTypeId })
@@ -20,7 +19,7 @@ const getItem = async (id, entityTypeId) => {
 	const json = await res.json()
 	const { result:{item} } = json
 
-	console.log(rebuilds(entityTypeId,item))
+	return rebuilds(entityTypeId,item)
 
 	// const rebuild = {
 	// 	Id: id,
@@ -101,7 +100,9 @@ export const addSPA = async (id, entityTypeId) =>
 export const updateSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
 
-	// const _table = `spa_${entityTypeId}_${item.Category}`
+	const _table = `spa_${entityTypeId}_${item.Category}`
+
+	console.log(_table)
 
 	// if (_table=='spa_132_125')
 	// 	await sqlUpdate(_table, item)
