@@ -5,14 +5,17 @@ export const rebuilds = (entityTypeId, item=null) =>
 	switch (entityTypeId)
 	{
 		case 132:
-			b = {spaType:132, data:null}
+			b = { spaType:132, data:null }
 			break
 		case 131:
-			b = {spaType:131, data:{
-				Id: item.id,
-				Title: item.Title,
-				CompanyID: item.companyId
-			}}
+			b = {
+					spaType:131,
+					data: {
+						Id: item.id,
+						Title: item.Title,
+						CompanyID: item.companyId
+					}
+			}
 			break
 	}
 
