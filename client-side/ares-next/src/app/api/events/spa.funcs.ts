@@ -8,19 +8,19 @@ import rebuilds from './spa.rebuilds'
 
 const getItem = async (id, entityTypeId) => {
 
-	console.log('id is : ', id, 'entityTypeId is : ', entityTypeId)
+	const res = await fetch(
+		APP_URL + '/api/btx/crm.item.get',
+		{
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ id, entityTypeId })
+		}
+	)
 
-	// const res = await fetch(
-	// 	APP_URL + '/api/btx/crm.item.get',
-	// 	{
-	// 		method: 'POST',
-	// 		headers: { 'Content-Type': 'application/json' },
-	// 		body: JSON.stringify({ id, entityTypeId })
-	// 	}
-	// )
+	const json = await res.json()
+	const { result:{item} } = json
 
-	// const json = await res.json()
-	// const { result:{item} } = json
+	console.log(rebuilds(entityTypeId))
 
 	// const rebuild = {
 	// 	Id: id,

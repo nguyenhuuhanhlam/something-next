@@ -1,8 +1,8 @@
-const rebuilds = (id, entityTypeId) =>
+const rebuilds = (entityTypeId, item=null) =>
 {
 	let b = {}
 
-	switch (id)
+	switch (entityTypeId)
 	{
 		case 132:
 			b = {msg:132}
