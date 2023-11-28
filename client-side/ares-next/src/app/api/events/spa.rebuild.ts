@@ -1,11 +1,16 @@
 const rebuilds = (id, entityTypeId) =>
 {
-	switch (id) {
+	let b = {}
+
+	switch (id)
+	{
 		case 132:
+			b = {msg:132}
 			break
 		case 131:
+			b = {msg:131}
 			break
 	}
 
-	return rebuild
+	return b
 }
