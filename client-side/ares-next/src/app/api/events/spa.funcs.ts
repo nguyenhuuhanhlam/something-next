@@ -105,7 +105,7 @@ export const updateSPA = async (id, entityTypeId) =>
 	const _table = `spa_${entityTypeId}_${item.__categoryId}`
 
 	switch(_table) {
-		case 'spa_132_15':
+		case 'spa_131_15':
 		case 'spa_132_125':
 			console.log('OK TABLE :', _table)
 			break
