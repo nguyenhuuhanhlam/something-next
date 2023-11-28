@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function POST (req) {
-	
-	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
-
+export async function POST (req)
+{
 	const body = await req.json()
 
 	const res = await fetch(
-		`${ BITRIX_ENDPOINT }/crm.item.get`,
+		`${ process.env.NEXT_PUBLIC_BITRIX_ENDPOINT_11 }/crm.item.get`,
 		{
 			method:'POST',
 			headers: { 'Content-Type': 'application/json' },

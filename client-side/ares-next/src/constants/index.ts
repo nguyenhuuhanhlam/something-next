@@ -61,20 +61,20 @@ export const SPA_UFS = {
 		LNThucTeTruocThue: 'ufCrm19_1686714238',
 		LNThucTeSauThue: 'ufCrm19_1686714444'
 	},
-	// 131: {
-	// 	Id: 'Id',
-	// 	Title: 'title',
-	// 	CompanyID: 'companyId',
-	// 	Stage: 'stageId',
-	// 	Responsible: 'assignedById',
-	// 	CreatedDate: 'createdTime',
-	// 	MovedDate: 'movedTime',
-	// 	NgayTapKet: 'ufCrm15_1649732702',
-	// 	NgayLapDatHoanThanh: 'ufCrm15_1649732751',
-	// 	NgayThuMauNoiBo: 'ufCrm15_1649732783',
-	// 	NgayThuMauAB: 'ufCrm15_1649732806',
-	// 	NgayBanGiao: 'ufCrm15_1649732833'
-	// }
+	131: {
+		Id: 'Id',
+		Title: 'title',
+		CompanyID: 'companyId',
+		Stage: 'stageId',
+		Responsible: 'assignedById',
+		CreatedDate: 'createdTime',
+		MovedDate: 'movedTime',
+		NgayTapKet: 'ufCrm15_1649732702',
+		NgayLapDatHoanThanh: 'ufCrm15_1649732751',
+		NgayThuMauNoiBo: 'ufCrm15_1649732783',
+		NgayThuMauAB: 'ufCrm15_1649732806',
+		NgayBanGiao: 'ufCrm15_1649732833'
+	}
 }
 
 export const SPA_STAGES = {
