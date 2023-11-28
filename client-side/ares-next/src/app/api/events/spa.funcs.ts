@@ -3,7 +3,8 @@ import { rebuilds } from './spa.rebuilds'
 
 /* - - - - - - - - - - */
 
-const getItem = async (id, entityTypeId) => {
+const getItem = async (id, entityTypeId) =>
+{
 
 	const res = await fetch(
 		process.env.NEXT_PUBLIC_URL + '/api/btx/crm.item.get', {
@@ -59,10 +60,12 @@ const sqlUpdate = async (table=null, item) =>
 	}
 }
 
-const sqlDelete = async (table=null, id) => {
+const sqlDelete = async (table=null, id) =>
+{
 	const result = await excuteQuery({
 		query: `DELETE FROM ${table} WHERE Id=${id}`				
 	})
+	
 	console.log('SPA DELETED : ', id)
 }
 
