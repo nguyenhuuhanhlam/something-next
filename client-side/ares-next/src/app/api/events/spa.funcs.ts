@@ -64,7 +64,8 @@ const sqlInsert = async (table=null, item) => {
 
 const sqlUpdate = async (table=null, item) =>
 {	
-	const sets = Object.keys(delete item.__categoryId).map(k=>k+'=?')
+	delete item.__categoryId
+	const sets = Object.keys(item).map(k=>k+'=?')
 
 	console.log(sets,item)
 
