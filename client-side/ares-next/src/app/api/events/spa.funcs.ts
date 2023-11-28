@@ -1,7 +1,4 @@
 import excuteQuery from '@/lib/db.ts' 
-import { SPA_UFS } from '@/constants'
-const APP_URL = process.env.NEXT_PUBLIC_URL
-
 import { rebuilds } from './spa.rebuilds'
 
 /* - - - - - - - - - - */
@@ -9,7 +6,7 @@ import { rebuilds } from './spa.rebuilds'
 const getItem = async (id, entityTypeId) => {
 
 	const res = await fetch(
-		APP_URL + '/api/btx/crm.item.get', {
+		process.env.NEXT_PUBLIC_URL + '/api/btx/crm.item.get', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ id, entityTypeId })
