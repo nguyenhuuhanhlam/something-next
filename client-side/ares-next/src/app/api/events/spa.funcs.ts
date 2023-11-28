@@ -109,6 +109,7 @@ export const updateSPA = async (id, entityTypeId) => {
 	// 	console.log('NOT YET PROGRAMMING FOR THIS SPA : ', _table)
 }
 
-export const deleteSPA = async (id) => {
+export const deleteSPA = async (id) =>
+{
 	// await sqlDelete('spa_132_125', id)
 }
