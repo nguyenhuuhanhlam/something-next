@@ -91,7 +91,7 @@ export const addSPA = async (id, entityTypeId) =>
 	const item = await getItem(id, entityTypeId)
 	const _table = `spa_${entityTypeId}_${item.__categoryId}`
 
-	console.log('SPA ADD : ',_table)
+	console.log('SPA ADD : ',_table,' id is : ', item.Id)
 	
 	// if (_table=='spa_132_125')
 	// 	await sqlInsert(_table, item)
