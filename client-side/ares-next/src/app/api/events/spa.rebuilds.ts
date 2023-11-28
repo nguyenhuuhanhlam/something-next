@@ -12,8 +12,10 @@ export const rebuilds = (entityTypeId, item=null) =>
 					spaType:131,
 					data: {
 						Id: item.id,
-						Title: item.Title,
-						CompanyID: item.companyId
+						Title: item.title,
+						CompanyID: item.companyId,
+						Stage: item.stageId,
+						Responsible: item.assignedById,
 					}
 			}
 			break

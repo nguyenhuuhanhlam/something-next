@@ -63,7 +63,7 @@ export const SPA_UFS = {
 	},
 	131: {
 		Id: 'Id',
-		Title: 'Title',
+		Title: 'title',
 		CompanyID: 'companyId',
 		Stage: 'stageId',
 		Responsible: 'assignedById',
