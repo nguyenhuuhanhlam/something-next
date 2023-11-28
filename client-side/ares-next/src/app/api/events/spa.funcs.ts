@@ -100,7 +100,7 @@ export const addSPA = async (id, entityTypeId) =>
 export const updateSPA = async (id, entityTypeId) => {
 	const item = await getItem(id, entityTypeId)
 
-	const _table = `spa_${entityTypeId}_${item.Category}`
+	const _table = `spa_${entityTypeId}_${item.__categoryId}`
 
 	console.log(_table)
 
