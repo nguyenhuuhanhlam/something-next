@@ -66,7 +66,7 @@ const sqlDelete = async (table=null, id) => {
 	const result = await excuteQuery({
 		query: `DELETE FROM ${table} WHERE Id=${id}`				
 	})
-	console.log('SPA DELETED :: ', id)
+	console.log('SPA DELETED : ', id)
 }
 
 /* - - - - - - - - - - */
@@ -105,5 +105,6 @@ export const updateSPA = async (id, entityTypeId) =>
 
 export const deleteSPA = async (id) =>
 {
-	// await sqlDelete('spa_132_125', id)
+	await sqlDelete('spa_131_15', id)
+	await sqlDelete('spa_132_125', id)
 }
