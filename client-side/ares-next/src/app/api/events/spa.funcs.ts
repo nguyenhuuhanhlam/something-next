@@ -8,7 +8,7 @@ import rebuilds from './spa.rebuilds'
 
 const getItem = async (id, entityTypeId) => {
 
-	console('id is : ', id, 'entityTypeId is : ', entityTypeId)
+	console.log('id is : ', id, 'entityTypeId is : ', entityTypeId)
 
 	// const res = await fetch(
 	// 	APP_URL + '/api/btx/crm.item.get',
