@@ -48,7 +48,10 @@ const getItem = async (id, entityTypeId) => {
 	// return rebuild
 }
 
-const sqlInsert = async (table=null, item) => {
+const sqlInsert = async (table=null, item) =>
+{
+	delete item.__categoryId
+
 	const result = await excuteQuery({
 		query:
 			`INSERT INTO ${table}(${Object.keys(item)}) VALUES(${Object.keys(item).map(k=>'?').join()})`,
@@ -67,24 +70,22 @@ const sqlUpdate = async (table=null, item) =>
 	delete item.__categoryId
 	const sets = Object.keys(item).map(k=>k+'=?')
 
-	console.log(sets,item)
+	try {
+		const result = await excuteQuery({
+			query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
+			values: Object.values(item)
+		})
 
-	// try {
-	// 	const result = await excuteQuery({
-	// 		query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
-	// 		values: Object.values(item)
-	// 	})
+		if (result.affectedRows==0) {
+			await sqlInsert(table, item)
+			console.log('SPA MISSING :: ADDED :: ', item.Id)
+		} else {
+			console.log('SPA UPDATED :: ', item.Id)
+		}
 
-	// 	if (result.affectedRows==0) {
-	// 		console.log('NO UPDATE FOUND, NEED ADD :', sets)
-	// 	} else {
-	// 		console.log('SPA UPDATED :: ', sets.Id)
-	// 	}
-
-		
-	// } catch (e) {
-	// 	console.log(e)
-	// }
+	} catch (e) {
+		console.log(e)
+	}
 }
 
 const sqlDelete = async (table=null, id) => {
