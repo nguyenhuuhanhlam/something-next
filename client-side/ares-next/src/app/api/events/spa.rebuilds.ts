@@ -11,16 +11,17 @@ export const rebuilds = (entityTypeId, item=null) =>
 			b = {
 				Id: item.id,
 				Title: item.title,
+				__categoryId: item.categoryId,
 				CompanyID: item.companyId,
 				Stage: item.stageId,
 				Responsible: item.assignedById,
-				CreatedDate: item.createdTime,
-				MovedDate: item.movedTime,
-				NgayTapKet: item.ufCrm15_1649732702,
-				NgayLapDatHoanThanh: item.ufCrm15_1649732751,
-				NgayThuMauNoiBo: item.ufCrm15_1649732783,
-				NgayThuMauAB: item.ufCrm15_1649732806,
-				NgayBanGiao: item.ufCrm15_1649732833
+				CreatedDate: item.createdTime?.slice(0,10) || null,
+				MovedDate: item.movedTime?.slice(0,10) || null,
+				NgayTapKet: item.ufCrm15_1649732702?.slice(0,10) || null,
+				NgayLapDatHoanThanh: item.ufCrm15_1649732751?.slice(0,10) || null,
+				NgayThuMauNoiBo: item.ufCrm15_1649732783?.slice(0,10) || null,
+				NgayThuMauAB: item.ufCrm15_1649732806?.slice(0,10) || null,
+				NgayBanGiao: item.ufCrm15_1649732833?.slice(0,10) || null
 			}
 			break
 	}
