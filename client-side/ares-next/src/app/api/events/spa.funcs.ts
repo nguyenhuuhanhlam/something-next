@@ -99,12 +99,20 @@ export const addSPA = async (id, entityTypeId) =>
 	// 	console.log('ADDSPA::UNDER-CONSTRUCTION: ', _table)
 }
 
-export const updateSPA = async (id, entityTypeId) => {
+export const updateSPA = async (id, entityTypeId) =>
+{
 	const item = await getItem(id, entityTypeId)
-
 	const _table = `spa_${entityTypeId}_${item.__categoryId}`
 
-	console.log('SPA UPDATE : ',_table)
+	switch(_table) {
+		case 'spa_132_15':
+		case 'spa_132_125':
+			console.log('OK TABLE :', _table)
+			break
+		default:
+			console.log('NOT YET TABLE :', _table)
+			break
+	}
 
 	// if (_table=='spa_132_125')
 	// 	await sqlUpdate(_table, item)
