@@ -87,7 +87,8 @@ const sqlDelete = async (table=null, id) => {
 
 /* - - - - - - - - - - */
 
-export const addSPA = async (id, entityTypeId) => {
+export const addSPA = async (id, entityTypeId) =>
+{
 	const item = await getItem(id, entityTypeId)
 	// const _table = `spa_${entityTypeId}_${item.Category}`
 	
