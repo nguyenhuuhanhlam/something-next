@@ -1,4 +1,4 @@
-const rebuilds = (entityTypeId, item=null) =>
+export const rebuilds = (entityTypeId, item=null) =>
 {
 	let b = {}
 
