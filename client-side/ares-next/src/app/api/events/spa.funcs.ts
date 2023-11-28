@@ -62,19 +62,28 @@ const sqlInsert = async (table=null, item) => {
 		console.log('SPA ADDED :: ', item.Id)
 }
 
-const sqlUpdate = async (table=null, item) => {
-	const sets = Object.keys(item).map(k=>k+'=?')
+const sqlUpdate = async (table=null, item) =>
+{	
+	const sets = Object.keys(delete item.__categoryId).map(k=>k+'=?')
 
-	try {
-		const result = await excuteQuery({
-			query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
-			values: Object.values(item)
-		})
+	console.log(sets,item)
 
-		console.log('SPA UPDATED :: ', item.Id)
-	} catch (e) {
-		console.log(e)
-	}
+	// try {
+	// 	const result = await excuteQuery({
+	// 		query: `UPDATE ${table} SET ${sets} WHERE id=${item.Id}`,
+	// 		values: Object.values(item)
+	// 	})
+
+	// 	if (result.affectedRows==0) {
+	// 		console.log('NO UPDATE FOUND, NEED ADD :', sets)
+	// 	} else {
+	// 		console.log('SPA UPDATED :: ', sets.Id)
+	// 	}
+
+		
+	// } catch (e) {
+	// 	console.log(e)
+	// }
 }
 
 const sqlDelete = async (table=null, id) => {
@@ -107,10 +116,10 @@ export const updateSPA = async (id, entityTypeId) =>
 	switch(_table) {
 		case 'spa_131_15':
 		case 'spa_132_125':
-			console.log('OK TABLE :', _table)
+			await sqlUpdate(_table, item)
 			break
 		default:
-			console.log('NOT YET TABLE :', _table)
+			console.log('NOT YET PROGRAMMING FOR THIS TABLE :', _table)
 			break
 	}
 
