@@ -19,7 +19,7 @@ button {
 	padding: 14px 22px;
 	border: none;
 	background: #4070f4;
-	border-radius: 6px;
+	border-radius: 0px;
 	cursor: pointer;
 }
 button:hover {
@@ -55,7 +55,7 @@ section.active .overlay {
 	max-width: 380px;
 	width: 100%;
 	padding: 30px 20px;
-	border-radius: 24px;
+	border-radius: 0px;
 	background-color: #fff;
 	opacity: 0;
 	pointer-events: none;

@@ -2,8 +2,18 @@ const section = document.querySelector('section')
 const closeBtn = document.querySelector('.close-btn')
 
 closeBtn.addEventListener('click', () => section.classList.remove('active'))
-const setInfo = (inf) => {}
+
+// ---
+const setInfo = (inf) => {
+	const spot_title = document.querySelector('.spot-title')
+	const spot_sub = document.querySelector('.spot-sub')
+	spot_title.innerHTML = inf?.title
+	spot_sub.innerHTML = inf?.sub
+}
+
 const removeInfo = () => {}
+
+// ---
 
 var scenes =
 {
@@ -25,8 +35,17 @@ var scenes =
 				pitch: -20,
 				yaw: -10,
 				type: 'info',
-				// text: 'thong tin buc tranh ABC',
 				clickHandlerFunc: (e) => {
+					setInfo({ title:'Hello Spot 1', sub:'Sub Spot 1' })
+					section.classList.add('active')
+				}
+			},
+			{
+				pitch: -20,
+				yaw: -20,
+				type: 'info',
+				clickHandlerFunc: (e) => {
+					setInfo({ title:'Hello Spot 2', sub:'Sub Spot 2' })
 					section.classList.add('active')
 				}
 			}
@@ -48,7 +67,6 @@ var start =
 		firstScene: 'S2',
 		sceneFadeDuration: 3000,
 		autoLoad: true,
-		compass: false,
 	},
 	scenes: scenes
 }
