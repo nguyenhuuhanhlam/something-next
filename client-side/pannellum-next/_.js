@@ -1,3 +1,10 @@
+const section = document.querySelector('section')
+const closeBtn = document.querySelector('.close-btn')
+
+closeBtn.addEventListener('click', () => section.classList.remove('active'))
+const setInfo = (inf) => {}
+const removeInfo = () => {}
+
 var scenes =
 {
 	S0: {
@@ -14,7 +21,15 @@ var scenes =
 		panorama:'uploads/bedroom.jpg',
 		hotSpots: [
 			{ pitch:45, yaw:0, type:'scene', text:'To A', sceneId:'S3' },
-			{ pitch:-24, yaw:-4, type:'scene', text:'thong tin buc tranh ABC', sceneId:'S0' }
+			{
+				pitch: -20,
+				yaw: -10,
+				type: 'info',
+				// text: 'thong tin buc tranh ABC',
+				clickHandlerFunc: (e) => {
+					section.classList.add('active')
+				}
+			}
 		]
 	},
 	S3: {
@@ -30,11 +45,10 @@ var scenes =
 var start =
 {
 	default: {
-		firstScene: 'S0',
+		firstScene: 'S2',
 		sceneFadeDuration: 3000,
 		autoLoad: true,
 		compass: false,
-		hotSpotDebug: true,
 	},
 	scenes: scenes
 }

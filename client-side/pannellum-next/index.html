@@ -3,16 +3,38 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 		<title>360 VR LAB</title>
 		<link rel="stylesheet" href="libs/pannellum.css" />
 		<link rel="stylesheet" href="_.css" />
+		<link rel="stylesheet" href="modal.css" />
 		<script type="text/javascript" src="libs/pannellum.js"></script>
-		<script type="text/javascript" src="_.js"></script>
 	</head>
+
 	<body>
-		<div style="display: flex; justify-content: center;">
-			<div id="panorama"></div>
-		</div>
+		<section>
+			<!--P-->
+			<div style="display: flex; justify-content: center;">
+				<div id="panorama"></div>
+			</div>
+
+			<!--M-->
+			<div class="modal-box">
+				<i class="fa-regular fa-circle-check"></i>
+				<h4 class="modal-title">Spot Title!</h4>
+				<p class="modal-sub">You have sucessfully downloaded all the source code files.</p>
+				
+				<div class="modal-body">---</div>
+
+				<div class="buttons">
+					<button class="close-btn">Close</button>
+				</div>
+			</div>
+		</section>
+
+		<script src="_.js"></script>
 		<script>pannellum.viewer('panorama', start)</script>
 	</body>
 </html>
