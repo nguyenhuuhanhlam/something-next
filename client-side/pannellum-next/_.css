@@ -1,1 +1,9 @@
 #panorama { width: 800px; height: 600px; }
+
+.swiper { width: 200px; height: 200px; }
+.swiper {
+	--swiper-navigation-size: 16px;
+	--swiper-navigation-top-offset: 50%;
+	--swiper-navigation-sides-offset: 10px;
+	--swiper-navigation-color: var(--swiper-theme-color);
+}
