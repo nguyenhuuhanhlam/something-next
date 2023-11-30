@@ -8,9 +8,11 @@
 		<meta http-equiv="Expires" content="0" />
 		<title>360 VR LAB</title>
 		<link rel="stylesheet" href="libs/pannellum.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 		<link rel="stylesheet" href="_.css" />
 		<link rel="stylesheet" href="modal.css" />
 		<script type="text/javascript" src="libs/pannellum.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 	</head>
 
 	<body>
@@ -26,7 +28,26 @@
 				<h4 class="spot-title">[spot-title]</h4>
 				<p class="spot-sub">[spot-sub]</p>
 				
-				<div class="spot-body">[spot-body]</div>
+				<div class="spot-body">
+					<div class="swiper">
+						<div class="swiper-wrapper">
+							<!-- Slides -->
+							<div class="swiper-slide">Slide 1</div>
+							<div class="swiper-slide">Slide 2</div>
+							<div class="swiper-slide">Slide 3</div>
+						</div>
+
+						<!-- If we need pagination -->
+						<div class="swiper-pagination"></div>
+
+						<!-- If we need navigation buttons -->
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+
+						<!-- If we need scrollbar -->
+						<div class="swiper-scrollbar"></div>
+					</div>
+				</div>
 
 				<div class="buttons">
 					<button class="close-btn">Close</button>
@@ -36,5 +57,28 @@
 
 		<script src="_.js"></script>
 		<script>pannellum.viewer('panorama', start)</script>
+		<script>
+			const swiper = new Swiper('.swiper', {
+				// Optional parameters
+				direction: 'horizontal',
+				loop: true,
+
+				// If we need pagination
+				pagination: {
+					el: '.swiper-pagination',
+				},
+
+				// Navigation arrows
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+
+				// And if we need scrollbar
+				scrollbar: {
+					el: '.swiper-scrollbar',
+				},
+			});
+		</script>
 	</body>
 </html>
