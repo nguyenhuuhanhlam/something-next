@@ -1,5 +1,4 @@
 #panorama { width: 800px; height: 600px; }
-<<<<<<< HEAD
 
 .swiper { width: 200px; height: 200px; }
 .swiper {
@@ -8,6 +7,3 @@
 	--swiper-navigation-sides-offset: 10px;
 	--swiper-navigation-color: var(--swiper-theme-color);
 }
-=======
-.swiper { width: 200px; height: 200px; }
->>>>>>> 9d9fbbff05eb9db56eeefb707a689677a324aa4d
