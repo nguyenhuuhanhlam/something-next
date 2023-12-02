@@ -43,6 +43,9 @@ export async function POST (req) {
 			case 'ONCRMCONTACTADD':
 				console.log('ONCRMCONTACTADD',params)
 				break
+			case 'ONCRMCONTACTUPDATE':
+				console.log('ONCRMCONTACTUPDATE',params)
+				break
 
 			/* SPA */
 			case 'ONCRMDYNAMICITEMADD':
