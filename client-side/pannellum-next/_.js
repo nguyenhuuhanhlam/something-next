@@ -26,30 +26,30 @@ var scenes =
 		]
 	},
 	S2: {
-		title:'BedRoom',
+		title:'TEST1',
 		type:'equirectangular',
-		panorama:'uploads/bedroom.jpg',
-		hotSpots: [
-			{ pitch:45, yaw:0, type:'scene', text:'To A', sceneId:'S3' },
-			{
-				pitch: -20,
-				yaw: -10,
-				type: 'info',
-				clickHandlerFunc: (e) => {
-					setInfo({ title:'Hello Spot 1', sub:'Sub Spot 1' })
-					section.classList.add('active')
-				}
-			},
-			{
-				pitch: -20,
-				yaw: -20,
-				type: 'info',
-				clickHandlerFunc: (e) => {
-					setInfo({ title:'Hello Spot 2', sub:'Sub Spot 2' })
-					section.classList.add('active')
-				}
-			}
-		]
+		panorama:'uploads/360/outdoor_01.jpg',
+		// hotSpots: [
+		// 	{ pitch:45, yaw:0, type:'scene', text:'To A', sceneId:'S3' },
+		// 	{
+		// 		pitch: -20,
+		// 		yaw: -10,
+		// 		type: 'info',
+		// 		clickHandlerFunc: (e) => {
+		// 			setInfo({ title:'Hello Spot 1', sub:'Sub Spot 1' })
+		// 			section.classList.add('active')
+		// 		}
+		// 	},
+		// 	{
+		// 		pitch: -20,
+		// 		yaw: -20,
+		// 		type: 'info',
+		// 		clickHandlerFunc: (e) => {
+		// 			setInfo({ title:'Hello Spot 2', sub:'Sub Spot 2' })
+		// 			section.classList.add('active')
+		// 		}
+		// 	}
+		// ]
 	},
 	S3: {
 		title:'Library',
