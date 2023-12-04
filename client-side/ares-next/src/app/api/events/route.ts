@@ -21,15 +21,21 @@ export async function POST (req) {
 		switch(params.event) {
 
 			/* USER */
-			case 'ONUSERADD':				
+			case 'ONUSERADD':
+				await excuteQuery({
+					query: `INSERT INTO event_logs(EventName,Data) VALUES(?,?)`,
+					values:['ONUSERADD', JSON.stringify(params)]
+				})
 				break
 
 			/* CONTACT */
 			case 'ONCRMCONTACTADD':
-				console.log('ONCRMCONTACTADD',params)
+				await excuteQuery({
+					query: `INSERT INTO event_logs(EventName,Data) VALUES(?,?)`,
+					values:['ONCRMCONTACTADD', JSON.stringify(params)]
+				})
 				break
 			case 'ONCRMCONTACTUPDATE':
-				console.log('ONCRMCONTACTUPDATE',params)
 				await excuteQuery({
 					query: `INSERT INTO event_logs(EventName,Data) VALUES(?,?)`,
 					values:['ONCRMCONTACTUPDATE', JSON.stringify(params)]
