@@ -1,24 +1,9 @@
-import {
-	NextRequest,
-	NextResponse } from 'next/server'
-import {
-	addSPA,
-	updateSPA,
-	deleteSPA } from './spa.funcs'
-import {
-	addDEAL,
-	updateDEAL,
-	deleteDEAL } from './deal.funcs'
-import {
-	addLEAD,
-	updateLEAD,
-	deleteLEAD
-	} from './lead.funcs'
-import {
-	addTASK,
-	updateTASK,
-	deleteTASK
-} from './task.funcs'
+import { NextRequest, NextResponse } from 'next/server'
+import { addSPA, updateSPA, deleteSPA } from './spa.funcs'
+import { addDEAL, updateDEAL, deleteDEAL } from './deal.funcs'
+import { addLEAD, updateLEAD, deleteLEAD } from './lead.funcs'
+import { addTASK, updateTASK, deleteTASK } from './task.funcs'
+import excuteQuery from '@/lib/db.ts'
 
 /* - - - - - - - - - - */
 
@@ -45,6 +30,10 @@ export async function POST (req) {
 				break
 			case 'ONCRMCONTACTUPDATE':
 				console.log('ONCRMCONTACTUPDATE',params)
+				await excuteQuery({
+					query: `INSERT INTO event_logs(EventName,Data) VALUES(?,?)`,
+					values:['ONCRMCONTACTUPDATE', JSON.stringify(params)]
+				})
 				break
 
 			/* SPA */
