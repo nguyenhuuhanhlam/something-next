@@ -17,18 +17,18 @@ const removeInfo = () => {}
 
 var scenes =
 {
-	S0: {
-		title:'coords-helper',
+	F0_1: {
+		title:'LỐI VÀO CHÍNH',
 		type:'equirectangular',
-		panorama:'uploads/coords-helper.jpg',
+		panorama:'uploads/VR360/F0_LOIVAOCHINH/F0_1.jpg',
 		hotSpots: [
-			{ pitch:-30, yaw:0, type:'scene', text:'To L1', sceneId:'S2' },
+			{ pitch:-15, yaw:3, type:'scene', sceneId:'F0_2' },
 		]
 	},
-	S2: {
-		title:'TEST1',
+	F0_2: {
+		title:'CỬA CHÍNH',
 		type:'equirectangular',
-		panorama:'uploads/360/outdoor_01.jpg',
+		panorama:'uploads/VR360/F0_LOIVAOCHINH/F0_2.jpg',
 		// hotSpots: [
 		// 	{ pitch:45, yaw:0, type:'scene', text:'To A', sceneId:'S3' },
 		// 	{
@@ -64,8 +64,8 @@ var scenes =
 var start =
 {
 	default: {
-		firstScene: 'S2',
-		sceneFadeDuration: 3000,
+		firstScene: 'F0_1',
+		sceneFadeDuration: 2000,
 		autoLoad: true,
 	},
 	scenes: scenes
