@@ -24,7 +24,6 @@ var scenes =
 			{ pitch:-15, yaw:3, type:'scene', sceneId:'F0_2' },
 		]
 	},
-
 	F0_2: {
 		type:'equirectangular',
 		panorama:'uploads/VR360/F0_LOIVAOCHINH/F0_2.jpg',
@@ -33,6 +32,8 @@ var scenes =
 			{ pitch:-10, yaw:2, type:'scene', sceneId:'F1_1', text:'VÀO SẢNH CHÍNH' },
 		]
 	},
+
+	/* - - - */
 
 	F1_1: {
 		type: 'equirectangular',
@@ -43,9 +44,21 @@ var scenes =
 		]
 	},
 
+	/* - - - */
+
 	F2_1: {
 		type: 'equirectangular',
 		panorama: 'uploads/VR360/F2-F6_TRUNGBAYTRONGNHA/F2_TL01-TL03/F2_1.jpg',
+		hotSpots: [
+			{ pitch:0, yaw:240, type:'scene', sceneId:'F2_2' }
+		]
+	},
+	F2_2: {
+		type: 'equirectangular',
+		panorama: 'uploads/VR360/F2-F6_TRUNGBAYTRONGNHA/F2_TL01-TL03/F2_2.jpg',
+		hotSpots: [
+			{ pitch:-30, yaw:-280, type:'scene', sceneId:'F2_1' }
+		]
 	}
 }
 
