@@ -19,7 +19,10 @@ export async function POST (req)
 			SPA_UFS[131]['NgayLapDatHoanThanh'],
 			SPA_UFS[131]['NgayThuMauNoiBo'],
 			SPA_UFS[131]['NgayThuMauAB'],
-			SPA_UFS[131]['NgayBanGiao']
+			SPA_UFS[131]['NgayBanGiao'],
+			SPA_UFS[131]['HienTrang'],
+			SPA_UFS[131]['KhoKhan'],
+			SPA_UFS[131]['GiaiPhap']
 		]
 	}
 

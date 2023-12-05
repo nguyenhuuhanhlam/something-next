@@ -73,7 +73,10 @@ export const SPA_UFS = {
 		NgayLapDatHoanThanh: 'ufCrm15_1649732751',
 		NgayThuMauNoiBo: 'ufCrm15_1649732783',
 		NgayThuMauAB: 'ufCrm15_1649732806',
-		NgayBanGiao: 'ufCrm15_1649732833'
+		NgayBanGiao: 'ufCrm15_1649732833',
+		HienTrang:'ufCrm15_1701160271',
+  	KhoKhan:'ufCrm15_1701160292',
+  	GiaiPhap:'ufCrm15_1701160343'
 	}
 }
 

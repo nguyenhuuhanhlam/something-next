@@ -31,7 +31,10 @@ export async function POST (req:NextRequest)
 			NgayLapDatHoanThanh: pds(v[SPA_UFS[131]['NgayLapDatHoanThanh']]),
 			NgayThuMauNoiBo: pds(v[SPA_UFS[131]['NgayThuMauNoiBo']]),
 			NgayThuMauAB: pds(v[SPA_UFS[131]['NgayThuMauAB']]),
-			NgayBanGiao: pds(v[SPA_UFS[131]['NgayBanGiao']])
+			NgayBanGiao: pds(v[SPA_UFS[131]['NgayBanGiao']]),
+			HienTrang: ps(v[SPA_UFS[131]['HienTrang']]),
+			KhoKhan: ps(v[SPA_UFS[131]['KhoKhan']]),
+			GiaiPhap: ps(v[SPA_UFS[131]['GiaiPhap']]),
 		}
 
 		sql_values.push(`(${ Object.keys(item).map(k=>item[k]) })`)
@@ -39,7 +42,7 @@ export async function POST (req:NextRequest)
 
 	const q = `INSERT INTO ${table}
 			(Id,Title,CreatedDate,MovedDate,Stage,CompanyID,Responsible,
-			NgayTapKet,NgayLapDatHoanThanh,NgayThuMauNoiBo,NgayThuMauAB,NgayBanGiao)
+			NgayTapKet,NgayLapDatHoanThanh,NgayThuMauNoiBo,NgayThuMauAB,NgayBanGiao,HienTrang,KhoKhan,GiaiPhap)
 		VALUES ${sql_values.join()}`
 
 	try {

@@ -43,7 +43,10 @@ export const rebuilds = (entityTypeId, item=null) =>
 				NgayLapDatHoanThanh: item.ufCrm15_1649732751?.slice(0,10) || null,
 				NgayThuMauNoiBo: item.ufCrm15_1649732783?.slice(0,10) || null,
 				NgayThuMauAB: item.ufCrm15_1649732806?.slice(0,10) || null,
-				NgayBanGiao: item.ufCrm15_1649732833?.slice(0,10) || null
+				NgayBanGiao: item.ufCrm15_1649732833?.slice(0,10) || null,
+				HienTrang: item.ufCrm15_1701160271 || null,
+				KhoKhan: item.ufCrm15_1701160292 || null,
+				GiaiPhap: item.ufCrm15_1701160343 || null,
 			}
 			break
 	}
