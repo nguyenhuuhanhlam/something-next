@@ -59,13 +59,24 @@ var scenes =
 		hotSpots: [
 			{ pitch:-30, yaw:-280, type:'scene', sceneId:'F2_1' }
 		]
+	},
+
+	/* - - - */
+
+	F7_1: {
+		type: 'equirectangular',
+		panorama: 'uploads/VR360/F7_F9/F7_1.jpg',
+	},
+	F7_2: {
+		type: 'equirectangular',
+		panorama: 'uploads/VR360/F7_F9/F7_2.jpg',
 	}
 }
 
 var start =
 {
 	default: {
-		firstScene: 'F0_1', /*F0_1*/
+		firstScene: 'F7_2', /*F0_1*/
 		sceneFadeDuration: 2000,
 		autoLoad: true,
 	},
