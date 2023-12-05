@@ -51,7 +51,7 @@ var scenes =
 var start =
 {
 	default: {
-		firstScene: 'F1_1', /*F0_1*/
+		firstScene: 'F0_1', /*F0_1*/
 		sceneFadeDuration: 2000,
 		autoLoad: true,
 	},
