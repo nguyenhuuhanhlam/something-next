@@ -21,7 +21,7 @@ var scenes =
 		type:'equirectangular',
 		panorama:'uploads/VR360/F0_LOIVAOCHINH/F0_1.jpg',
 		hotSpots: [
-			{ pitch:-15, yaw:3, type:'scene', sceneId:'F0_2' },
+			{ pitch:-15, yaw:3, type:'scene', sceneId:'F0_2', scale:10 },
 		]
 	},
 	F0_2: {
@@ -38,8 +38,10 @@ var scenes =
 	F1_1: {
 		type: 'equirectangular',
 		panorama: 'uploads/VR360/F1_PANEL/F1_1.jpg',
+		title:'SẢNH',
 		hotSpots: [
-			{ pitch:-20, yaw:-66, type:'scene', text:'ĐẾN KHU TRƯNG BÀY', sceneId:'F2_1' },
+			{ pitch:-20, yaw:-66, type:'scene', text:'KHU TRƯNG BÀY TRONG NHÀ', sceneId:'F2_1' },
+			{ pitch:-20, yaw:60, type:'scene', text:'KHU TRƯNG BÀY NGOÀI TRỜI', sceneId:'F7_1' },
 			{ pitch:-140, yaw:20, type:'scene', sceneId:'F0_2' } /* RA NGOAI */
 		]
 	},
@@ -50,7 +52,8 @@ var scenes =
 		type: 'equirectangular',
 		panorama: 'uploads/VR360/F2-F6_TRUNGBAYTRONGNHA/F2_TL01-TL03/F2_1.jpg',
 		hotSpots: [
-			{ pitch:0, yaw:240, type:'scene', sceneId:'F2_2' }
+			{ pitch:0, yaw:240, type:'scene', sceneId:'F2_2' },
+			{ pitch:-15, yaw:-67.5, type:'scene', sceneId:'F1_1', text:'RA SẢNH' }
 		]
 	},
 	F2_2: {
@@ -66,17 +69,23 @@ var scenes =
 	F7_1: {
 		type: 'equirectangular',
 		panorama: 'uploads/VR360/F7_F9/F7_1.jpg',
+		hotSpots: [
+			{ pitch:-80, yaw:0, type:'scene', sceneId:'F7_2' }
+		]
 	},
 	F7_2: {
 		type: 'equirectangular',
 		panorama: 'uploads/VR360/F7_F9/F7_2.jpg',
+		hotSpots: [
+			{ pitch:0, yaw:-42, type:'scene', sceneId:'F1_1', text:'TRỞ VỀ SẢNH' }
+		]
 	}
 }
 
 var start =
 {
 	default: {
-		firstScene: 'F7_2', /*F0_1*/
+		firstScene: 'F2_1', /*F0_1*/
 		sceneFadeDuration: 2000,
 		autoLoad: true,
 	},
