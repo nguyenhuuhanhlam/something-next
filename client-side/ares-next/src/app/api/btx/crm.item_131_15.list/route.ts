@@ -5,7 +5,7 @@ export async function POST (req)
 {
 	const endpoint = process.env.NEXT_PUBLIC_BITRIX_ENDPOINT_11
 	let all = []
-	const body = { entityTypeId: 131, 'filter[categoryId]': 15 }
+	const body = { entityTypeId: 131, filter: [{categoryId:15}] }
 	const options = {
 		select: [
 			'id',
