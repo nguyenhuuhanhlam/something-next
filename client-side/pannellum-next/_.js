@@ -38,7 +38,8 @@ var scenes =
 		type: 'equirectangular',
 		panorama: 'uploads/VR360/F1_PANEL/F1_1.jpg',
 		hotSpots: [
-			{ pitch:-20, yaw:-66, type:'scene', text:'ĐẾN KHU TRƯNG BÀY', sceneId:'F2_1' }
+			{ pitch:-20, yaw:-66, type:'scene', text:'ĐẾN KHU TRƯNG BÀY', sceneId:'F2_1' },
+			{ pitch:-140, yaw:20, type:'scene', sceneId:'F0_2' } /* RA NGOAI */
 		]
 	},
 
