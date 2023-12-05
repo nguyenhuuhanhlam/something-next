@@ -37,7 +37,7 @@ var scenes =
 
 	F1_1: {
 		type: 'equirectangular',
-		panorama: 'uploads/VR360/F1_PANEL/F1_1.jpg',
+		panorama: 'uploads/VR360/F1_SANH/F1_1.jpg',
 		title:'SẢNH',
 		hotSpots: [
 			{ pitch:-20, yaw:-66, type:'scene', text:'KHU TRƯNG BÀY TRONG NHÀ', sceneId:'F2_1' },
@@ -46,19 +46,22 @@ var scenes =
 		]
 	},
 
-	/* - - - */
+	/* - TRONG NHA - */
 
 	F2_1: {
 		type: 'equirectangular',
-		panorama: 'uploads/VR360/F2-F6_TRUNGBAYTRONGNHA/F2_TL01-TL03/F2_1.jpg',
+		panorama: 'uploads/VR360/F2_TRUNGBAYTRONGNHA/F2_1.jpg',
 		hotSpots: [
 			{ pitch:0, yaw:240, type:'scene', sceneId:'F2_2' },
-			{ pitch:-15, yaw:-67.5, type:'scene', sceneId:'F1_1', text:'RA SẢNH' }
+			{ pitch:-15, yaw:-67.5, type:'scene', sceneId:'F1_1', text:'RA SẢNH' },
+			{ pitch:-10, yaw:-37, type:'info', text:'TL1' },
+			{ pitch:-10, yaw:0, type:'info', text:'TL2' },
+			{ pitch:-10, yaw:37, type:'info', text:'TL3' },
 		]
 	},
 	F2_2: {
 		type: 'equirectangular',
-		panorama: 'uploads/VR360/F2-F6_TRUNGBAYTRONGNHA/F2_TL01-TL03/F2_2.jpg',
+		panorama: 'uploads/VR360/F2_TRUNGBAYTRONGNHA/F2_2.jpg',
 		hotSpots: [
 			{ pitch:-30, yaw:-280, type:'scene', sceneId:'F2_1' }
 		]
@@ -85,8 +88,8 @@ var scenes =
 var start =
 {
 	default: {
-		firstScene: 'F0_1', /*F0_1*/
-		sceneFadeDuration: 2000,
+		firstScene: 'F2_1', /*F0_1*/
+		sceneFadeDuration: 1000,
 		autoLoad: true,
 	},
 	scenes: scenes
