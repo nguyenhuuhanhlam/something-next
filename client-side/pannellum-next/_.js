@@ -24,6 +24,7 @@ var scenes =
 			{ pitch:-15, yaw:3, type:'scene', sceneId:'F0_2' },
 		]
 	},
+
 	F0_2: {
 		type:'equirectangular',
 		panorama:'uploads/VR360/F0_LOIVAOCHINH/F0_2.jpg',
@@ -31,7 +32,33 @@ var scenes =
 			{ pitch:-40, yaw:2, type:'scene', sceneId:'F0_1' },
 			{ pitch:-10, yaw:2, type:'scene', sceneId:'F1_1', text:'VÀO SẢNH CHÍNH' },
 		]
-		// hotSpots: [
+	},
+
+	F1_1: {
+		type: 'equirectangular',
+		panorama: 'uploads/VR360/F1_PANEL/F1_1.jpg',
+		hotSpots: [
+			{ pitch:-20, yaw:-66, type:'scene', text:'ĐẾN KHU TRƯNG BÀY', sceneId:'F2_1' }
+		]
+	},
+
+	F2_1: {
+		type: 'equirectangular',
+		panorama: 'uploads/VR360/F2-F6_TRUNGBAYTRONGNHA/F2_TL01-TL03/F2_1.jpg',
+	}
+}
+
+var start =
+{
+	default: {
+		firstScene: 'F1_1', /*F0_1*/
+		sceneFadeDuration: 2000,
+		autoLoad: true,
+	},
+	scenes: scenes
+}
+
+// hotSpots: [
 		// 	{ pitch:45, yaw:0, type:'scene', text:'To A', sceneId:'S3' },
 		// 	{
 		// 		pitch: -20,
@@ -52,22 +79,3 @@ var scenes =
 		// 		}
 		// 	}
 		// ]
-	},
-	F1_1: {
-		type: 'equirectangular',
-		panorama: 'uploads/VR360/F1_PANEL/F1_1.jpg',
-		// hotSpots: [
-		// 	{ pitch:0, yaw:0, type:'scene', text:'To B1', sceneId:'S0' }
-		// ]
-	}
-}
-
-var start =
-{
-	default: {
-		firstScene: 'F0_1',
-		sceneFadeDuration: 2000,
-		autoLoad: true,
-	},
-	scenes: scenes
-}
