@@ -200,7 +200,7 @@ var scenes =
 var start =
 {
 	default: {
-		firstScene: 'F7_2', /*F0_1*/
+		firstScene: 'F0_1', /*F0_1*/
 		sceneFadeDuration: 1000,
 		autoLoad: true,
 	},
