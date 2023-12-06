@@ -33,7 +33,8 @@ const setInfo = (inf) => {
 const removeInfo = () => {}
 
 TLS = {
-	TL1: [`${path}/F2_TRUNGBAYTRONGNHA/TL1.jpg`]
+	TL1: [`${path}/F2_TRUNGBAYTRONGNHA/TL1.jpg`],
+	TL2: [`${path}/F2_TRUNGBAYTRONGNHA/TL2.jpg`]
 }
 
 // ---
@@ -85,7 +86,14 @@ var scenes =
 				}
 			},
 
-			{ pitch:-10, yaw:0, type:'info', text:'TL2' },
+			{ pitch:-10, yaw:0, type:'info', text:'TL2',
+				clickHandlerFunc: (e) => {
+					setInfo({ title:'TL2', data: TLS.TL2 })
+					section.classList.add('active')
+				}
+			},
+
+
 			{ pitch:-10, yaw:37, type:'info', text:'TL3' },
 			{ pitch:-8.5, yaw:70, type:'info', text:'TL4' },
 			{ pitch:-7.5, yaw:98.5, type:'info', text:'TL5' },
