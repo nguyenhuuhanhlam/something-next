@@ -4,6 +4,7 @@ const closeBtn = document.querySelector('.close-btn')
 closeBtn.addEventListener('click', () => section.classList.remove('active'))
 
 // ---
+const url = ''
 const setInfo = (inf) => {
 	const spot_title = document.querySelector('.spot-title')
 	const spot_sub = document.querySelector('.spot-sub')
@@ -54,7 +55,14 @@ var scenes =
 		hotSpots: [
 			{ pitch:0, yaw:240, type:'scene', sceneId:'F2_2' },
 			{ pitch:-15, yaw:-67.5, type:'scene', sceneId:'F1_1', text:'RA SẢNH' },
-			{ pitch:-10, yaw:-37, type:'info', text:'TL1' },
+			
+			{ pitch:-10, yaw:-37, type:'info', text:'TL1',
+				clickHandlerFunc: (e) => {
+					setInfo({ title:'TL1', sub:'More TL1', data: ['uploads/VR360/F2_TRUNGBAYTRONGNHA'] })
+					section.classList.add('active')
+				}
+			},
+
 			{ pitch:-10, yaw:0, type:'info', text:'TL2' },
 			{ pitch:-10, yaw:37, type:'info', text:'TL3' },
 			{ pitch:-8.5, yaw:70, type:'info', text:'TL4' },
