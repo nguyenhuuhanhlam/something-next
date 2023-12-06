@@ -4,15 +4,37 @@ const closeBtn = document.querySelector('.close-btn')
 closeBtn.addEventListener('click', () => section.classList.remove('active'))
 
 // ---
-const url = ''
+const path = 'uploads/VR360'
 const setInfo = (inf) => {
 	const spot_title = document.querySelector('.spot-title')
-	const spot_sub = document.querySelector('.spot-sub')
+	const slides = document.querySelector('.swiper-wrapper')
+
+	slides.innerHTML = ''
+
 	spot_title.innerHTML = inf?.title
-	spot_sub.innerHTML = inf?.sub
+
+	inf?.data.map(v=>{
+		const div_node = document.createElement('div')
+		const img_node = document.createElement('img')
+		
+		div_node.classList.add('swiper-slide')
+
+		img_node.src=v
+		img_node.setAttribute('style','max-width:100%;')
+		div_node.appendChild(img_node)
+
+		slides.appendChild(div_node)
+	})
+
+	const swiper = document.querySelector('.swiper').swiper
+	swiper.update(true)
 }
 
 const removeInfo = () => {}
+
+TLS = {
+	TL1: [`${path}/F2_TRUNGBAYTRONGNHA/TL1.jpg`]
+}
 
 // ---
 
@@ -58,7 +80,7 @@ var scenes =
 			
 			{ pitch:-10, yaw:-37, type:'info', text:'TL1',
 				clickHandlerFunc: (e) => {
-					setInfo({ title:'TL1', sub:'More TL1', data: ['uploads/VR360/F2_TRUNGBAYTRONGNHA'] })
+					setInfo({ title:'TL1', data: TLS.TL1 })
 					section.classList.add('active')
 				}
 			},
@@ -106,25 +128,3 @@ var start =
 	},
 	scenes: scenes
 }
-
-// hotSpots: [
-		// 	{ pitch:45, yaw:0, type:'scene', text:'To A', sceneId:'S3' },
-		// 	{
-		// 		pitch: -20,
-		// 		yaw: -10,
-		// 		type: 'info',
-		// 		clickHandlerFunc: (e) => {
-		// 			setInfo({ title:'Hello Spot 1', sub:'Sub Spot 1' })
-		// 			section.classList.add('active')
-		// 		}
-		// 	},
-		// 	{
-		// 		pitch: -20,
-		// 		yaw: -20,
-		// 		type: 'info',
-		// 		clickHandlerFunc: (e) => {
-		// 			setInfo({ title:'Hello Spot 2', sub:'Sub Spot 2' })
-		// 			section.classList.add('active')
-		// 		}
-		// 	}
-		// ]
