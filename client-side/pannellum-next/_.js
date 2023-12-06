@@ -84,6 +84,7 @@ var scenes =
 		panorama: 'uploads/VR360/F2_TRUNGBAYTRONGNHA/F2_1.jpg',
 		hotSpots: [
 			{ pitch:0, yaw:240, type:'scene', sceneId:'F2_2' },
+			{ pitch:-50, yaw:140, type:'scene', sceneId:'F4', text:'F4' },
 			{ pitch:-15, yaw:-67.5, type:'scene', sceneId:'F1_1', text:'RA SẢNH' },
 			
 			{ pitch:-10, yaw:-37, type:'info', text:'TL1',
@@ -117,12 +118,21 @@ var scenes =
 		panorama: 'uploads/VR360/F2_TRUNGBAYTRONGNHA/F2_2.jpg',
 		hotSpots: [
 			{ pitch:-30, yaw:-280, type:'scene', sceneId:'F2_1' },
+			
 			{ pitch:-10, yaw:-25, type:'scene', sceneId:'F5' },
 			{ pitch:-10, yaw:7, type:'scene', sceneId:'F6' }
 		]
 	},
 
 	/* - - - */
+
+	F4: {
+		type: 'equirectangular',
+		panorama: 'uploads/VR360/F4/F4.jpg',
+		hotSpots: [
+			{ pitch:-20, yaw:75, type:'scene', sceneId:'F2_2' }
+		]
+	},
 
 
 	F5: {
@@ -162,7 +172,7 @@ var scenes =
 var start =
 {
 	default: {
-		firstScene: 'F6', /*F0_1*/
+		firstScene: 'F4', /*F0_1*/
 		sceneFadeDuration: 1000,
 		autoLoad: true,
 	},
