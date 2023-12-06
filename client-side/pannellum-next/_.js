@@ -34,7 +34,14 @@ const removeInfo = () => {}
 
 TLS = {
 	TL1: [`${path}/F2_TRUNGBAYTRONGNHA/TL1.jpg`],
-	TL2: [`${path}/F2_TRUNGBAYTRONGNHA/TL2.jpg`]
+	TL2: [`${path}/F2_TRUNGBAYTRONGNHA/TL2.jpg`],
+	TL3: () => {
+		let u = []
+		for(var i=1; i<=162; i++) {
+			u.push('CT_01_1_734_'+i)
+		}
+		return u
+	}
 }
 
 // ---
@@ -93,8 +100,12 @@ var scenes =
 				}
 			},
 
+			{ pitch:-10, yaw:37, type:'info', text:'TL3',
+				clickHandlerFunc: (e) => {
+					console.log(TLS.TL3())
+				}
+			},
 
-			{ pitch:-10, yaw:37, type:'info', text:'TL3' },
 			{ pitch:-8.5, yaw:70, type:'info', text:'TL4' },
 			{ pitch:-7.5, yaw:98.5, type:'info', text:'TL5' },
 			{ pitch:-6.5, yaw:123, type:'info', text:'TL6' },
@@ -105,8 +116,17 @@ var scenes =
 		type: 'equirectangular',
 		panorama: 'uploads/VR360/F2_TRUNGBAYTRONGNHA/F2_2.jpg',
 		hotSpots: [
-			{ pitch:-30, yaw:-280, type:'scene', sceneId:'F2_1' }
+			{ pitch:-30, yaw:-280, type:'scene', sceneId:'F2_1' },
+			{ pitch:-10, yaw:-25, type:'scene', sceneId:'F5' }
 		]
+	},
+
+	/* - - - */
+
+
+	F5: {
+		type: 'equirectangular',
+		panorama: 'uploads/VR360/F5/F5.jpg',
 	},
 
 	/* - - - */
@@ -130,7 +150,7 @@ var scenes =
 var start =
 {
 	default: {
-		firstScene: 'F2_1', /*F0_1*/
+		firstScene: 'F0_1', /*F0_1*/
 		sceneFadeDuration: 1000,
 		autoLoad: true,
 	},
