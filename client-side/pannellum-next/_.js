@@ -153,18 +153,46 @@ var scenes =
 
 	/* - - - */
 
+	F7: {
+		type: 'equirectangular',
+		panorama: 'uploads/VR360/F7/F7.jpg',
+		hotSpots: [
+			{ pitch:-40, yaw:0, type:'scene', sceneId:'F7_2', text:'TRỞ VỀ' }
+		]
+	},
+
 	F7_1: {
 		type: 'equirectangular',
-		panorama: 'uploads/VR360/F7_F9/F7_1.jpg',
+		panorama: 'uploads/VR360/F7/F7_1.jpg',
 		hotSpots: [
 			{ pitch:-80, yaw:0, type:'scene', sceneId:'F7_2' }
 		]
 	},
 	F7_2: {
 		type: 'equirectangular',
-		panorama: 'uploads/VR360/F7_F9/F7_2.jpg',
+		panorama: 'uploads/VR360/F7/F7_2.jpg',
 		hotSpots: [
-			{ pitch:0, yaw:-42, type:'scene', sceneId:'F1_1', text:'TRỞ VỀ SẢNH' }
+			{ pitch:0, yaw:-42, type:'scene', sceneId:'F1_1', text:'TRỞ VỀ SẢNH' },
+			{ pitch:-8, yaw:-10, type:'scene', sceneId:'F7' },
+			{ pitch:-10, yaw:0, type:'scene', sceneId:'F8' },
+			{ pitch:-15, yaw:-10, type:'scene', sceneId:'F9' }
+		]
+	},
+
+	/* - - - */
+
+	F8: {
+		type: 'equirectangular',
+		panorama: 'uploads/VR360/F8/F8.jpg',
+		hotSpots: [
+			{ pitch:-40, yaw:0, type:'scene', sceneId:'F7_2', text:'TRỞ VỀ' }
+		]
+	},
+	F9: {
+		type: 'equirectangular',
+		panorama: 'uploads/VR360/F9/F9.jpg',
+		hotSpots: [
+			{ pitch:-40, yaw:0, type:'scene', sceneId:'F7_2', text:'TRỞ VỀ' }
 		]
 	}
 }
@@ -172,7 +200,7 @@ var scenes =
 var start =
 {
 	default: {
-		firstScene: 'F0_1', /*F0_1*/
+		firstScene: 'F7_2', /*F0_1*/
 		sceneFadeDuration: 1000,
 		autoLoad: true,
 	},
