@@ -117,7 +117,8 @@ var scenes =
 		panorama: 'uploads/VR360/F2_TRUNGBAYTRONGNHA/F2_2.jpg',
 		hotSpots: [
 			{ pitch:-30, yaw:-280, type:'scene', sceneId:'F2_1' },
-			{ pitch:-10, yaw:-25, type:'scene', sceneId:'F5' }
+			{ pitch:-10, yaw:-25, type:'scene', sceneId:'F5' },
+			{ pitch:-10, yaw:7, type:'scene', sceneId:'F6' }
 		]
 	},
 
@@ -127,6 +128,17 @@ var scenes =
 	F5: {
 		type: 'equirectangular',
 		panorama: 'uploads/VR360/F5/F5.jpg',
+		hotSpots: [
+			{ pitch:-20, yaw:-75, type:'scene', sceneId:'F2_2' }
+		]
+	},
+
+	F6: {
+		type: 'equirectangular',
+		panorama: 'uploads/VR360/F6/F6.jpg',
+		hotSpots: [
+			{ pitch:-18, yaw:78, type:'scene', sceneId:'F2_2' }
+		]
 	},
 
 	/* - - - */
@@ -150,7 +162,7 @@ var scenes =
 var start =
 {
 	default: {
-		firstScene: 'F0_1', /*F0_1*/
+		firstScene: 'F6', /*F0_1*/
 		sceneFadeDuration: 1000,
 		autoLoad: true,
 	},
