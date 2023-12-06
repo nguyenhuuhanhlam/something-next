@@ -57,6 +57,10 @@ var scenes =
 			{ pitch:-10, yaw:-37, type:'info', text:'TL1' },
 			{ pitch:-10, yaw:0, type:'info', text:'TL2' },
 			{ pitch:-10, yaw:37, type:'info', text:'TL3' },
+			{ pitch:-8.5, yaw:70, type:'info', text:'TL4' },
+			{ pitch:-7.5, yaw:98.5, type:'info', text:'TL5' },
+			{ pitch:-6.5, yaw:123, type:'info', text:'TL6' },
+			{ pitch:-6, yaw:146, type:'info', text:'TL7' },
 		]
 	},
 	F2_2: {
@@ -88,7 +92,7 @@ var scenes =
 var start =
 {
 	default: {
-		firstScene: 'F0_1', /*F0_1*/
+		firstScene: 'F2_1', /*F0_1*/
 		sceneFadeDuration: 1000,
 		autoLoad: true,
 	},
