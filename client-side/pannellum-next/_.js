@@ -33,12 +33,12 @@ const setInfo = (inf) => {
 const removeInfo = () => {}
 
 TLS = {
-	TL1: [`${path}/F2_TRUNGBAYTRONGNHA/TL1.jpg`],
-	TL2: [`${path}/F2_TRUNGBAYTRONGNHA/TL2.jpg`],
+	TL1: [`${path}/F2/TL1.jpg`,`${path}/F2/TL2.jpg`,`${path}/F2/TL1.jpg`],
+	TL2: [`${path}/F2/TL2.jpg`],
 	TL3: () => {
 		let u = []
-		for(var i=1; i<=162; i++) {
-			u.push('CT_01_1_734_'+i)
+		for(var i=1; i<=15; i++) {
+			u.push(path+'/F2/TL3/CT_01_1_734_'+String(i).padStart(2,'0')+'.jpg')
 		}
 		return u
 	}
@@ -81,7 +81,7 @@ var scenes =
 
 	F2_1: {
 		type: 'equirectangular',
-		panorama: 'uploads/VR360/F2_TRUNGBAYTRONGNHA/F2_1.jpg',
+		panorama: 'uploads/VR360/F2/F2_1.jpg',
 		hotSpots: [
 			{ pitch:0, yaw:240, type:'scene', sceneId:'F2_2' },
 			{ pitch:-50, yaw:140, type:'scene', sceneId:'F4', text:'F4' },
@@ -103,7 +103,8 @@ var scenes =
 
 			{ pitch:-10, yaw:37, type:'info', text:'TL3',
 				clickHandlerFunc: (e) => {
-					console.log(TLS.TL3())
+					setInfo({ title:'TL3', data: TLS.TL3() })
+					section.classList.add('active')
 				}
 			},
 
@@ -115,7 +116,7 @@ var scenes =
 	},
 	F2_2: {
 		type: 'equirectangular',
-		panorama: 'uploads/VR360/F2_TRUNGBAYTRONGNHA/F2_2.jpg',
+		panorama: 'uploads/VR360/F2/F2_2.jpg',
 		hotSpots: [
 			{ pitch:-30, yaw:-280, type:'scene', sceneId:'F2_1' },
 			
