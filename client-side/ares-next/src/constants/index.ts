@@ -75,9 +75,10 @@ export const SPA_UFS = {
 		NgayThuMauAB: 'ufCrm15_1649732806',
 		NgayBanGiao: 'ufCrm15_1649732833',
 		HienTrang:'ufCrm15_1701160271',
-  	KhoKhan:'ufCrm15_1701160292',
-  	GiaiPhap:'ufCrm15_1701160343'
-	}
+		KhoKhan:'ufCrm15_1701160292',
+		GiaiPhap:'ufCrm15_1701160343'
+	},
+	136: {}
 }
 
 export const SPA_STAGES = {
