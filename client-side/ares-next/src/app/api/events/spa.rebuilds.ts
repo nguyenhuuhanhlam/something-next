@@ -1,3 +1,5 @@
+import { SPA_UFS } from '@/constants'
+
 export const rebuilds = (entityTypeId, item=null) =>
 {
 	let b = {}
@@ -47,6 +49,27 @@ export const rebuilds = (entityTypeId, item=null) =>
 				HienTrang: item.ufCrm15_1701160271 || null,
 				KhoKhan: item.ufCrm15_1701160292 || null,
 				GiaiPhap: item.ufCrm15_1701160343 || null,
+			}
+			break
+		case 136:
+			b = {
+				Id: item.id,
+				Title: item.title,
+				Stage: item.stageId,
+				Responsible: item.assignedById,
+				CreatedDate: item.createdTime?.slice(0,10) || null,
+				MovedDate: item.movedTime?.slice(0,10) || null,
+				CompanyID: item.companyId,
+				NgayThuThapDuTaiLieu: item[SPA_UFS[136]['NgayThuThapDuTaiLieu']]?.slice(0,10) || null,
+				NgayHoanThanhBaiViet: item[SPA_UFS[136]['NgayHoanThanhBaiViet']]?.slice(0,10) || null,
+				NgayNopThamDinh: item[SPA_UFS[136]['NgayNopThamDinh']]?.slice(0,10) || null,
+				NgayThamDinh: item[SPA_UFS[136]['NgayThamDinh']]?.slice(0,10) || null,
+				NgayNopChinhSua: item[SPA_UFS[136]['NgayNopChinhSua']]?.slice(0,10) || null,
+				NgayNhanQuyetDinh: item[SPA_UFS[136]['NgayNhanQuyetDinh']]?.slice(0,10) || null,
+				NgayNghiemThuBanGiao: item[SPA_UFS[136]['NgayNghiemThuBanGiao']]?.slice(0,10) || null,
+				HienTrang: item[SPA_UFS[136]['HienTrang']] || null,
+				KhoKhan: item[SPA_UFS[136]['KhoKhan']] || null,
+				GiaiPhap: item[SPA_UFS[136]['GiaiPhap']] || null
 			}
 			break
 	}

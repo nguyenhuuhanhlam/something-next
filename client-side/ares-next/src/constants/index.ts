@@ -78,7 +78,18 @@ export const SPA_UFS = {
 		KhoKhan:'ufCrm15_1701160292',
 		GiaiPhap:'ufCrm15_1701160343'
 	},
-	136: {}
+	136: {
+		NgayThuThapDuTaiLieu: 'ufCrm51_1658887771',
+		NgayHoanThanhBaiViet: 'ufCrm51_1658887823',
+		NgayNopThamDinh: 'ufCrm51_1658887861',
+		NgayThamDinh: 'ufCrm51_1658887931',
+		NgayNopChinhSua: 'ufCrm51_1658887960',
+		NgayNhanQuyetDinh: 'ufCrm51_1658887988',
+		NgayNghiemThuBanGiao: 'ufCrm51_1658888011',
+		HienTrang: 'ufCrm51_1701853423',
+		KhoKhan: 'ufCrm51_1701853442',
+		GiaiPhap: 'ufCrm51_1701853460'
+	}
 }
 
 export const SPA_STAGES = {
