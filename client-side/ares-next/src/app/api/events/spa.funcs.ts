@@ -5,7 +5,6 @@ import { rebuilds } from './spa.rebuilds'
 
 const getItem = async (id, entityTypeId) =>
 {
-
 	const res = await fetch(
 		process.env.NEXT_PUBLIC_URL + '/api/btx/crm.item.get', {
 			method: 'POST',

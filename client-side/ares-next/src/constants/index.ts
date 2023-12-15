@@ -79,6 +79,9 @@ export const SPA_UFS = {
 		GiaiPhap:'ufCrm15_1701160343'
 	},
 	136: {
+
+		// 51
+
 		NgayThuThapDuTaiLieu: 'ufCrm51_1658887771',
 		NgayHoanThanhBaiViet: 'ufCrm51_1658887823',
 		NgayNopThamDinh: 'ufCrm51_1658887861',
@@ -88,7 +91,22 @@ export const SPA_UFS = {
 		NgayNghiemThuBanGiao: 'ufCrm51_1658888011',
 		HienTrang: 'ufCrm51_1701853423',
 		KhoKhan: 'ufCrm51_1701853442',
-		GiaiPhap: 'ufCrm51_1701853460'
+		GiaiPhap: 'ufCrm51_1701853460',
+
+		// 121
+
+		NgayKyHopDong: 'ufCrm51_1683683012',
+		GiaTriHopDong: 'ufCrm51_1682135510',
+		GiaGocPheDuyet: 'ufCrm51_1682135563',
+		DaThu: 'ufCrm51_1682135598',
+		DaChi: 'ufCrm51_1682135615',
+		PhatSinh: 'ufCrm51_1682135644',
+		ConThu: 'ufCrm51_1682135671',
+		ConChi: 'ufCrm51_1682135690',
+		DaDauTu: 'ufCrm51_1682135732',
+		TyLePhaSinhGiaGoc: 'ufCrm51_1682135786',
+		BienPhiDuAn: 'ufCrm51_1682135856',
+		E01QuanLyBaiViet: 'ufCrm51_1702540973'
 	}
 }
 

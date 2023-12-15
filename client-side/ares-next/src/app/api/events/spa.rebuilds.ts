@@ -52,25 +52,53 @@ export const rebuilds = (entityTypeId, item=null) =>
 			}
 			break
 		case 136:
-			b = {
-				Id: item.id,
-				Title: item.title,
-				Stage: item.stageId,
-				Responsible: item.assignedById,
-				CreatedDate: item.createdTime?.slice(0,10) || null,
-				MovedDate: item.movedTime?.slice(0,10) || null,
-				CompanyID: item.companyId,
-				NgayThuThapDuTaiLieu: item[SPA_UFS[136]['NgayThuThapDuTaiLieu']]?.slice(0,10) || null,
-				NgayHoanThanhBaiViet: item[SPA_UFS[136]['NgayHoanThanhBaiViet']]?.slice(0,10) || null,
-				NgayNopThamDinh: item[SPA_UFS[136]['NgayNopThamDinh']]?.slice(0,10) || null,
-				NgayThamDinh: item[SPA_UFS[136]['NgayThamDinh']]?.slice(0,10) || null,
-				NgayNopChinhSua: item[SPA_UFS[136]['NgayNopChinhSua']]?.slice(0,10) || null,
-				NgayNhanQuyetDinh: item[SPA_UFS[136]['NgayNhanQuyetDinh']]?.slice(0,10) || null,
-				NgayNghiemThuBanGiao: item[SPA_UFS[136]['NgayNghiemThuBanGiao']]?.slice(0,10) || null,
-				HienTrang: item[SPA_UFS[136]['HienTrang']] || null,
-				KhoKhan: item[SPA_UFS[136]['KhoKhan']] || null,
-				GiaiPhap: item[SPA_UFS[136]['GiaiPhap']] || null
-			}
+				switch (item.categoryId)
+				{
+					case 51:
+						b = {
+							Id: item.id,
+							Title: item.title,
+							__categoryId: item.categoryId,
+							Stage: item.stageId,
+							Responsible: item.assignedById,
+							CreatedDate: item.createdTime?.slice(0,10) || null,
+							MovedDate: item.movedTime?.slice(0,10) || null,
+							CompanyID: item.companyId,
+							NgayThuThapDuTaiLieu: item[SPA_UFS[136]['NgayThuThapDuTaiLieu']]?.slice(0,10) || null,
+							NgayHoanThanhBaiViet: item[SPA_UFS[136]['NgayHoanThanhBaiViet']]?.slice(0,10) || null,
+							NgayNopThamDinh: item[SPA_UFS[136]['NgayNopThamDinh']]?.slice(0,10) || null,
+							NgayThamDinh: item[SPA_UFS[136]['NgayThamDinh']]?.slice(0,10) || null,
+							NgayNopChinhSua: item[SPA_UFS[136]['NgayNopChinhSua']]?.slice(0,10) || null,
+							NgayNhanQuyetDinh: item[SPA_UFS[136]['NgayNhanQuyetDinh']]?.slice(0,10) || null,
+							NgayNghiemThuBanGiao: item[SPA_UFS[136]['NgayNghiemThuBanGiao']]?.slice(0,10) || null,
+							HienTrang: item[SPA_UFS[136]['HienTrang']] || null,
+							KhoKhan: item[SPA_UFS[136]['KhoKhan']] || null,
+							GiaiPhap: item[SPA_UFS[136]['GiaiPhap']] || null
+						}
+						break
+					case 121:
+						b = {
+							Id: item.id,
+							Title: item.title,
+							Stage: item.stageId,
+							Responsible: item.assignedById,
+							CreatedDate: 0,
+							MovedDate: 0,
+							NgayKyHopDong: 0,
+							GiaTriHopDong: 0,
+							GiaGocPheDuyet: 0,
+							DaThu: 0,
+							DaChi: 0,
+							PhatSinh: 0,
+							ConThu: 0,
+							ConChi: 0,
+							DaDauTu: 0,
+							TyLePhaSinhGiaGoc: 0,
+							BienPhiDuAn: 0,
+							E01QuanLyBaiViet: 0
+						}
+						break
+				}
 			break
 	}
 
