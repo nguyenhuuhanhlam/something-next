@@ -3,7 +3,7 @@ import excuteQuery from '@/lib/db.ts'
 import _ from 'lodash'
 import fs from 'fs'
 
-import { HONORIFICS, CONTACT_UFS } from '@/constants'
+import { CONTACT_UFS } from '@/constants'
 
 
 export async function POST (req:NextRequest)
@@ -22,7 +22,7 @@ export async function POST (req:NextRequest)
 	json.contacts.map(v => {
 		const rebuild = {
 			Id: v.ID,
-			Honorific: HONORIFICS[v.HONORIFIC] || 'NULL',
+			Honorific: v.HONORIFIC || 'NULL',
 			LastName: v.LAST_NAME ? '"' + v.LAST_NAME + '"' : 'NULL',
 			SecondName: v.SECOND_NAME ? '"' + v.SECOND_NAME + '"' : 'NULL',
 			Name: v.NAME ? '"' + v.NAME + '"' : 'NULL',
