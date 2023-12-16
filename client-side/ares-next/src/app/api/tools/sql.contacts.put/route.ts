@@ -22,7 +22,7 @@ export async function POST (req:NextRequest)
 	json.contacts.map(v => {
 		const rebuild = {
 			Id: v.ID,
-			Honorific: v.HONORIFIC || 'NULL',
+			Honorific: '"'+ v.HONORIFIC +'"' || 'NULL',
 			LastName: v.LAST_NAME ? '"' + v.LAST_NAME + '"' : 'NULL',
 			SecondName: v.SECOND_NAME ? '"' + v.SECOND_NAME + '"' : 'NULL',
 			Name: v.NAME ? '"' + v.NAME + '"' : 'NULL',
