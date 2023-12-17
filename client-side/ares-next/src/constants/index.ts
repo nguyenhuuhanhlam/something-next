@@ -38,9 +38,9 @@ export const CONTACT_UFS = {
 	SupplierType:'UF_CRM_1680663361'
 }
 
-export const HONORIFICS = {
-  'HNR_EN_1':1, 'HNR_EN_2':2, 'HNR_EN_3':3, 'HNR_EN_4':4
-}
+// export const HONORIFICS = {
+//   'HNR_EN_1':1, 'HNR_EN_2':2, 'HNR_EN_3':3, 'HNR_EN_4':4
+// }
 
 /* - - - - - - - - - - */
 

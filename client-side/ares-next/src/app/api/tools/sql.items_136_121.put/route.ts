@@ -34,7 +34,7 @@ export async function POST (req:NextRequest)
 
 			GiaTriHopDong: pci(v[SPA_UFS[136]['GiaTriHopDong']]),
 			GiaGocPheDuyet: pci(v[SPA_UFS[136]['GiaGocPheDuyet']]),
-			// DaThu: 'ufCrm51_1682135598',
+			DaThu: pci(v[SPA_UFS[136]['DaThu']]),
 			// DaChi: 'ufCrm51_1682135615',
 			// PhatSinh: 'ufCrm51_1682135644',
 			// ConThu: 'ufCrm51_1682135671',
