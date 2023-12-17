@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import excuteQuery from '@/lib/db'
-import { ParseString as ps, ParseDateString as pds } from '@/lib/db.helpers'
+import {
+	ParseString as ps,
+	ParseDateString as pds,
+	ParseCurrencyToInt as pci
+} from '@/lib/db.helpers'
 import { SPA_UFS } from '@/constants'
 
 export async function POST (req:NextRequest)
@@ -18,32 +22,36 @@ export async function POST (req:NextRequest)
 	/* SQL */
 	let sql_values = []
 
-	// json.spas.map(v => {
-	// 	const item = {
-	// 		Id: v.id,
-	// 		Title: ps(v.title),
-	// 		CreatedDate: pds(v.createdTime),
-	// 		MovedDate: pds(v.movedTime),
-	// 		Stage: ps(v.stageId),
-	// 		CompanyID: v.companyId || 'NULL',
-	// 		Responsible: v.assignedById || 'NULL',
-	// 		NgayTapKet: pds(v[SPA_UFS[131]['NgayTapKet']]),
-	// 		NgayLapDatHoanThanh: pds(v[SPA_UFS[131]['NgayLapDatHoanThanh']]),
-	// 		NgayThuMauNoiBo: pds(v[SPA_UFS[131]['NgayThuMauNoiBo']]),
-	// 		NgayThuMauAB: pds(v[SPA_UFS[131]['NgayThuMauAB']]),
-	// 		NgayBanGiao: pds(v[SPA_UFS[131]['NgayBanGiao']]),
-	// 		HienTrang: ps(v[SPA_UFS[131]['HienTrang']]),
-	// 		KhoKhan: ps(v[SPA_UFS[131]['KhoKhan']]),
-	// 		GiaiPhap: ps(v[SPA_UFS[131]['GiaiPhap']]),
-	// 	}
+	json.spas.map(v => {
+		const item = {
+			Id: v.id,
+			Title: ps(v.title),
+			CreatedDate: pds(v.createdTime),
+			MovedDate: pds(v.movedTime),
+			Stage: ps(v.stageId),
+			Responsible: v.assignedById || 'NULL',
+			NgayKyHopDong: pds(v[SPA_UFS[136]['NgayKyHopDong']]),
 
-	// 	sql_values.push(`(${ Object.keys(item).map(k=>item[k]) })`)
-	// })
+			GiaTriHopDong: pci(v[SPA_UFS[136]['GiaTriHopDong']]),
+			GiaGocPheDuyet: pci(v[SPA_UFS[136]['GiaGocPheDuyet']]),
+			// DaThu: 'ufCrm51_1682135598',
+			// DaChi: 'ufCrm51_1682135615',
+			// PhatSinh: 'ufCrm51_1682135644',
+			// ConThu: 'ufCrm51_1682135671',
+			// ConChi: 'ufCrm51_1682135690',
+			// DaDauTu: 'ufCrm51_1682135732',
+			// TyLePhaSinhGiaGoc: 'ufCrm51_1682135786',
+			// BienPhiDuAn: 'ufCrm51_1682135856',
+			// E01QuanLyBaiViet: 'ufCrm51_1702540973'
+		}
 
-	// const q = `INSERT INTO ${table}
-	// 		(Id,Title,CreatedDate,MovedDate,Stage,CompanyID,Responsible,
-	// 		NgayTapKet,NgayLapDatHoanThanh,NgayThuMauNoiBo,NgayThuMauAB,NgayBanGiao,HienTrang,KhoKhan,GiaiPhap)
-	// 	VALUES ${sql_values.join()}`
+		sql_values.push(`(${ Object.keys(item).map(k=>item[k]) })`)
+	})
+
+	const q = `INSERT INTO ${table}
+			(Id, Title, CreatedDate, MovedDate, Stage, Responsible,
+			)
+		VALUES ${sql_values.join()}`
 
 	// try {
 	// 	const del_result = await excuteQuery({ query: `DELETE FROM ${table}` })
@@ -54,5 +62,5 @@ export async function POST (req:NextRequest)
 	// 	console.log(e)
 	// }
 
-	return NextResponse.json({ overwrite: true })
+	return NextResponse.json({ overwrite: q })
 }
