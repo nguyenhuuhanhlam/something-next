@@ -30,19 +30,19 @@ export async function POST (req:NextRequest)
 			MovedDate: pds(v.movedTime),
 			Stage: ps(v.stageId),
 			Responsible: v.assignedById || 'NULL',
-			NgayKyHopDong: pds(v[SPA_UFS[136]['NgayKyHopDong']]),
 
+			NgayKyHopDong: pds(v[SPA_UFS[136]['NgayKyHopDong']]),
 			GiaTriHopDong: pci(v[SPA_UFS[136]['GiaTriHopDong']]),
 			GiaGocPheDuyet: pci(v[SPA_UFS[136]['GiaGocPheDuyet']]),
 			DaThu: pci(v[SPA_UFS[136]['DaThu']]),
-			// DaChi: 'ufCrm51_1682135615',
-			// PhatSinh: 'ufCrm51_1682135644',
-			// ConThu: 'ufCrm51_1682135671',
-			// ConChi: 'ufCrm51_1682135690',
-			// DaDauTu: 'ufCrm51_1682135732',
-			// TyLePhaSinhGiaGoc: 'ufCrm51_1682135786',
-			// BienPhiDuAn: 'ufCrm51_1682135856',
-			// E01QuanLyBaiViet: 'ufCrm51_1702540973'
+			DaChi: pci(v[SPA_UFS[136]['DaChi']]),
+			PhatSinh: pci(v[SPA_UFS[136]['PhatSinh']]),
+			ConThu: pci(v[SPA_UFS[136]['ConThu']]),
+			ConChi: pci(v[SPA_UFS[136]['ConChi']]),
+			DaDauTu: pci(v[SPA_UFS[136]['DaDauTu']]),
+			TyLePhaSinhGiaGoc: v[SPA_UFS[136]['TyLePhaSinhGiaGoc']],
+			BienPhiDuAn: v[SPA_UFS[136]['BienPhiDuAn']],
+			E01QuanLyBaiViet: v[SPA_UFS[136]['E01QuanLyBaiViet']] || 'NULL'
 		}
 
 		sql_values.push(`(${ Object.keys(item).map(k=>item[k]) })`)
@@ -62,5 +62,7 @@ export async function POST (req:NextRequest)
 	// 	console.log(e)
 	// }
 
-	return NextResponse.json({ overwrite: q })
+	return NextResponse.json({ overwrite: sql_values[0] })
 }
+
+// M25397150904379
