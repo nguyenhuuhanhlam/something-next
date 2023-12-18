@@ -50,19 +50,19 @@ export async function POST (req:NextRequest)
 
 	const q = `INSERT INTO ${table}
 			(Id, Title, CreatedDate, MovedDate, Stage, Responsible,
+			NgayKyHopDong,GiaTriHopDong,GiaGocPheDuyet,DaThu,DaChi,PhatSinh,
+			ConThu,ConChi,DaDauTu,TyLePhaSinhGiaGoc,BienPhiDuAn,E01QuanLyBaiViet
 			)
 		VALUES ${sql_values.join()}`
 
-	// try {
-	// 	const del_result = await excuteQuery({ query: `DELETE FROM ${table}` })
-	// 	const ins_result = await excuteQuery({
-	// 		query: q.replace(/(\r\n|\n|\r|\t)/gm,'')
-	// 	})
-	// } catch (e) {
-	// 	console.log(e)
-	// }
+	try {
+		const del_result = await excuteQuery({ query: `DELETE FROM ${table}` })
+		const ins_result = await excuteQuery({
+			query: q.replace(/(\r\n|\n|\r|\t)/gm,'')
+		})
+	} catch (e) {
+		console.log(e)
+	}
 
-	return NextResponse.json({ overwrite: sql_values[0] })
+	return NextResponse.json({ overwrite: true })
 }
-
-// M25397150904379

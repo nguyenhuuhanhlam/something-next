@@ -79,6 +79,7 @@ export const addSPA = async (id, entityTypeId) =>
 		case 'spa_131_15':
 		case 'spa_132_125':
 		case 'spa_136_51':
+		case 'spa_136_121':
 			await sqlInsert(_table, item)
 			break
 		default:
@@ -96,6 +97,7 @@ export const updateSPA = async (id, entityTypeId) =>
 		case 'spa_131_15':
 		case 'spa_132_125':
 		case 'spa_136_51':
+		case 'spa_136_121':
 			await sqlUpdate(_table, item)
 			break
 		default:
@@ -109,4 +111,5 @@ export const deleteSPA = async (id) =>
 	await sqlDelete('spa_131_15', id)
 	await sqlDelete('spa_132_125', id)
 	await sqlDelete('spa_136_51', id)
+	await sqlDelete('spa_136_121', id)
 }

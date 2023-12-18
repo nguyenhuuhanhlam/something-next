@@ -48,7 +48,7 @@ export const rebuilds = (entityTypeId, item=null) =>
 				NgayBanGiao: item.ufCrm15_1649732833?.slice(0,10) || null,
 				HienTrang: item.ufCrm15_1701160271 || null,
 				KhoKhan: item.ufCrm15_1701160292 || null,
-				GiaiPhap: item.ufCrm15_1701160343 || null,
+				GiaiPhap: item.ufCrm15_1701160343 || null
 			}
 			break
 		case 136:
@@ -87,15 +87,15 @@ export const rebuilds = (entityTypeId, item=null) =>
 							NgayKyHopDong: item[SPA_UFS[136]['NgayKyHopDong']]?.slice(0,10) || null,
 							GiaTriHopDong: ~~Number(item[SPA_UFS[136]['GiaTriHopDong']]?.split('|')[0]),
 							GiaGocPheDuyet: ~~Number(item[SPA_UFS[136]['GiaGocPheDuyet']]?.split('|')[0]),
-							DaThu: 0,
-							DaChi: 0,
-							PhatSinh: 0,
-							ConThu: 0,
-							ConChi: 0,
-							DaDauTu: 0,
-							TyLePhaSinhGiaGoc: 0,
-							BienPhiDuAn: 0,
-							E01QuanLyBaiViet: 0
+							DaThu: ~~Number(item[SPA_UFS[136]['DaThu']]?.split('|')[0]),
+							DaChi: ~~Number(item[SPA_UFS[136]['DaChi']]?.split('|')[0]),
+							PhatSinh: ~~Number(item[SPA_UFS[136]['PhatSinh']]?.split('|')[0]),
+							ConThu: ~~Number(item[SPA_UFS[136]['ConThu']]?.split('|')[0]),
+							ConChi: ~~Number(item[SPA_UFS[136]['ConChi']]?.split('|')[0]),
+							DaDauTu: ~~Number(item[SPA_UFS[136]['DaDauTu']]?.split('|')[0]),
+							TyLePhaSinhGiaGoc: item[SPA_UFS[136]['TyLePhaSinhGiaGoc']],
+							BienPhiDuAn: item[SPA_UFS[136]['BienPhiDuAn']],
+							E01QuanLyBaiViet: item[SPA_UFS[136]['E01QuanLyBaiViet']]
 						}
 						break
 				}
