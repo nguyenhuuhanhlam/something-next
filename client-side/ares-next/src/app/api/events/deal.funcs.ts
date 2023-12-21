@@ -94,6 +94,7 @@ const sqlDelete = async (table, id) => {
 	})
 	console.log('DEAL DELETED :: ', id)
 }
+
 /* - - - - - - - - - - */
 
 export const addDEAL = async (id) => {

@@ -3,6 +3,7 @@ import { addSPA, updateSPA, deleteSPA } from './spa.funcs'
 import { addDEAL, updateDEAL, deleteDEAL } from './deal.funcs'
 import { addLEAD, updateLEAD, deleteLEAD } from './lead.funcs'
 import { addTASK, updateTASK, deleteTASK } from './task.funcs'
+import { addCONTACT, updateCONTACT, deleteCONTACT } from './contact.funcs'
 import excuteQuery from '@/lib/db.ts'
 
 /* - - - - - - - - - - */
@@ -30,16 +31,19 @@ export async function POST (req) {
 
 			/* CONTACT */
 			case 'ONCRMCONTACTADD':
-				await excuteQuery({
-					query: `INSERT INTO event_logs(EventName,Data) VALUES(?,?)`,
-					values:['ONCRMCONTACTADD', JSON.stringify(params)]
-				})
+				console.log('IT IS ONCRMCONTACTADD')
+				// await excuteQuery({
+				// 	query: `INSERT INTO event_logs(EventName,Data) VALUES(?,?)`,
+				// 	values:['ONCRMCONTACTADD', JSON.stringify(params)]
+				// })
 				break
 			case 'ONCRMCONTACTUPDATE':
-				await excuteQuery({
-					query: `INSERT INTO event_logs(EventName,Data) VALUES(?,?)`,
-					values:['ONCRMCONTACTUPDATE', JSON.stringify(params)]
-				})
+				console.log('IT IS ONCRMCONTACTUPDATE')
+				updateCONTACT(id)
+				// await excuteQuery({
+				// 	query: `INSERT INTO event_logs(EventName,Data) VALUES(?,?)`,
+				// 	values:['ONCRMCONTACTUPDATE', JSON.stringify(params)]
+				// })
 				break
 
 			/* SPA */
