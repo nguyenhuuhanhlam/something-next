@@ -36,6 +36,9 @@ export async function POST (req) {
 			case 'ONCRMCONTACTUPDATE':
 				updateCONTACT(id)
 				break
+			case 'ONCRMCONTACTDELETE':
+				deleteCONTACT(id)
+				break
 
 			/* SPA */
 			case 'ONCRMDYNAMICITEMADD':
