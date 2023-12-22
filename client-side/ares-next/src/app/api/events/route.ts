@@ -31,20 +31,10 @@ export async function POST (req) {
 
 			/* CONTACT */
 			case 'ONCRMCONTACTADD':
-				console.log('IT IS ONCRMCONTACTADD')
 				addCONTACT(id)
-				// await excuteQuery({
-				// 	query: `INSERT INTO event_logs(EventName,Data) VALUES(?,?)`,
-				// 	values:['ONCRMCONTACTADD', JSON.stringify(params)]
-				// })
 				break
 			case 'ONCRMCONTACTUPDATE':
-				console.log('IT IS ONCRMCONTACTUPDATE')
 				updateCONTACT(id)
-				// await excuteQuery({
-				// 	query: `INSERT INTO event_logs(EventName,Data) VALUES(?,?)`,
-				// 	values:['ONCRMCONTACTUPDATE', JSON.stringify(params)]
-				// })
 				break
 
 			/* SPA */
