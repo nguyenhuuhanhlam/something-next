@@ -4,6 +4,7 @@ import { addDEAL, updateDEAL, deleteDEAL } from './deal.funcs'
 import { addLEAD, updateLEAD, deleteLEAD } from './lead.funcs'
 import { addTASK, updateTASK, deleteTASK } from './task.funcs'
 import { addCONTACT, updateCONTACT, deleteCONTACT } from './contact.funcs'
+import { addCOMPANY, updateCOMPANY, deleteCOMPANY } from './company.funcs'
 import excuteQuery from '@/lib/db.ts'
 
 /* - - - - - - - - - - */
@@ -19,14 +20,25 @@ export async function POST (req) {
 		const taskBeforeId = params['data[FIELDS_BEFORE][ID]'] /* DELETE ITEM */
 		const taskAfterId = params['data[FIELDS_AFTER][ID]'] /* ADD + UPDATE ITEM */
 
-		switch(params.event) {
-
+		switch(params.event)
+		{
 			/* USER */
 			case 'ONUSERADD':
 				await excuteQuery({
 					query: `INSERT INTO event_logs(EventName,Data) VALUES(?,?)`,
 					values:['ONUSERADD', JSON.stringify(params)]
 				})
+				break
+
+			/* COMPANY */
+			case 'ONCRMCOMPANYADD':
+				addCOMPANY(id)
+				break
+			case 'ONCRMCOMPANYUPDATE':
+				updateCOMPANY(id)
+				break
+			case 'ONCRMCOMPANYDELETE':
+				deleteCOMPANY(id)
 				break
 
 			/* CONTACT */

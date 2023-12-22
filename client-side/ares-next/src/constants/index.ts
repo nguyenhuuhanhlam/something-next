@@ -149,3 +149,10 @@ export const LEAD_UFS = {
 	SalesType:'UF_CRM_1649410807',
 	SalesObject:'UF_CRM_1678699905'
 }
+
+/* - - - INTERFACE - - - - - - */
+interface ICompany
+{
+	Id: number;
+	CompanyName: string;
+}
