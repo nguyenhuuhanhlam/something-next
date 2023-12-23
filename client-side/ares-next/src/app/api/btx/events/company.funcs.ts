@@ -1,5 +1,5 @@
 import excuteQuery from '@/lib/db.ts' 
-import _ from 'lodash'
+// import _ from 'lodash'
 
 const getItem = async (id) =>
 {
@@ -60,9 +60,16 @@ const sqlUpdate = async (table=null, item) =>
 	}
 }
 
+const sqlDelete = async (table=null, id) =>
+{
+	const result = await excuteQuery({ query:`DELETE FROM ${table} WHERE Id=${id}` })
+	console.log('COMPANY DELETED :: ', id)
+}
+
 /* - COMMAND - - - - - - - - */
 
-export const addCOMPANY = async (id) => {
+export const addCOMPANY = async (id) =>
+{
 	const item = await getItem(id)
 	await sqlInsert('companies', item)
 }
@@ -73,6 +80,7 @@ export const updateCOMPANY = async (id) =>
 	await sqlUpdate('companies', item)
 }
 
-export const deleteCOMPANY = async (id) => {
-	// await sqlDelete('companies', id)
+export const deleteCOMPANY = async (id) =>
+{
+	await sqlDelete('companies', id)
 }
