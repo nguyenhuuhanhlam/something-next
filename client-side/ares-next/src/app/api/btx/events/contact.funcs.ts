@@ -29,7 +29,7 @@ const getItem = async (id) => {
 		CompanyID: ~~Number(result.COMPANY_ID) || null,
 		Post: result.POST || null,
 		ClientType: ~~Number(result[CONTACT_UFS.ClientType]) || null,
-		Account: result[CONTACT_UFS.Account] || null,
+		Account: result[CONTACT_UFS.Account].length>0 ? result[CONTACT_UFS.Account] : null,
 		SupplierType: ~~Number(result[CONTACT_UFS.SupplierType]) || null,
 		BusinessSectors: ~~Number(result[CONTACT_UFS.BusinessSectors]) || null,
 		Province: ~~Number(result[CONTACT_UFS.Province]) || null

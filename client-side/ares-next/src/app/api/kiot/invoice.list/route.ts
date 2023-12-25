@@ -1,31 +1,35 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest,NextResponse } from 'next/server'
+import _ from 'lodash'
 
 export async function POST (req)
 {
-	const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/kiot/token.get`,{method:'POST'})
-	const { result:{access_token} } = await res.json()
+	const res = await fetch(`${ process.env.NEXT_PUBLIC_URL }/api/kiot/token.get`,{ method:'POST' })
+	const { access_token } = await res.json()
 
-	const invoice_res = await fetch(
+	const response = await fetch(
 		`https://public.kiotapi.com/invoices`,
 		{
 			method:'GET',
 			headers: {
-				'Content-Type': 'application/json',
+				'Content-Type':'application/json',
 				Retailer:'nhathuockanen',
-				Authorization: 'Bearer ' + access_token
+				Authorization:'Bearer ' + access_token
 			},
 		}
 	)
 
-	const { data,total } = await invoice_res.json()
+	const { data,total } = await response.json()
 
+	// 1.
 	let all = []
 	data.map(v => {
-		const { code, branchId, branchName } = v
-		all.push({ code, branchId, branchName })
+		all.push(_.pick(v,[ 'code','branchId','branchName','soldById','soldByName','customerCode','customerName','purchaseDate','total','status' ]))
 	})
 
-	return NextResponse.json({ result:all })
+	// 2.
+	let pageSize = 100
+
+	return NextResponse.json({ invoices:all })
 }
 
 
