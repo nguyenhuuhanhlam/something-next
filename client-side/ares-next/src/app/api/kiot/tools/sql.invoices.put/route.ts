@@ -39,5 +39,5 @@ export async function POST (req:NextRequest)
 		console.log(e)
 	}
 
-	return NextResponse.json({ overwrite: q })
+	return NextResponse.json({ overwrite: true })
 }
