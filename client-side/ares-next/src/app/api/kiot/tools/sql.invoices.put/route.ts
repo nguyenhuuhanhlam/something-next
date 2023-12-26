@@ -22,13 +22,13 @@ export async function POST (req:NextRequest)
 			customerName: ps(v.customerName),
 			purchaseDate: pds(v.purchaseDate),
 			total: v.total,
-			status: v.status
+			statusValue: ps(v.statusValue)
 		}
 
 		sql_values.push(`(${ Object.keys(rebuild).map(k=>rebuild[k]) })`)
 	})
 
-	const q = `INSERT INTO invoices(code,branchName,soldByName,customerName,purchaseDate,total,status) VALUES ${sql_values.join()}`
+	const q = `INSERT INTO invoices(code,branchName,soldByName,customerName,purchaseDate,total,statusValue) VALUES ${sql_values.join()}`
 
 	try {
 		const del_result = await excuteQuery({ query:'DELETE FROM invoices' })
