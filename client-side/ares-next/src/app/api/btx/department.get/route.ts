@@ -7,5 +7,5 @@ export async function POST (req) {
 	const res = await fetch(`${ BITRIX_ENDPOINT }/department.get`)
 	const { result } = await res.json()
 
-	return NextResponse.json({ departmentList:result })
+	return NextResponse.json({ departments:result })
 }
