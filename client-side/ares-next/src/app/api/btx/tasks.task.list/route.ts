@@ -13,6 +13,7 @@ export async function POST (req) {
 			'STAGE_ID',
 			'CREATED_BY',
 			'CREATED_DATE',
+			'CHANGED_DATE',
 			'CLOSED_BY',
 			'CLOSED_DATE',
 			'DEADLINE'
@@ -26,8 +27,7 @@ export async function POST (req) {
 	const res = await fetch(
 		`${ process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_13'] }/tasks.task.list`,
 		{
-			method:'POST',
-			headers: { 'Content-Type': 'application/json' },
+			method:'POST', headers: { 'Content-Type': 'application/json' },
 			body:JSON.stringify({ ...options })
 		}
 	)
