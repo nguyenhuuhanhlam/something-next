@@ -6,7 +6,7 @@ export async function POST (req) {
 
 	const BITRIX_ENDPOINT = process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_11']
 	let all = []
-	let options = { select: ['ID','TITLE'],	start: 0 }
+	let options = { select: ['ID','TITLE','ASSIGNED_BY_ID','DATE_CREATE','DATE_MODIFY'],	start: 0 }
 
 	// 1.
 	const res = await fetch(

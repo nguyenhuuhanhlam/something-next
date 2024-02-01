@@ -19,11 +19,20 @@ export async function POST (req:NextRequest) {
 	/* SQL */
 	let sql_values = []
 
-	json.companies.map(v=>{
-		sql_values.push(`(${v.ID},"${v.TITLE}")`)
+	json.companies.map(v =>
+	{
+		const rebuild = {
+			Id: v.ID,
+			CompanyName: '"' + v.TITLE.replace(/[\r\n\t\"]/g, "|") + '"',
+			Responsible: parseInt(v.ASSIGNED_BY_ID),
+			CreatedDate: v.DATE_CREATE ? '"' + v.DATE_CREATE.slice(0,10) + '"' : 'NULL',
+			ModifyDate: v.DATE_MODIFY ? '"' + v.DATE_MODIFY.slice(0,10) + '"' : 'NULL',
+		}
+
+		sql_values.push(`(${ Object.keys(rebuild).map(k=>rebuild[k]) })`)
 	})
 
-	const q = `INSERT INTO companies(Id,CompanyName) VALUES ${sql_values.join()}`
+	const q = `INSERT INTO companies(Id,CompanyName,Responsible,CreatedDate,ModifyDate) VALUES ${sql_values.join()}`
 
 	const del_result = await excuteQuery({ query: 'DELETE FROM companies' })
 	const ins_result = await excuteQuery({

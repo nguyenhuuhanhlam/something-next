@@ -27,7 +27,7 @@ export async function POST (req:NextRequest) {
 			ChangedDate: v.changedDate ? '"' + v.changedDate.slice(0,10) + '"' : 'NULL',
 		}
 
-			sql_values.push(`(${ Object.keys(rebuild).map(k=>rebuild[k]) })`)
+		sql_values.push(`(${ Object.keys(rebuild).map(k=>rebuild[k]) })`)
 	})
 
 	const q = `INSERT INTO tasks(Id,Title,Status,Responsible,Deadline,CreatedBy,ClosedBy,CreatedDate,ClosedDate,ChangedDate) VALUES ${ sql_values.join() }`

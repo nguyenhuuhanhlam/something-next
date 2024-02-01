@@ -15,7 +15,10 @@ const getItem = async (id) =>
 
 	const rebuild = {
 		Id: result.ID,
-		CompanyName: result.TITLE
+		CompanyName: result.TITLE,
+		Responsible: result.ASSIGNED_BY_ID,
+		CreatedDate: result.DATE_CREATE,
+		ModifyDate: result.DATE_MODIFY
 	}
 
 	return rebuild
