@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import excuteQuery from '@/lib/db.ts'
 import _ from 'lodash'
-import fs from 'fs'
 
 import { CONTACT_UFS } from '@/constants'
 
@@ -37,12 +36,14 @@ export async function POST (req:NextRequest)
 			SupplierType: v[CONTACT_UFS.SupplierType] || 'NULL',
 			BusinessSectors: v[CONTACT_UFS.BusinessSectors] || 'NULL',
 			Province: v[CONTACT_UFS.Province] || 'NULL',
+			DateCreate: v.DATE_CREATE ? '"' + v.DATE_CREATE.slice(0,10) + '"' : 'NULL',
+			DateModify: v.DATE_MODIFY ? '"' + v.DATE_MODIFY.slice(0,10) + '"' : 'NULL',
 		}
 
 		sql_values.push(`(${ Object.keys(rebuild).map(k=>rebuild[k]) })`)
 	})
 
-	const q = `INSERT INTO contacts(Id,Honorific,LastName,SecondName,Name,Phones,Emails,Birthdate,AssignedByID,CompanyID,Post,ClientType,Account,SupplierType,BusinessSectors,Province) VALUES ${ sql_values.join() }`
+	const q = `INSERT INTO contacts(Id,Honorific,LastName,SecondName,Name,Phones,Emails,Birthdate,AssignedByID,CompanyID,Post,ClientType,Account,SupplierType,BusinessSectors,Province,DateCreate,DateModify) VALUES ${ sql_values.join() }`
 
 	try {
 		const del_result = await excuteQuery({ query: 'DELETE FROM contacts' })
@@ -52,11 +53,6 @@ export async function POST (req:NextRequest)
 	} catch (e) {
 		console.log(e)
 	}
-
-	// fs.writeFile('./public/uploads/contacts.sql',q,err=>{
-	// 	if (err) console.log(err)
-	// 	else console.log('OK')
-	// })
 
 	return NextResponse.json({ overwrite: true })
 }

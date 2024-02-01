@@ -39,23 +39,23 @@ export async function POST (req)
 	let all = []
 	all = all.concat(result)
 
-	// const page_size = 50
-	// if (next) {
-	// 	for (let i=1; i<=Math.floor(total/page_size); i++) {
-	// 		const response = await fetch(
-	// 			`${ endpoint }/crm.contact.list`,
-	// 			{
-	// 				method:'POST',
-	// 				headers: { 'Content-Type': 'application/json' },
-	// 				body:JSON.stringify({ ...opt, start: i*page_size })
-	// 			}
-	// 		)
+	const page_size = 50
+	if (next) {
+		for (let i=1; i<=Math.floor(total/page_size); i++) {
+			const response = await fetch(
+				`${ endpoint }/crm.contact.list`,
+				{
+					method:'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body:JSON.stringify({ ...opt, start: i*page_size })
+				}
+			)
 
-	// 		const { result } = await response.json()
+			const { result } = await response.json()
 
-	// 		all = all.concat(result)
-	// 	}
-	// }
+			all = all.concat(result)
+		}
+	}
 
 	return NextResponse.json({ contacts: all })
 }

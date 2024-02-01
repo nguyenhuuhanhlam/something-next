@@ -32,7 +32,9 @@ const getItem = async (id) => {
 		Account: result[CONTACT_UFS.Account].length>0 ? result[CONTACT_UFS.Account] : null,
 		SupplierType: ~~Number(result[CONTACT_UFS.SupplierType]) || null,
 		BusinessSectors: ~~Number(result[CONTACT_UFS.BusinessSectors]) || null,
-		Province: ~~Number(result[CONTACT_UFS.Province]) || null
+		Province: ~~Number(result[CONTACT_UFS.Province]) || null,
+		DateCreate: result.DATE_CREATE?.slice(0,10) || null,
+		DateModify: result.DATE_MODIFY?.slice(0,10) || null,
 	}
 
 	return rebuild
