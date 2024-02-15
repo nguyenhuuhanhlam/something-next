@@ -24,7 +24,8 @@ export async function POST (req)
 	 }
 
 	let all = []
-	const filters = `filter[>%3DCHANGED_DATE]=${fromDate}&filter[<%3DCHANGED_DATE]=${toDate}`
+	// const filters = `filter[>%3DCHANGED_DATE]=${fromDate}&filter[<%3DCHANGED_DATE]=${toDate}`
+	const filters = `filter[>%3DCHANGED_DATE]=${fromDate}`
 
 	const res = await fetch(
 		`${ process.env['NEXT_PUBLIC_BITRIX_ENDPOINT_13'] }/tasks.task.list?${filters}`,

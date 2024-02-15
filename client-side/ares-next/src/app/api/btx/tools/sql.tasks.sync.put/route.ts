@@ -6,8 +6,8 @@ export async function POST (req:NextRequest)
 {
 	const result = await excuteQuery({ query:'SELECT DATE_FORMAT(MAX(ChangedDate),"%Y-%m-%d") AS LastDate FROM tasks' })
 	const LastDate = result[0].LastDate
-	const toDate = new Date().toISOString().slice(0,10)
-	
+	// const toDate = new Date().toISOString().slice(0,10)
+
 	const response = await fetch(
 		`${ process.env.NEXT_PUBLIC_URL }/api/btx/tasks.task.range.list`,
 		{
@@ -15,7 +15,7 @@ export async function POST (req:NextRequest)
 			headers:{ 'content-Type':'application/json' },
 			body:JSON.stringify({
 				fromDate: LastDate,
-				toDate
+				// toDate
 			})
 		}
 	)
@@ -52,5 +52,5 @@ export async function POST (req:NextRequest)
 		console.log(e)
 	}
 
-	return NextResponse.json({ done: true })
+	return NextResponse.json({ done: q })
 }
