@@ -83,7 +83,7 @@ export const addSPA = async (id, entityTypeId) =>
 			await sqlInsert(_table, item)
 			break
 		default:
-			console.log('NOT YET PROGRAMMING FOR THIS TABLE :', _table)
+			// console.log('NOT YET PROGRAMMING FOR THIS TABLE :', _table)
 			break
 	}
 }
