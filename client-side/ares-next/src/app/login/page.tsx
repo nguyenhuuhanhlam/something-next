@@ -15,13 +15,11 @@ import { MessageComponent } from '@syncfusion/ej2-react-notifications'
 
 export default function LoginPage()
 {
-	// const STRAPI_ENDPOINT = process.env['NEXT_PUBLIC_STRAPI_ENDPOINT']
-
 	const { state,dispatch } = useContext(AppContext)
 	const router = useRouter()
 
 	const [ loginData,setLoginData ] = useState({
-		identifier: '',
+		username: '',
 		password: '',
 	})
 
@@ -39,23 +37,12 @@ export default function LoginPage()
 	}
 
 	const submitHandle = async (e) => {
-		const { identifier,password } = loginData
+		const { username,password } = loginData
 
 		try {
-			setUx({ ...ux,pending:true })
+			// setUx({ ...ux,pending:true })
 
-			// await NextCors(process.env.NEXT_PUBLIC_BITRIX_CHECKLOGIN, res, {
-			// 	// Options
-			// 	methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-			// 	origin: '*',
-			// 	optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-			// })
-
-			// console.log(res)
-			
-			const auth = await axios.post(process.env.NEXT_PUBLIC_BITRIX_CHECKLOGIN)
-
-			// console.log(auth)
+			const auth = await axios.post(`${ process.env.NEXT_PUBLIC_URL }/api/btx/oauth`, { username,password })
 
 			// new Promise(async rev=>{
 			// 	await dispatch({ type:'LOGIN', payload:auth.data })
@@ -87,7 +74,7 @@ export default function LoginPage()
 				placeholder="Username"
 				cssClass="e-float-input e-small"
 				floatLabelType="Auto"
-				name="identifier"
+				name="username"
 				onChange={ handleChange }
 			/>
 
