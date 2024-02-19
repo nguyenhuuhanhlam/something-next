@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { useContext, useState } from 'react'
 import axios from 'axios'
+import NextCors from 'nextjs-cors'
 
 import { AppContext } from '@/contexts/app.context'
 
@@ -12,8 +13,10 @@ import { MessageComponent } from '@syncfusion/ej2-react-notifications'
 
 /* - - - - - */
 
-export default function LoginPage() {
-	const STRAPI_ENDPOINT = process.env['NEXT_PUBLIC_STRAPI_ENDPOINT']
+export default function LoginPage()
+{
+	// const STRAPI_ENDPOINT = process.env['NEXT_PUBLIC_STRAPI_ENDPOINT']
+
 	const { state,dispatch } = useContext(AppContext)
 	const router = useRouter()
 
@@ -21,6 +24,7 @@ export default function LoginPage() {
 		identifier: '',
 		password: '',
 	})
+
 	const [ ux,setUx ] = useState({
 		pending:false,
 		showErrMsg:false
@@ -39,15 +43,24 @@ export default function LoginPage() {
 
 		try {
 			setUx({ ...ux,pending:true })
-			
-			const auth = await axios.post(
-				`${ STRAPI_ENDPOINT }/api/auth/local`,
-				{ identifier, password })
 
-			new Promise(async rev=>{
-				await dispatch({ type:'LOGIN', payload:auth.data })
-				rev(true)
-			}).then(()=>router.replace('/personal-info'))
+			// await NextCors(process.env.NEXT_PUBLIC_BITRIX_CHECKLOGIN, res, {
+			// 	// Options
+			// 	methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+			// 	origin: '*',
+			// 	optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+			// })
+
+			// console.log(res)
+			
+			const auth = await axios.post(process.env.NEXT_PUBLIC_BITRIX_CHECKLOGIN)
+
+			// console.log(auth)
+
+			// new Promise(async rev=>{
+			// 	await dispatch({ type:'LOGIN', payload:auth.data })
+			// 	rev(true)
+			// }).then(()=>router.replace('/personal-info'))
 
 		} catch (e) {
 			setUx({ ...ux, showErrMsg:true, pending:false })
