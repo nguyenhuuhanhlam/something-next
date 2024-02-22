@@ -13,22 +13,14 @@ export async function POST (req)
 	const jar = new CookieJar()
 	const client = wrapper(axios.create({ jar }))
 
-	const logres = await client.post(process.env.NEXT_PUBLIC_BITRIX_CHECKLOGIN)
-	const csrf = logres.data.errors[0].customData.csrf
+	const x = await client.post(process.env.NEXT_PUBLIC_BITRIX_CHECKLOGIN)
+	console.log('1::',x.headers['set-cookie'])
 
-	const log = await client.postForm(process.env.NEXT_PUBLIC_BITRIX_CHECK,
-		{ login:username, password },
-		{ headers:{ 'X-Bitrix-Csrf-Token':csrf } }
-		)
+	const y = await client.post(process.env.NEXT_PUBLIC_BITRIX_CHECK,
+		{},
+		{ headers:{'X-Bitrix-Csrf-Token':x.data.errors[0].customData.csrf }})
 
-	// const log = await client.post({
-	// 	method:'post',
-	// 	url: process.env.NEXT_PUBLIC_BITRIX_CHECK,
-	// 	headers: { 'X-Bitrix-Csrf-Token':csrf },
-	// 	data: { login:username, password }
-	// })
-
-	console.log(log.data)
+	console.log('2::',y.data.errors[0]) 
 
 	return NextResponse.json({})
 }
