@@ -47,6 +47,8 @@ export default function HomePage() {
 			<div className="app-icons my-5">
 				<AppIconLink text="Superset" icon="/superset-icon.svg" href="http://115.75.90.30:8888" />				
 				<AppIconLink text="N8N" icon="/n8n-icon.svg" href="http://115.75.90.30:5678" />
+				<AppIconLink text="Gemini" icon="/gemini-icon.svg" href="https://gemini.google.com/app" />
+				<AppIconLink text="ChatGPT" icon="/openai-icon.svg" href="https://chat.openai.com/" />
 			</div>
 		</div>
 	)
